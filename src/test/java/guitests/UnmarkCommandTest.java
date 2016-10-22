@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
 import seedu.tasklist.commons.core.Messages;
-import seedu.tasklist.logic.commands.MarkCommand;
 import seedu.tasklist.logic.commands.UnmarkCommand;
 import seedu.tasklist.testutil.TestTask;
 

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.testutil.TestTask;
+import seedu.tasklist.testutil.TypicalTestTasks;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,11 +13,11 @@ public class FindCommandTest extends TaskListGuiTest {
     @Test
     public void find_nonEmptyList() {
         assertFindResult("find today"); //no results
-        assertFindResult("find Failure", td.task4, td.task6); //multiple results
+        assertFindResult("find Failure", TypicalTestTasks.task4, TypicalTestTasks.task6); //multiple results
 
         //find after deleting one result
         commandBox.runCommand("delete 1");
-        assertFindResult("find Exam",td.task1);
+        assertFindResult("find Exam",TypicalTestTasks.task1);
     }
 
     @Test

@@ -7,8 +7,6 @@ import java.util.regex.Matcher;
 
 import seedu.tasklist.commons.core.EventsCenter;
 import seedu.tasklist.commons.events.storage.ChangePathEvent;
-import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
-import seedu.tasklist.commons.exceptions.IllegalValueException;
 
 
 /**

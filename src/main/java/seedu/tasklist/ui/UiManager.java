@@ -10,7 +10,6 @@ import seedu.tasklist.MainApp;
 import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.Config;
 import seedu.tasklist.commons.core.LogsCenter;
-import seedu.tasklist.commons.events.storage.ChangePathEvent;
 import seedu.tasklist.commons.events.storage.DataSavingExceptionEvent;
 import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.events.ui.ShowHelpRequestEvent;

@@ -383,9 +383,9 @@ public class LogicManagerTest {
     /**
      * A utility class to generate test data.
      */
-    class TestDataHelper{
+    private class TestDataHelper{
 
-        Task newTask() throws Exception {
+        private Task newTask() throws Exception {
             Title title = new Title("New Task");
             DateTime privateStartDateTime = new DateTime("11112011");
             Description description = new Description("New description");
@@ -403,7 +403,7 @@ public class LogicManagerTest {
          *
          * @param seed used to generate the task data field values
          */
-        Task generateTask(int seed) throws Exception {
+        private Task generateTask(int seed) throws Exception {
             return new Task(
                     new Title("Task " + seed),
                     new DateTime("1111201" + Math.abs(seed)),
@@ -414,7 +414,7 @@ public class LogicManagerTest {
         }
 
         /** Generates the correct add command based on the task given */
-        String generateAddCommand(Task p) {
+        private String generateAddCommand(Task p) {
             StringBuffer cmd = new StringBuffer();
 
             cmd.append("add ");
@@ -435,7 +435,7 @@ public class LogicManagerTest {
         /**
          * Generates an TaskList with auto-generated tasks.
          */
-        TaskList generateTaskList(int numGenerated) throws Exception{
+        private TaskList generateTaskList(int numGenerated) throws Exception{
             TaskList taskList = new TaskList();
             addToTaskList(taskList, numGenerated);
             return taskList;
@@ -444,7 +444,7 @@ public class LogicManagerTest {
         /**
          * Generates an TaskList based on the list of Tasks given.
          */
-        TaskList generateTaskList(List<Task> tasks) throws Exception{
+        private TaskList generateTaskList(List<Task> tasks) throws Exception{
             TaskList taskList = new TaskList();
             addToTaskList(taskList, tasks);
             return taskList;
@@ -487,7 +487,7 @@ public class LogicManagerTest {
         /**
          * Generates a list of Tasks based on the flags.
          */
-        List<Task> generateTaskLists(int numGenerated) throws Exception{
+        private List<Task> generateTaskLists(int numGenerated) throws Exception{
             List<Task> tasks = new ArrayList<>();
             for(int i = 1; i <= numGenerated; i++){
                 tasks.add(generateTask(i));
@@ -495,14 +495,14 @@ public class LogicManagerTest {
             return tasks;
         }
 
-        List<Task> generateTaskList(Task... tasks) {
+        private List<Task> generateTaskList(Task... tasks) {
             return Arrays.asList(tasks);
         }
 
         /**
          * Generates a Task object with given name. Other fields will have some dummy values.
          */
-        Task generateTaskWithTitle(String name) throws Exception {
+        private Task generateTaskWithTitle(String name) throws Exception {
             return new Task(
                     new Title(name),
                     new DateTime("11112011"),

@@ -212,7 +212,7 @@ public class TestUtil {
      *
      * Caveat: only find method declared in the current Class, not inherited from supertypes
      */
-    public static Method getPrivateMethod(Class objectClass, String methodName) throws NoSuchMethodException {
+    public static Method getPrivateMethod(Class<?> objectClass, String methodName) throws NoSuchMethodException {
         Method method = objectClass.getDeclaredMethod(methodName);
         method.setAccessible(true);
         return method;
