@@ -46,7 +46,7 @@ public class StorageCommand extends Command {
 		}
 				
 		EventsCenter.getInstance().post(new ChangePathEvent(filepath));
-		model.updateFilePathChange();
+		model.updateTaskListAfterFilePathChange();
 		return new CommandResult(MESSAGE_CHANGE_PATH_SUCCESS + filepath);
 	}
 	

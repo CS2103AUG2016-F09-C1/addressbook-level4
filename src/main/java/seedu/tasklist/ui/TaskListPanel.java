@@ -25,6 +25,11 @@ public class TaskListPanel extends UiPart {
     private VBox panel;
     private AnchorPane placeHolderPane;
 
+    public enum Type {
+        Filtered, Main;
+    }
+    private TaskListPanel.Type type;
+    
     @FXML
     private ListView<ReadOnlyTask> taskListView;
 
@@ -48,8 +53,9 @@ public class TaskListPanel extends UiPart {
     }
 
     public static TaskListPanel load(Stage primaryStage, AnchorPane taskListPlaceholder,
-            ObservableList<ReadOnlyTask> taskList) {
+            ObservableList<ReadOnlyTask> taskList, TaskListPanel.Type type) {
         TaskListPanel taskListPanel = UiPartLoader.loadUiPart(primaryStage, taskListPlaceholder, new TaskListPanel());
+        taskListPanel.type = type;
         taskListPanel.configure(taskList);
         return taskListPanel;
     }
@@ -122,8 +128,10 @@ public class TaskListPanel extends UiPart {
             if (empty || task == null) {
                 setGraphic(null);
                 setText(null);
-            } else {
+            } else if (type == TaskListPanel.Type.Filtered){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
+            } else if (type == TaskListPanel.Type.Main){
+                setGraphic(TaskCard.load(task, -1).getLayout());
             }
         }
     }

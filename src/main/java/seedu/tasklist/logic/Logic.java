@@ -19,6 +19,6 @@ public interface Logic {
     ObservableList<ReadOnlyTask> getFilteredTaskList();
     
     /** Returns the weekly filtered list of tasks */
-    ObservableList<ReadOnlyTask> getListCommandFilteredTaskList();
+    ObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
 }

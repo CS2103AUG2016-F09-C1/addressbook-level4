@@ -24,6 +24,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final TaskList taskList;
     private final FilteredList<Task> filteredTask;
+    private final FilteredList<Task> mainFilteredTaskList;
 
     /**
      * Initializes a ModelManager with the given TaskList
@@ -38,6 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         taskList = new TaskList(src);
         filteredTask = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
     }
 
     public ModelManager() {
@@ -47,6 +49,7 @@ public class ModelManager extends ComponentManager implements Model {
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
         filteredTask = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
     }
 
     @Override
@@ -98,7 +101,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     @Override
-    public void updateFilePathChange(){
+    public void updateTaskListAfterFilePathChange() {
     	indicateTaskListChanged();
     }
     
@@ -124,8 +127,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     @Override
-    public UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList() {
-        return new UnmodifiableObservableList<>(filteredTask);
+    public UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList() {
+        return new UnmodifiableObservableList<>(mainFilteredTaskList);
     }
 
     //========== Inner classes/interfaces used for filtering ==================================================

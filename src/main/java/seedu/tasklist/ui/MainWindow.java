@@ -34,7 +34,7 @@ public class MainWindow extends UiPart {
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
     private TaskListPanel taskListPanel;
-    private TaskListPanel listCommandTaskListPanel;
+    private TaskListPanel mainTaskListPanel;
     private ResultDisplay resultDisplay;
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
@@ -57,7 +57,7 @@ public class MainWindow extends UiPart {
     private AnchorPane taskListPanelPlaceholder;
     
     @FXML
-    private AnchorPane listCommandTaskListPanelPlaceholder;
+    private AnchorPane mainTaskListPanelPlaceholder;
 
     @FXML
     private AnchorPane resultDisplayPlaceholder;
@@ -137,10 +137,10 @@ public class MainWindow extends UiPart {
 
     void fillInnerParts() {
         browserPanel = BrowserPanel.load(browserPlaceholder);
-//        browserPlaceholder.setManaged(false);
-        taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList());
-        listCommandTaskListPanel = TaskListPanel.load(primaryStage, listCommandTaskListPanelPlaceholder, logic.getListCommandFilteredTaskList());
-        listCommandTaskListPanelPlaceholder.setManaged(false);
+        browserPlaceholder.setManaged(false);
+        
+        taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.Filtered);
+        mainTaskListPanel = TaskListPanel.load(primaryStage, mainTaskListPanelPlaceholder, logic.getMainFilteredTaskList(), TaskListPanel.Type.Main);
         resultDisplay = ResultDisplay.load(primaryStage, getResultDisplayPlaceholder());
         statusBarFooter = StatusBarFooter.load(primaryStage, getStatusbarPlaceholder(), config.getTaskListFilePath());
         commandBox = CommandBox.load(primaryStage, getCommandBoxPlaceholder(), resultDisplay, logic);
@@ -278,7 +278,7 @@ public class MainWindow extends UiPart {
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
-        listCommandTaskListPanelPlaceholder.setManaged(false);
+        taskListPanelPlaceholder.setManaged(false);
         browserPlaceholder.setManaged(true);
         browserPanel.loadTaskPage(task);
     }

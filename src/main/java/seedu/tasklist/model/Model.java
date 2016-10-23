@@ -44,9 +44,9 @@ public interface Model {
     void updateFilteredTaskList(Set<String> keywords);
 
     /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
-    UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList();
+    UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
-    /** Updates the task list after change file path*/
-    void updateFilePathChange();
+    /** Updates the task list after file path change*/
+    void updateTaskListAfterFilePathChange();
 
 }
