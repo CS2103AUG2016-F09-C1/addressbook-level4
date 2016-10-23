@@ -26,7 +26,7 @@ public class TaskListPanel extends UiPart {
     private AnchorPane placeHolderPane;
 
     public enum Type {
-        Filtered, Main;
+        FILTERED_TASKLIST, MAIN_TASKLIST;
     }
     private TaskListPanel.Type type;
     
@@ -128,9 +128,9 @@ public class TaskListPanel extends UiPart {
             if (empty || task == null) {
                 setGraphic(null);
                 setText(null);
-            } else if (type == TaskListPanel.Type.Filtered){
+            } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
-            } else if (type == TaskListPanel.Type.Main){
+            } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
                 setGraphic(TaskCard.load(task, -1).getLayout());
             }
         }
