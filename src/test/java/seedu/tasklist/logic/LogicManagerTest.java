@@ -328,7 +328,7 @@ public class LogicManagerTest {
         Task pTarget1 = helper.generateTaskWithTitle("bla bla KEY bla");
         Task pTarget2 = helper.generateTaskWithTitle("bla KEY bla bceofeia");
         Task p1 = helper.generateTaskWithTitle("KE Y");
-        Task p2 = helper.generateTaskWithTitle("KEYKEYKEY sduauo");
+        Task p2 = helper.generateTaskWithTitle("KE YKE YKE Y sduauo");
 
         List<Task> fourTasks = helper.generateTaskList(p1, pTarget1, p2, pTarget2);
         TaskList expectedAB = helper.generateTaskList(fourTasks);

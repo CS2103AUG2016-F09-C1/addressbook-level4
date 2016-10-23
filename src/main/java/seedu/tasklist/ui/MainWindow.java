@@ -139,8 +139,8 @@ public class MainWindow extends UiPart {
         browserPanel = BrowserPanel.load(browserPlaceholder);
         browserPlaceholder.setManaged(false);
         
-        taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.Filtered);
         mainTaskListPanel = TaskListPanel.load(primaryStage, mainTaskListPanelPlaceholder, logic.getMainFilteredTaskList(), TaskListPanel.Type.Main);
+        taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.Filtered);
         resultDisplay = ResultDisplay.load(primaryStage, getResultDisplayPlaceholder());
         statusBarFooter = StatusBarFooter.load(primaryStage, getStatusbarPlaceholder(), config.getTaskListFilePath());
         commandBox = CommandBox.load(primaryStage, getCommandBoxPlaceholder(), resultDisplay, logic);
@@ -278,9 +278,9 @@ public class MainWindow extends UiPart {
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
-        taskListPanelPlaceholder.setManaged(false);
-        browserPlaceholder.setManaged(true);
-        browserPanel.loadTaskPage(task);
+//        taskListPanelPlaceholder.setManaged(false);
+//        browserPlaceholder.setManaged(true);
+//        browserPanel.loadTaskPage(task);
     }
 
     public void releaseResources() {
