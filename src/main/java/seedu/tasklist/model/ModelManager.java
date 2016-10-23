@@ -89,14 +89,14 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskList.addTask(task);
-        updateFilteredListToShowAll();
+        updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
     }
     
     @Override
     public void editTask(Task taskToEdit, ReadOnlyTask target) throws TaskNotFoundException {
         taskList.editTask(taskToEdit, target);
-        updateFilteredListToShowAll();
+        updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
     }
     
@@ -113,7 +113,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateFilteredListToShowAll() {
+    public void updateFilteredTaskListToShowAll() {
         filteredTask.setPredicate(null);
     }
 

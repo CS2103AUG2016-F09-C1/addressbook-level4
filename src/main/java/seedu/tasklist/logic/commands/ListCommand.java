@@ -58,7 +58,7 @@ public class ListCommand extends Command {
     public CommandResult execute() {
         switch (type) {
         case ALL:
-            model.updateFilteredListToShowAll();
+            model.updateFilteredTaskListToShowAll();
             return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
         case COMPLETED_TASKS:
             return new CommandResult(String.format(MESSAGE_SUCCESS, "completed "));

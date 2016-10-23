@@ -36,15 +36,24 @@ public interface Model {
 
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
-
-    /** Updates the filter of the filtered task list to show all tasks */
-    void updateFilteredListToShowAll();
-
-    /** Updates the filter of the filtered task list to filter by the given keywords*/
-    void updateFilteredTaskList(Set<String> keywords);
-
+    
     /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList();
+
+    /** Updates the filter of the filtered task list to show all tasks */
+    void updateFilteredTaskListToShowAll();
+
+    /** Updates the filter of the filtered task list to show all completed tasks */
+    void updateFilteredTaskListToShowCompleted();
+    
+    /** Updates the filter of the filtered task list to show all overdue tasks */
+    void updateFilteredTaskListToShowOverdue();
+    
+    /** Updates the filter of the filtered task list to show all floating tasks */
+    void updateFilteredTaskListToShowFloating();
+    
+    /** Updates the filter of the filtered task list to filter by the given keywords*/
+    void updateFilteredTaskList(Set<String> keywords);
 
     /** Updates the task list after file path change*/
     void updateTaskListAfterFilePathChange();
