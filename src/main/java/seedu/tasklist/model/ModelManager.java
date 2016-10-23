@@ -23,7 +23,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final TaskList taskList;
-    private final FilteredList<Task> filteredTask;
+    private FilteredList<Task> filteredTask;
     private final FilteredList<Task> mainFilteredTaskList;
 
     /**
@@ -116,12 +116,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskListToShowAll() {
         filteredTask.setPredicate(null);
     }
-
+    
     @Override
     public void updateFilteredTaskList(Set<String> keywords){
         updateFilteredTaskList(new PredicateExpression(new TaskQualifier(keywords)));
     }
-
+    
     private void updateFilteredTaskList(Expression expression) {
         filteredTask.setPredicate(expression::satisfies);
     }
@@ -142,7 +142,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         private final Qualifier qualifier;
 
-        PredicateExpression(Qualifier qualifier) {
+        private PredicateExpression(Qualifier qualifier) {
             this.qualifier = qualifier;
         }
 
@@ -164,17 +164,25 @@ public class ModelManager extends ComponentManager implements Model {
 
     private class TaskQualifier implements Qualifier {
         private Set<String> keyWords;
-
-        TaskQualifier(Set<String> keyWords) {
+        
+        private TaskQualifier(Set<String> keyWords) {
             this.keyWords = keyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            return keyWords.stream()
+            if (keyWords.contains("isCompleted") && keyWords.size() == 1) {
+                return task.isCompleted();
+            } else if (keyWords.contains("isOverdue") && keyWords.size() == 1) {
+                return task.isOverdue();
+            } else if (keyWords.contains("isFloating") && keyWords.size() == 1) {
+                return task.isFloating();
+            } else {
+                return keyWords.stream()
                     .filter(keyword -> StringUtil.containsIgnoreCase(task.getAsText(), keyword))
                     .findAny()
                     .isPresent();
+            }       
         }
 
         @Override
@@ -182,5 +190,5 @@ public class ModelManager extends ComponentManager implements Model {
             return "Task =" + String.join(", ", keyWords);
         }
     }
-
+        
 }

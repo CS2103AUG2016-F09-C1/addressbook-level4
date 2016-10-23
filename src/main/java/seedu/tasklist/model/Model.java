@@ -42,15 +42,6 @@ public interface Model {
 
     /** Updates the filter of the filtered task list to show all tasks */
     void updateFilteredTaskListToShowAll();
-
-    /** Updates the filter of the filtered task list to show all completed tasks */
-    void updateFilteredTaskListToShowCompleted();
-    
-    /** Updates the filter of the filtered task list to show all overdue tasks */
-    void updateFilteredTaskListToShowOverdue();
-    
-    /** Updates the filter of the filtered task list to show all floating tasks */
-    void updateFilteredTaskListToShowFloating();
     
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
