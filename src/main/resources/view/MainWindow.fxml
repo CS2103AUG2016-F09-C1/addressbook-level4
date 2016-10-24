@@ -61,7 +61,6 @@
 	            </padding>
 	            <children>
 		            <AnchorPane fx:id="mainTaskListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-		            <AnchorPane fx:id="browserPlaceholder" VBox.vgrow="ALWAYS" />
 	            </children>
             </VBox>
          </items>

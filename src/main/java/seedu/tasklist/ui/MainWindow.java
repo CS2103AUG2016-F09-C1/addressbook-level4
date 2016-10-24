@@ -32,7 +32,6 @@ public class MainWindow extends UiPart {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
     private TaskListPanel taskListPanel;
     private TaskListPanel mainTaskListPanel;
     private ResultDisplay resultDisplay;
@@ -46,9 +45,6 @@ public class MainWindow extends UiPart {
     private Scene scene;
 
     private String taskListName;
-
-    @FXML
-    private AnchorPane browserPlaceholder;
 
     @FXML
     private AnchorPane commandBoxPlaceholder;
@@ -135,10 +131,7 @@ public class MainWindow extends UiPart {
         });
     }
 
-    void fillInnerParts() {
-        browserPanel = BrowserPanel.load(browserPlaceholder);
-        browserPlaceholder.setManaged(false);
-        
+    void fillInnerParts() {      
         mainTaskListPanel = TaskListPanel.load(primaryStage, mainTaskListPanelPlaceholder, logic.getMainFilteredTaskList(), TaskListPanel.Type.MAIN_TASKLIST);
         taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.FILTERED_TASKLIST);
         resultDisplay = ResultDisplay.load(primaryStage, getResultDisplayPlaceholder());
@@ -277,13 +270,4 @@ public class MainWindow extends UiPart {
         return this.taskListPanel;
     }
 
-    public void loadTaskPage(ReadOnlyTask task) {
-//        taskListPanelPlaceholder.setManaged(false);
-//        browserPlaceholder.setManaged(true);
-//        browserPanel.loadTaskPage(task);
-    }
-
-    public void releaseResources() {
-        browserPanel.freeResources();
-    }
 }
