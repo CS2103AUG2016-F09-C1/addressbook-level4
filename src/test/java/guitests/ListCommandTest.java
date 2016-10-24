@@ -31,13 +31,22 @@ public class ListCommandTest extends TaskListGuiTest {
         assertListSize(1);
         
         commandBox.runCommand("list today");
-        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, "today's "));
+        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "today"));
         assertListSize(1);
         
         commandBox.runCommand("list week");
-        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, "this week's "));
+        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "the week"));
         assertListSize(1);
-
+        
+        //list empty list
+        commandBox.runCommand("clear");
+        
+        commandBox.runCommand("list today");
+        assertResultMessage(ListCommand.MESSAGE_NO_TASK_TODAY);
+        
+        commandBox.runCommand("list week");
+        assertResultMessage(ListCommand.MESSAGE_NO_TASK_WEEK);
+        
         //invalid command
         commandBox.runCommand("lists");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);

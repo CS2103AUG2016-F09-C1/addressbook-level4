@@ -16,13 +16,13 @@ public class UnmarkCommandTest extends TaskListGuiTest {
         
         //mark tasks
         commandBox.runCommand("mark " + 1);
-        commandBox.runCommand("mark " + currentList.length);
+        commandBox.runCommand("mark " + 1);
         
         //unmark first task
-        assertUnmarkSuccess(1, currentList[0], currentList);
+        assertUnmarkSuccess(currentList.length, currentList[0], currentList);
         
-        //unmark last task
-        assertUnmarkSuccess(currentList.length, currentList[currentList.length-1], currentList);
+        //unmark next task
+        assertUnmarkSuccess(currentList.length, currentList[1], currentList);
         
         //unmark task that don't exist
         commandBox.runCommand("unmark -10");

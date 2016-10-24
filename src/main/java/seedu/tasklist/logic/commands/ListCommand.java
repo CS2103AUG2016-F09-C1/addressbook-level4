@@ -16,8 +16,9 @@ public class ListCommand extends Command {
             + COMMAND_WORD + " completed\n" + COMMAND_WORD + " overdue\n" + COMMAND_WORD + " floating";
 
     public static final String MESSAGE_SUCCESS = "Listed all %1$stasks.";
-    public static final String MESSAGE_NO_TODAY_TASK = "Great! You have no tasks for today!";
-    public static final String MESSAGE_NO_WEEK_TASK = "Wow! You have no tasks for the week!";
+    public static final String MESSAGE_SUCCESS_2 = "Listed all tasks for %1$s.";
+    public static final String MESSAGE_NO_TASK_TODAY = "Great! You have no tasks for today!";
+    public static final String MESSAGE_NO_TASK_WEEK = "Wow! You have no tasks for the week!";
 
     private enum List {
         ALL, COMPLETED_TASKS, OVERDUE_TASKS, FLOATING_TASKS, TODAY_TASKS, WEEK_TASKS
@@ -84,17 +85,17 @@ public class ListCommand extends Command {
             case TODAY_TASKS:
                 filteredListSize = model.updateFilteredTaskList("today");
                 if (filteredListSize > 0) {
-                    return new CommandResult(String.format(MESSAGE_SUCCESS, "today's "));
+                    return new CommandResult(String.format(MESSAGE_SUCCESS_2, "today"));
                 }else {
-                    return new CommandResult(MESSAGE_NO_TODAY_TASK);
+                    return new CommandResult(MESSAGE_NO_TASK_TODAY);
                 }
             
             case WEEK_TASKS:
                 filteredListSize = model.updateFilteredTaskList("week");
                 if (filteredListSize > 0) {
-                    return new CommandResult(String.format(MESSAGE_SUCCESS, "this week's "));
+                    return new CommandResult(String.format(MESSAGE_SUCCESS_2, "the week"));
                 }else {
-                    return new CommandResult(MESSAGE_NO_WEEK_TASK);
+                    return new CommandResult(MESSAGE_NO_TASK_WEEK);
                 }
             
             default:
