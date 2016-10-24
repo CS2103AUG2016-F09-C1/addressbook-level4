@@ -24,6 +24,8 @@ public class TaskListPanel extends UiPart {
     private static final String FXML = "TaskListPanel.fxml";
     private VBox panel;
     private AnchorPane placeHolderPane;
+    
+    private int scrollIndex;
 
     public enum Type {
         FILTERED_TASKLIST, MAIN_TASKLIST;
@@ -88,31 +90,32 @@ public class TaskListPanel extends UiPart {
     public void scrollTo(int index) {
         Platform.runLater(() -> {
             taskListView.scrollTo(index);
-            taskListView.getSelectionModel().clearAndSelect(index);
         });
     }
 
-    public void selectPrevious() {
+    public void scrollToPrevious() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectPrevious();
+            if (scrollIndex >= 0) scrollTo(scrollIndex--);
         });
     }
 
-    public void selectNext() {
+    public void scrollToNext() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectNext();
+            if (scrollIndex <= 10) scrollTo(scrollIndex++);
         });
     }
     
-    public void selectLast() {
+    public void scrollToLast() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectLast();
+            scrollIndex = 10;
+            scrollTo(scrollIndex);
         });
     }
     
-    public void selectFirst() {
+    public void scrollToFirst() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectFirst();
+            scrollIndex = 0;
+            scrollTo(scrollIndex);
         });
     }
 

@@ -15,7 +15,9 @@ public class ListCommand extends Command {
             + "Parameters: [TYPE]\nTYPE: completed, overdue, floating, today or week\n" + "Example: \n" + COMMAND_WORD + " \n"
             + COMMAND_WORD + " completed\n" + COMMAND_WORD + " overdue\n" + COMMAND_WORD + " floating";
 
-    public static final String MESSAGE_SUCCESS = "Listed all %1$stasks";
+    public static final String MESSAGE_SUCCESS = "Listed all %1$stasks.";
+    public static final String MESSAGE_NO_TODAY_TASK = "Great! You have no tasks for today!";
+    public static final String MESSAGE_NO_WEEK_TASK = "Wow! You have no tasks for the week!";
 
     private enum List {
         ALL, COMPLETED_TASKS, OVERDUE_TASKS, FLOATING_TASKS, TODAY_TASKS, WEEK_TASKS
@@ -61,27 +63,42 @@ public class ListCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        int filteredListSize;
         switch (type) {
             case ALL:
                 model.updateFilteredTaskListToShowAll();
                 return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
+            
             case COMPLETED_TASKS:
                 model.updateFilteredTaskList("isCompleted");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "completed "));
+            
             case OVERDUE_TASKS:
                 model.updateFilteredTaskList("isOverdue");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "overdue "));
+            
             case FLOATING_TASKS:
                 model.updateFilteredTaskList("isFloating");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "floating "));
+            
             case TODAY_TASKS:
-                model.updateFilteredTaskList("today");
-                return new CommandResult(String.format(MESSAGE_SUCCESS, "today's "));
+                filteredListSize = model.updateFilteredTaskList("today");
+                if (filteredListSize > 0) {
+                    return new CommandResult(String.format(MESSAGE_SUCCESS, "today's "));
+                }else {
+                    return new CommandResult(MESSAGE_NO_TODAY_TASK);
+                }
+            
             case WEEK_TASKS:
-                model.updateFilteredTaskList("week");
-                return new CommandResult(String.format(MESSAGE_SUCCESS, "this week's "));
-        default:
-            return new CommandResult(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+                filteredListSize = model.updateFilteredTaskList("week");
+                if (filteredListSize > 0) {
+                    return new CommandResult(String.format(MESSAGE_SUCCESS, "this week's "));
+                }else {
+                    return new CommandResult(MESSAGE_NO_WEEK_TASK);
+                }
+            
+            default:
+                return new CommandResult(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
     }
 

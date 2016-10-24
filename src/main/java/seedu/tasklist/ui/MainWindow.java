@@ -197,32 +197,32 @@ public class MainWindow extends UiPart {
      * Scroll to the first task in the list view
      */
     @FXML
-    private void handleListPanelSelectFirst() {
-        taskListPanel.selectFirst();
+    private void handleListPanelScrollToFirst() {
+        taskListPanel.scrollToFirst();
     }
     
     /**
      * Scroll to the last task in the list view
      */
     @FXML
-    private void handleListPanelSelectLast() {
-        taskListPanel.selectLast();
+    private void handleListPanelScrollToLast() {
+        taskListPanel.scrollToLast();
     }
     
     /**
-     * Scroll up and select the next task in the list view
+     * Scroll up in the list view
      */
     @FXML
-    private void handleListPanelSelectPrevious() {
-        taskListPanel.selectPrevious();
+    private void handleListPanelScrollUp() {
+        taskListPanel.scrollToPrevious();
     }
     
     /**
-     * Scroll down and select the next task in the list view
+     * Scroll down in the list view
      */
     @FXML
-    private void handleListPanelSelectNext() {
-        taskListPanel.selectNext();
+    private void handleListPanelScrollDown() {
+        taskListPanel.scrollToNext();
     }
     
     /**

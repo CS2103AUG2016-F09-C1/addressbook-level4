@@ -55,6 +55,10 @@ public class UniqueTaskList implements Iterable<Task> {
     private void sort() {
         List<Task> floatingList = internalList.stream().filter(t -> t.isFloating() == true).collect(Collectors.toList());
         internalList.removeAll(floatingList);
+        
+        List<Task> completedList = internalList.stream().filter(t -> t.isCompleted() == true).collect(Collectors.toList());
+        internalList.removeAll(completedList);
+        
         internalList.sort(new Comparator<Task>() {
             @Override
             public int compare(Task t1, Task t2) {
@@ -66,7 +70,9 @@ public class UniqueTaskList implements Iterable<Task> {
                 } 
             }
         });
+        
         internalList.addAll(floatingList);
+        internalList.addAll(completedList);
     }
 
     /**
@@ -135,6 +141,7 @@ public class UniqueTaskList implements Iterable<Task> {
         final Task completeTask = internalList.get(index);
         completeTask.setCompleted(true);
         internalList.set(index, completeTask);
+        sort();
         
         return true;
     }
@@ -159,6 +166,7 @@ public class UniqueTaskList implements Iterable<Task> {
         final Task completeTask = internalList.get(index);
         completeTask.setCompleted(false);
         internalList.set(index, completeTask);
+        sort();
         
         return true;
     }

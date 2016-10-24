@@ -23,7 +23,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final TaskList taskList;
-    private FilteredList<Task> filteredTask;
+    private final FilteredList<Task> filteredTask;
     private final FilteredList<Task> mainFilteredTaskList;
 
     /**
@@ -127,8 +127,9 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     @Override
-    public void updateFilteredTaskList(String status){
+    public int updateFilteredTaskList(String status){
         updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
+        return filteredTask.size();
     }
     
     private void updateFilteredTaskList(Expression expression) {
@@ -208,9 +209,9 @@ public class ModelManager extends ComponentManager implements Model {
             } else if (status.equals("isFloating")) {
                 return task.isFloating();
             } else if (status.equals("today")) {
-                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
+                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.equals("week")) {
-                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
+                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
             } else {
                 return false;
             }

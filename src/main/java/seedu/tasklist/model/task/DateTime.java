@@ -75,12 +75,12 @@ public class DateTime implements DateTimeComparator {
 
     @Override
     public boolean isDateTimeAfterCurrentDateTime() {                
-        return (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))                       // isDateAfter
+        return (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))                           // isDateAfter
                 
-                || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())   // isDateEqualAndTimeAfter 
+                 || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())      // isDateEqualAndTimeAfter 
                     && getTime().getLocalTime().isBefore(LocalTime.now()))
                 
-                || (!isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));                  // isNoDateAndTimeAfter
+                 || (isDateEmpty() && !isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));    // isNoDateAndTimeAfter
     }
 
     @Override

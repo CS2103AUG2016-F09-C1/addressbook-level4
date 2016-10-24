@@ -47,7 +47,7 @@ public interface Model {
     void updateFilteredTaskList(Set<String> keywords);
     
     /** Updates the filter of the filtered task list to filter by the tasks status*/
-    void updateFilteredTaskList(String status);
+    int updateFilteredTaskList(String status);
 
     /** Updates the task list after file path change*/
     void updateTaskListAfterFilePathChange();

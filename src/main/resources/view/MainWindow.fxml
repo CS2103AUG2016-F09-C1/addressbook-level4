@@ -22,10 +22,10 @@
                <items>
                   <MenuItem fx:id="commandNextMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextNext" text="Previous Command" />
                   <MenuItem fx:id="commandPreviousMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextPrevious" text="Previous Command" />
-                  <MenuItem fx:id="listFirstMenuItem" mnemonicParsing="false" onAction="#handleListPanelSelectFirst" text="Select First Task" />
-                  <MenuItem fx:id="listLastMenuItem" mnemonicParsing="false" onAction="#handleListPanelSelectLast" text="Select Last Task" />
-                  <MenuItem fx:id="listPreviousMenuItem" mnemonicParsing="false" onAction="#handleListPanelSelectPrevious" text="Select Previous Task" />
-                  <MenuItem fx:id="listNextMenuItem" mnemonicParsing="false" onAction="#handleListPanelSelectNext" text="Select Next Task" />
+                  <MenuItem fx:id="listFirstMenuItem" mnemonicParsing="false" onAction="#handleListPanelScrollToFirst" text="Scroll to Top" />
+                  <MenuItem fx:id="listLastMenuItem" mnemonicParsing="false" onAction="#handleListPanelScrollToLast" text="Scroll to Bottom" />
+                  <MenuItem fx:id="listPreviousMenuItem" mnemonicParsing="false" onAction="#handleListPanelScrollUp" text="Scroll Up" />
+                  <MenuItem fx:id="listNextMenuItem" mnemonicParsing="false" onAction="#handleListPanelScrollDown" text="Scroll Down" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
