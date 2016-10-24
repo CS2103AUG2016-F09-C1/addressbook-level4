@@ -71,32 +71,40 @@ public class TaskCard extends UiPart{
     }
     
     private void initializeDescription() {
+        description.setText(task.getDescription().description);
+        
         if (task.getDescription().description.equals("") || isNotRequired) {
             description.setManaged(false);
         } else {
             description.setManaged(true);
-            description.setText(task.getDescription().description);
         }
     }
 
     private void initializeDateTime() {
-        if (task.getStartDateTime().toString().isEmpty() || isNotRequired) {
+        startDateTime.setText("Start:  " + task.getStartDateTime().toString().replaceAll(" ", "    Time:  "));
+        
+        if (task.getStartDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
             startDateTime.setManaged(false);
         } else {
             startDateTime.setManaged(true);
-            startDateTime.setText("Start:  " + task.getStartDateTime().toString().replaceAll(" ", "    Time:  "));
         }
         
-        if(task.getEndDateTime().toString().isEmpty()){
+        endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
+        
+        if(task.getEndDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())){
             endDateTime.setManaged(false);
         } else {
             endDateTime.setManaged(true);
-            endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
         }
     }
     
     private void initializeTags() {
         tags.setText(task.tagsString());
+        if (task.isCompleted()) {
+            tags.setManaged(false);
+        } else {
+            tags.setManaged(true);
+        }
     }
     
     public void setStyle() {
