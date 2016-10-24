@@ -91,7 +91,7 @@ public class TaskCard extends UiPart{
         
         endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
         
-        if(task.getEndDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())){
+        if(task.getEndDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
             endDateTime.setManaged(false);
         } else {
             endDateTime.setManaged(true);

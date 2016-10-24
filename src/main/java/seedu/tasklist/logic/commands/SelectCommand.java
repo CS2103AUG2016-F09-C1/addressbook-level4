@@ -22,8 +22,6 @@ public class SelectCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: \n" + COMMAND_WORD + " 1\n" + COMMAND_WORD + " 2";
 
-    public static final String MESSAGE_SELECT_TASK_SUCCESS = "Selected Task: %1$s";
-
     private int targetIndex;
     
     public SelectCommand() {};

@@ -15,8 +15,10 @@ public class AddCommandTest extends TaskListGuiTest {
 
     @Test
     public void add() {
-        //add one task
         TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
+        
+        //add one task
         TestTask taskToAdd = TypicalTestTasks.task8;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);

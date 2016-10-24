@@ -16,7 +16,6 @@ import seedu.tasklist.commons.core.GuiSettings;
 import seedu.tasklist.commons.events.ui.ExitAppRequestEvent;
 import seedu.tasklist.logic.Logic;
 import seedu.tasklist.model.UserPrefs;
-import seedu.tasklist.model.task.ReadOnlyTask;
 
 /**
  * The Main Window. Provides the basic application layout containing a menu bar

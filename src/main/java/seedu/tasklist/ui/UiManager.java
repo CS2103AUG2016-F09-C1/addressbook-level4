@@ -13,7 +13,6 @@ import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.events.storage.DataSavingExceptionEvent;
 import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.events.ui.ShowHelpRequestEvent;
-import seedu.tasklist.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.tasklist.commons.util.StringUtil;
 import seedu.tasklist.logic.Logic;
 import seedu.tasklist.model.UserPrefs;
