@@ -23,7 +23,7 @@ public interface DateTimeComparator {
     /**
      * Check if date is equal to one week from current local date.
      */
-    public boolean isDateEqualUpcomingWeek();
+    public boolean isCurrentDateTillUpcomingWeek();
 
     /**
      * Check if date or time is empty.

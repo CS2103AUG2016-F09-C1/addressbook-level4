@@ -210,7 +210,7 @@ public class ModelManager extends ComponentManager implements Model {
             } else if (status.equals("today")) {
                 return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.equals("week")) {
-                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualUpcomingWeek();
+                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isCurrentDateTillUpcomingWeek();
             } else {
                 return false;
             }
