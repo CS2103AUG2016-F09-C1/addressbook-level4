@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import seedu.tasklist.commons.exceptions.DuplicateDataException;
 import seedu.tasklist.commons.util.CollectionUtil;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
@@ -51,7 +52,9 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Sort the internal list in ascending end date time with floating tasks at the end.
      */
-    public void sort() {
+    private void sort() {
+        List<Task> floatingList = internalList.stream().filter(t -> t.isFloating() == true).collect(Collectors.toList());
+        internalList.removeAll(floatingList);
         internalList.sort(new Comparator<Task>() {
             @Override
             public int compare(Task t1, Task t2) {
@@ -63,10 +66,11 @@ public class UniqueTaskList implements Iterable<Task> {
                 } 
             }
         });
+        internalList.addAll(floatingList);
     }
 
     /**
-     * Adds a task to the list.
+     * Adds a task and sorts the list.
      *
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
@@ -76,10 +80,11 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
+        sort();
     }
 
     /**
-     * Edits the equivalent task from the list.
+     * Edits the equivalent task and sorts the list.
      *
      * @throws TaskNotFoundException if no such task could be found in the list.
      */
@@ -93,6 +98,7 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new TaskNotFoundException();
         }
         internalList.set(index, taskToEdit);
+        sort();
     }
     
     /**
