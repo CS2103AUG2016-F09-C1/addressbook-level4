@@ -1,17 +1,20 @@
 package seedu.tasklist.model;
 
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.commons.events.model.TaskListChangedEvent;
 import seedu.tasklist.commons.util.StringUtil;
+import seedu.tasklist.model.task.DateTime;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.UniqueTaskList;
 import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
+import java.util.Comparator;
 import java.util.Set;
 import java.util.logging.Logger;
 

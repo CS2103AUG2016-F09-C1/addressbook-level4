@@ -16,6 +16,7 @@ public class EditCommandTest extends TaskListGuiTest {
     @Test
     public void edit() {
         TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
         //edit task title
         assertEditTitleSuccess(1, "Running", currentList[0]);

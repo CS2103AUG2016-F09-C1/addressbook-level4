@@ -12,6 +12,7 @@ public class MarkCommandTest extends TaskListGuiTest {
     @Test
     public void mark() {
         TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
         //mark first task
         assertMarkSuccess(1, currentList[0], currentList);

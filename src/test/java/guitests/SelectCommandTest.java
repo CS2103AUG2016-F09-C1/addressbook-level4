@@ -11,7 +11,7 @@ public class SelectCommandTest extends TaskListGuiTest {
 
     @Test
     public void selectTask_nonEmptyList() {
-
+        commandBox.runCommand("list");
         assertSelectionInvalid(10); //invalid index
         assertNoTaskSelected();
 

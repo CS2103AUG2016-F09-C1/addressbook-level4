@@ -12,6 +12,7 @@ public class UnmarkCommandTest extends TaskListGuiTest {
     @Test
     public void unmark() {
         TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
         //mark tasks
         commandBox.runCommand("mark " + 1);

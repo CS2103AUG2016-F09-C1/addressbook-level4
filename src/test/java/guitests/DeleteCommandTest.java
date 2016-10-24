@@ -12,9 +12,10 @@ public class DeleteCommandTest extends TaskListGuiTest {
 
     @Test
     public void delete() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
 
         //delete the first in the list
-        TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
         assertDeleteSuccess(targetIndex, currentList);
 
