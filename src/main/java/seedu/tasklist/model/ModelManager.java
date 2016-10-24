@@ -72,6 +72,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     /** Raises an event to indicate the model has changed */
     private void indicateTaskListChanged() {
+        taskList.sort();
         raise(new TaskListChangedEvent(taskList));
     }
 
@@ -213,7 +214,7 @@ public class ModelManager extends ComponentManager implements Model {
             } else if (status.equals("today")) {
                 return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.equals("week")) {
-                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isCurrentDateTillUpcomingWeek();
+                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
             } else {
                 return false;
             }

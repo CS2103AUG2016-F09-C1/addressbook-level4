@@ -140,6 +140,13 @@ public class TaskList implements ReadOnlyTaskList {
             throw new UniqueTaskList.TaskNotFoundException();
         }
     }
+    
+    /**
+     * Sort the internal list in ascending end date time.
+     */
+    public void sort() {
+        task.sort();
+    }
 
 //// tag-level operations
 

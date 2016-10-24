@@ -99,7 +99,7 @@ public class DateTime implements DateTimeComparator {
     }
     
     @Override
-    public boolean isCurrentDateTillUpcomingWeek() {
+    public boolean isDateEqualCurrentDateTillUpcomingWeek() {
         return !isDateEmpty() && getDate().getLocalDate().isAfter(LocalDate.now().minusDays(1))
                 && getDate().getLocalDate().isBefore(LocalDate.now().plusWeeks(1));
     }

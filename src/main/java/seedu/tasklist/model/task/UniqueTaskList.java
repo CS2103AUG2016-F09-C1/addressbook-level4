@@ -47,6 +47,23 @@ public class UniqueTaskList implements Iterable<Task> {
         assert toCheck != null;
         return internalList.contains(toCheck);
     }
+    
+    /**
+     * Sort the internal list in ascending end date time with floating tasks at the end.
+     */
+    public void sort() {
+        internalList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task t1, Task t2) {
+                if (!t1.getEndDateTime().isDateEmpty() && !t2.getEndDateTime().isDateEmpty() 
+                        && t1.getEndDateTime().isDateTimeAfter(t2.getEndDateTime())) {
+                    return 1;
+                } else {
+                    return 0;
+                } 
+            }
+        });
+    }
 
     /**
      * Adds a task to the list.
@@ -75,9 +92,7 @@ public class UniqueTaskList implements Iterable<Task> {
         if (index == notFoundInList) {
             throw new TaskNotFoundException();
         }
-        internalList.remove(index);
-        internalList.add(index, taskToEdit);
-//        internalList.set(index, taskToEdit);
+        internalList.set(index, taskToEdit);
     }
     
     /**
