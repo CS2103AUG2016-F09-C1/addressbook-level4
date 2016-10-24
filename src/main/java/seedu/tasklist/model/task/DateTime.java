@@ -94,6 +94,16 @@ public class DateTime implements DateTimeComparator {
     }
 
     @Override
+    public boolean isDateEqualCurrentDate() {
+        return !isDateEmpty() && getDate().getLocalDate().isEqual(LocalDate.now());
+    }
+    
+    @Override
+    public boolean isDateEqualUpcomingWeek() {
+        return !isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now().plusWeeks(1));
+    }
+    
+    @Override
     public boolean isDateTimeEmpty() {
         return getDate().getLocalDate() == null && getTime().getLocalTime() == null;
     }

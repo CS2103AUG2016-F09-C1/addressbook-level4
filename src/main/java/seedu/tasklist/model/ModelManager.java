@@ -40,6 +40,8 @@ public class ModelManager extends ComponentManager implements Model {
         taskList = new TaskList(src);
         filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        
+        updateFilteredTaskList("week");
     }
 
     public ModelManager() {
@@ -50,6 +52,8 @@ public class ModelManager extends ComponentManager implements Model {
         taskList = new TaskList(initialData);
         filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        
+        updateFilteredTaskList("week");
     }
 
     @Override
@@ -119,7 +123,12 @@ public class ModelManager extends ComponentManager implements Model {
     
     @Override
     public void updateFilteredTaskList(Set<String> keywords){
-        updateFilteredTaskList(new PredicateExpression(new TaskQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
+    }
+    
+    @Override
+    public void updateFilteredTaskList(String status){
+        updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
     }
     
     private void updateFilteredTaskList(Expression expression) {
@@ -162,33 +171,54 @@ public class ModelManager extends ComponentManager implements Model {
         String toString();
     }
 
-    private class TaskQualifier implements Qualifier {
+    private class TaskContentQualifier implements Qualifier {
         private Set<String> keyWords;
         
-        private TaskQualifier(Set<String> keyWords) {
+        private TaskContentQualifier(Set<String> keyWords) {
             this.keyWords = keyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            if (keyWords.contains("isCompleted") && keyWords.size() == 1) {
-                return task.isCompleted();
-            } else if (keyWords.contains("isOverdue") && keyWords.size() == 1) {
-                return task.isOverdue();
-            } else if (keyWords.contains("isFloating") && keyWords.size() == 1) {
-                return task.isFloating();
-            } else {
-                return keyWords.stream()
+            return keyWords.stream()
                     .filter(keyword -> StringUtil.containsIgnoreCase(task.getAsText(), keyword))
                     .findAny()
-                    .isPresent();
-            }       
+                    .isPresent();   
         }
 
         @Override
         public String toString() {
-            return "Task =" + String.join(", ", keyWords);
+            return "Task content =" + String.join(", ", keyWords);
         }
     }
+    
+    private class TaskStatusQualifier implements Qualifier {
+        private String status;
         
+        private TaskStatusQualifier(String status) {
+            this.status = status;
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            if (status.contains("isCompleted")) {
+                return task.isCompleted();
+            } else if (status.equals("isOverdue")) {
+                return task.isOverdue();
+            } else if (status.equals("isFloating")) {
+                return task.isFloating();
+            } else if (status.equals("today")) {
+                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
+            } else if (status.equals("week")) {
+                return task.isOverdue() || !task.isCompleted() && task.getEndDateTime().isDateEqualUpcomingWeek();
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "Task status =" + String.join(", ", status);
+        }
+    }
 }
