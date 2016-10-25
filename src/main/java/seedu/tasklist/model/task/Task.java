@@ -6,7 +6,6 @@ import seedu.tasklist.commons.util.CollectionUtil;
 import seedu.tasklist.model.tag.UniqueTagList;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 /**
@@ -168,6 +167,13 @@ public class Task implements ReadOnlyTask {
     @Override
     public String toString() {
         return getAsText();
+    }
+    
+    public boolean isToday() {
+    	if(this.getEndDateTime().getDate().getLocalDate() != null){
+        	return (this.getEndDateTime().getDate().getLocalDate().isEqual(LocalDate.now()));
+    	}
+    	return false;
     }
 
 }
