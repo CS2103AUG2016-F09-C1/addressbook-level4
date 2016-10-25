@@ -1,5 +1,4 @@
 package seedu.tasklist.model.task;
-
 import seedu.tasklist.model.tag.UniqueTagList;
 
 /**
@@ -15,12 +14,14 @@ public interface ReadOnlyTask {
     boolean isCompleted();
     boolean isOverdue();
     boolean isFloating();
-
+    boolean isToday();
+    
     /**
      * The returned TagList is a deep copy of the internal TagList,
      * changes on the returned list will not affect the task's internal tags.
      */
     UniqueTagList getTags();
+    
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
@@ -34,6 +35,8 @@ public interface ReadOnlyTask {
                 && other.getEndDateTime().toString().equals(this.getEndDateTime().toString())
                 && String.valueOf(other.isCompleted()).equals(String.valueOf(this.isCompleted())));
     }
+    
+   
 
     /**
      * Formats the task as text, showing all details.

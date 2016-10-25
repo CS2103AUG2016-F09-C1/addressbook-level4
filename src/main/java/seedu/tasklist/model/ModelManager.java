@@ -118,6 +118,11 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(Set<String> keywords){
         updateFilteredTaskList(new PredicateExpression(new TitleQualifier(keywords)));
     }
+    
+    @Override
+    public void updateFilteredTaskListToday(){
+        updateFilteredTaskList(new PredicateExpression(new TodayQualifier()));
+    }
 
     private void updateFilteredTaskList(Expression expression) {
         filteredTask.setPredicate(expression::satisfies);
@@ -178,6 +183,14 @@ public class ModelManager extends ComponentManager implements Model {
         public String toString() {
             return "title=" + String.join(", ", titleKeyWords);
         }
+    }
+    
+    private class TodayQualifier implements Qualifier {
+
+		@Override
+		public boolean run(ReadOnlyTask task) {
+			return task.isToday();
+		}
     }
 
 }
