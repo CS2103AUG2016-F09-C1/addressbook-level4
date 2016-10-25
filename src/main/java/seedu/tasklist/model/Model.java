@@ -48,5 +48,8 @@ public interface Model {
 
     /** Updates the task list after change file path*/
     void updateFilePathChange();
+    
+    /** Show all the tasks that is due today **/
+	void updateFilteredTaskListToday();
 
 }
