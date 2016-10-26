@@ -95,13 +95,13 @@ public class TaskListPanel extends UiPart {
 
     public void scrollToPrevious() {
         Platform.runLater(() -> {
-            if (scrollIndex >= 0) scrollTo(scrollIndex--);
+            if (scrollIndex > 0) scrollTo(--scrollIndex);
         });
     }
 
     public void scrollToNext() {
         Platform.runLater(() -> {
-            if (scrollIndex <= 10) scrollTo(scrollIndex++);
+            if (scrollIndex < 10) scrollTo(++scrollIndex);
         });
     }
     
