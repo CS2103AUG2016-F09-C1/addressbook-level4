@@ -31,7 +31,7 @@ public class MainWindow extends UiPart {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private TaskListPanel taskListPanel;
+    private TaskListPanel filteredTaskListPanel;
     private TaskListPanel mainTaskListPanel;
     private ResultDisplay resultDisplay;
     private StatusBarFooter statusBarFooter;
@@ -49,7 +49,7 @@ public class MainWindow extends UiPart {
     private AnchorPane commandBoxPlaceholder;
 
     @FXML
-    private AnchorPane taskListPanelPlaceholder;
+    private AnchorPane filteredTaskListPanelPlaceholder;
     
     @FXML
     private AnchorPane mainTaskListPanelPlaceholder;
@@ -61,7 +61,10 @@ public class MainWindow extends UiPart {
     private AnchorPane statusbarPlaceholder;
     
     @FXML
-    private MenuItem mainMenuItem, helpMenuItem, commandNextMenuItem, commandPreviousMenuItem, listNextMenuItem, listPreviousMenuItem, listFirstMenuItem, listLastMenuItem;
+    private MenuItem mainMenuItem, helpMenuItem,
+                        commandNextMenuItem, commandPreviousMenuItem, 
+                        filteredListNextMenuItem, filteredListPreviousMenuItem, filteredListFirstMenuItem, filteredListLastMenuItem,
+                        mainListNextMenuItem, mainListPreviousMenuItem, mainListFirstMenuItem, mainListLastMenuItem;
 
     public MainWindow() {
         super();
@@ -111,10 +114,15 @@ public class MainWindow extends UiPart {
         commandNextMenuItem.setAccelerator(KeyCombination.valueOf("UP"));
         commandPreviousMenuItem.setAccelerator(KeyCombination.valueOf("DOWN"));
         
-        listFirstMenuItem.setAccelerator(KeyCombination.valueOf("Home"));
-        listLastMenuItem.setAccelerator(KeyCombination.valueOf("End"));
-        listPreviousMenuItem.setAccelerator(KeyCombination.valueOf("Page Up"));
-        listNextMenuItem.setAccelerator(KeyCombination.valueOf("Page Down"));
+        filteredListFirstMenuItem.setAccelerator(KeyCombination.valueOf("Home"));
+        filteredListLastMenuItem.setAccelerator(KeyCombination.valueOf("End"));
+        filteredListPreviousMenuItem.setAccelerator(KeyCombination.valueOf("Page Up"));
+        filteredListNextMenuItem.setAccelerator(KeyCombination.valueOf("Page Down"));
+        
+        mainListFirstMenuItem.setAccelerator(KeyCombination.valueOf("Ctrl+Home"));
+        mainListLastMenuItem.setAccelerator(KeyCombination.valueOf("Ctrl+End"));
+        mainListPreviousMenuItem.setAccelerator(KeyCombination.valueOf("Ctrl+Page Up"));
+        mainListNextMenuItem.setAccelerator(KeyCombination.valueOf("Ctrl+Page Down"));
     }
 
     private void addEventFilters() {
@@ -132,7 +140,7 @@ public class MainWindow extends UiPart {
 
     void fillInnerParts() {      
         mainTaskListPanel = TaskListPanel.load(primaryStage, mainTaskListPanelPlaceholder, logic.getMainFilteredTaskList(), TaskListPanel.Type.MAIN_TASKLIST);
-        taskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.FILTERED_TASKLIST);
+        filteredTaskListPanel = TaskListPanel.load(primaryStage, getTaskListPlaceholder(), logic.getFilteredTaskList(), TaskListPanel.Type.FILTERED_TASKLIST);
         resultDisplay = ResultDisplay.load(primaryStage, getResultDisplayPlaceholder());
         statusBarFooter = StatusBarFooter.load(primaryStage, getStatusbarPlaceholder(), config.getTaskListFilePath());
         commandBox = CommandBox.load(primaryStage, getCommandBoxPlaceholder(), resultDisplay, logic);
@@ -151,7 +159,7 @@ public class MainWindow extends UiPart {
     }
 
     public AnchorPane getTaskListPlaceholder() {
-        return taskListPanelPlaceholder;
+        return filteredTaskListPanelPlaceholder;
     }
 
     public void hide() {
@@ -194,35 +202,67 @@ public class MainWindow extends UiPart {
     }
     
     /**
-     * Scroll to the first task in the list view
+     * Scroll to the first task in the main tasks list view
      */
     @FXML
-    private void handleListPanelScrollToFirst() {
-        taskListPanel.scrollToFirst();
+    private void handleMainListPanelScrollToFirst() {
+        mainTaskListPanel.scrollToFirst();
     }
     
     /**
-     * Scroll to the last task in the list view
+     * Scroll to the last task in the main tasks list view
      */
     @FXML
-    private void handleListPanelScrollToLast() {
-        taskListPanel.scrollToLast();
+    private void handleMainListPanelScrollToLast() {
+        mainTaskListPanel.scrollToLast();
     }
     
     /**
-     * Scroll up in the list view
+     * Scroll up in the main tasks list view
      */
     @FXML
-    private void handleListPanelScrollUp() {
-        taskListPanel.scrollToPrevious();
+    private void handleMainListPanelScrollUp() {
+        mainTaskListPanel.scrollToPrevious();
     }
     
     /**
-     * Scroll down in the list view
+     * Scroll down in the main tasks list view
      */
     @FXML
-    private void handleListPanelScrollDown() {
-        taskListPanel.scrollToNext();
+    private void handleMainListPanelScrollDown() {
+        mainTaskListPanel.scrollToNext();
+    }
+    
+    /**
+     * Scroll to the first task in the filtered tasks list view
+     */
+    @FXML
+    private void handleFilteredListPanelScrollToFirst() {
+        filteredTaskListPanel.scrollToFirst();
+    }
+    
+    /**
+     * Scroll to the last task in the filtered tasks list view
+     */
+    @FXML
+    private void handleFilteredListPanelScrollToLast() {
+        filteredTaskListPanel.scrollToLast();
+    }
+    
+    /**
+     * Scroll up in the filtered tasks list view
+     */
+    @FXML
+    private void handleFilteredListPanelScrollUp() {
+        filteredTaskListPanel.scrollToPrevious();
+    }
+    
+    /**
+     * Scroll down in the filtered tasks list view
+     */
+    @FXML
+    private void handleFilteredListPanelScrollDown() {
+        filteredTaskListPanel.scrollToNext();
     }
     
     /**
@@ -266,7 +306,7 @@ public class MainWindow extends UiPart {
     }
 
     public TaskListPanel getTaskListPanel() {
-        return this.taskListPanel;
+        return this.filteredTaskListPanel;
     }
 
 }
