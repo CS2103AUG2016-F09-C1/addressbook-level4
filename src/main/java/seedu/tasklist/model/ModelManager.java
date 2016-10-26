@@ -204,13 +204,13 @@ public class ModelManager extends ComponentManager implements Model {
         public boolean run(ReadOnlyTask task) {
             if (status.contains("isCompleted")) {
                 return task.isCompleted();
-            } else if (status.equals("isOverdue")) {
+            } else if (status.contains("isOverdue")) {
                 return task.isOverdue();
-            } else if (status.equals("isFloating")) {
+            } else if (status.contains("isFloating")) {
                 return task.isFloating();
-            } else if (status.equals("today")) {
+            } else if (status.contains("today")) {
                 return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
-            } else if (status.equals("week")) {
+            } else if (status.contains("week")) {
                 return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
             } else {
                 return false;

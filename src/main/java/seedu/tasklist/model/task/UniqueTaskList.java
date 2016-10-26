@@ -53,10 +53,10 @@ public class UniqueTaskList implements Iterable<Task> {
      * Sort the internal list in ascending end date time with floating tasks at the end.
      */
     private void sort() {
-        List<Task> floatingList = internalList.stream().filter(t -> t.isFloating() == true).collect(Collectors.toList());
+        List<Task> floatingList = internalList.stream().filter(t -> t.isFloating()).collect(Collectors.toList());
         internalList.removeAll(floatingList);
         
-        List<Task> completedList = internalList.stream().filter(t -> t.isCompleted() == true).collect(Collectors.toList());
+        List<Task> completedList = internalList.stream().filter(t -> t.isCompleted()).collect(Collectors.toList());
         internalList.removeAll(completedList);
         
         internalList.sort(new Comparator<Task>() {
