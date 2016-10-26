@@ -277,17 +277,17 @@ Format: `list [PARAMETERS]`
 
 
 Example:
-* `list’<br>
+* `list`<br>
 list all tasks
-* `list completed’<br>
+* `list completed`<br>
 list all completed tasks
-* `list overdue’<br>
+* `list overdue`<br>
 list all overdue tasks
-* `list floating’<br>
+* `list floating`<br>
 list all floating tasks
-* `list today’<br>
+* `list today`<br>
 list all tasks for the day
-* `list week’<br>
+* `list week`<br>
 list all tasks for the week
 
 
@@ -502,7 +502,7 @@ Format: `exit`
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous Address Book folder.
-<br>
+<br><br>
 **Q**: Do i need to manually save the data?<br>
 **A**: Task List ‘s data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
