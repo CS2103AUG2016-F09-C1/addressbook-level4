@@ -15,12 +15,14 @@ import seedu.tasklist.model.task.Description;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.Title;
+import seedu.tasklist.model.task.UniqueTaskList;
+import seedu.tasklist.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Edits a task identified using it's last displayed index from the task list.
  */
-public class EditCommand extends Command {
+public class EditCommand extends CommandExtenstion {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -34,6 +36,8 @@ public class EditCommand extends Command {
 
     private int targetIndex;
     private Task toEdit;
+    private Task beforeEdit;
+    private Task afterEdit;
 
     public EditCommand() {};
     
@@ -60,10 +64,13 @@ public class EditCommand extends Command {
         }
 
         ReadOnlyTask taskToEdit = lastShownList.get(targetIndex - 1);
+        beforeEdit = (Task) taskToEdit;
 
         try {
             Task editedTask = editTask(taskToEdit);
+            afterEdit = editedTask;
             model.editTask(editedTask, taskToEdit);
+            CommandHistory.addCommandHistory(this);
         } catch (TaskNotFoundException tnfe) {
             assert false : "The target task cannot be missing";
         } catch (IllegalValueException e) {
@@ -71,6 +78,16 @@ public class EditCommand extends Command {
         }
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
+    
+    public CommandResult undo(){
+    	try{
+    	model.unDoEdit(beforeEdit,afterEdit);
+    	}catch(TaskNotFoundException e){
+    		System.out.println("There is no such task");
+    	}
+		return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+afterEdit);
+    }
+    
 
     /**
      * Combine the new editions with its original task

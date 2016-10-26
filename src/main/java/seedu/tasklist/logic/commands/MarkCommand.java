@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * Marks a task identified using it's last displayed index from the task list.
  */
-public class MarkCommand extends Command {
+public class MarkCommand extends CommandExtenstion {
     
     public static final String COMMAND_WORD = "mark";
 
@@ -26,6 +26,7 @@ public class MarkCommand extends Command {
     public static final String MESSAGE_MARKED_TASK = "This task is already marked in the task list.";
 
     public int targetIndex;
+    private ReadOnlyTask taskToMark;
     
     public MarkCommand() {};
     
@@ -43,10 +44,11 @@ public class MarkCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
-        ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
+        taskToMark = lastShownList.get(targetIndex - 1);
 
         try {
             model.markTask(taskToMark);
+            CommandHistory.addCommandHistory(this);
         } catch (TaskNotFoundException pnfe) {
             assert false : "The target task cannot be missing";
         } catch (TaskCompletionException e) {
@@ -55,6 +57,18 @@ public class MarkCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
+    
+    @Override
+	public CommandResult undo() {
+    	try{
+    		model.unmarkTask(taskToMark);
+    	}catch (TaskNotFoundException pnfe) {
+            assert false : "The target task cannot be missing";
+        } catch (TaskCompletionException e) {
+            return new CommandResult("Task already un Mark");
+        }
+    	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToMark);
+	}
 
     /**
      * Parses arguments in the context of the mark task command.
@@ -71,6 +85,5 @@ public class MarkCommand extends Command {
         }
 
         return new MarkCommand(index.get());
-    }
-    
+    }   
 }

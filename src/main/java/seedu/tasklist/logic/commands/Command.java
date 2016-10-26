@@ -11,7 +11,7 @@ import seedu.tasklist.model.Model;
  */
 public abstract class Command implements CommandParser {
     protected Model model;
-
+    
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of tasks.
      *
@@ -37,7 +37,7 @@ public abstract class Command implements CommandParser {
     public void setData(Model model) {
         this.model = model;
     }
-
+    
     /**
      * Raises an event to indicate an attempt to execute an incorrect command
      */
