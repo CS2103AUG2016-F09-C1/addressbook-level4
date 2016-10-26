@@ -25,10 +25,10 @@
                   <Menu mnemonicParsing="false" text="Commands">
                      <items>
                         <MenuItem fx:id="commandNextMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextNext" text="Show Previous Command" />
-                        <MenuItem fx:id="commandPreviousMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextPrevious" text="Show Previous Command" />  
+                        <MenuItem fx:id="commandPreviousMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextPrevious" text="Show Previous Command" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Filtered TaskList">
+                  <Menu mnemonicParsing="false" text="Interactive Tasklist">
                      <items>
 	                    <MenuItem fx:id="filteredListFirstMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToFirst" text=" Scroll to Top" />
 	                    <MenuItem fx:id="filteredListLastMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToLast" text=" Scroll to Bottom" />
@@ -36,7 +36,7 @@
 	                    <MenuItem fx:id="filteredListNextMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollDown" text=" Scroll Down" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Main TaskList">
+                  <Menu mnemonicParsing="false" text="Overall Tasklist">
 	                 <items>
 	                    <MenuItem fx:id="mainListFirstMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToFirst" text=" Scroll to Top" />
 	                    <MenuItem fx:id="mainListLastMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToLast" text=" Scroll to Bottom" />
