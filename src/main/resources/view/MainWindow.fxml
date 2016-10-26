@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seedu.tasklist.ui.MainWindow">
    <stylesheets>
       <URL value="@DarkTheme.css" />
@@ -15,27 +16,34 @@
             <Menu mnemonicParsing="false" text="File">
                <items>
                   <MenuItem fx:id="mainMenuItem" mnemonicParsing="false" onAction="#handleFullScreen" text="FullScreen" />
+                  <SeparatorMenuItem/>
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Commands">
-               <items>
-                  <MenuItem fx:id="commandNextMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextNext" text="Show Previous Command" />
-                  <MenuItem fx:id="commandPreviousMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextPrevious" text="Show Previous Command" />  
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Navigate">
                <items>
-                  <MenuItem disable="true" mnemonicParsing="false" text="Filtered Tasklist" />
-                  <MenuItem fx:id="filteredListFirstMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToFirst" text=" Scroll to Top" />
-                  <MenuItem fx:id="filteredListLastMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToLast" text=" Scroll to Bottom" />
-                  <MenuItem fx:id="filteredListPreviousMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollUp" text=" Scroll Up" />
-                  <MenuItem fx:id="filteredListNextMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollDown" text=" Scroll Down" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Main Tasklist" />
-                  <MenuItem fx:id="mainListFirstMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToFirst" text=" Scroll to Top" />
-                  <MenuItem fx:id="mainListLastMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToLast" text=" Scroll to Bottom" />
-                  <MenuItem fx:id="mainListPreviousMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollUp" text=" Scroll Up" />
-                  <MenuItem fx:id="mainListNextMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollDown" text=" Scroll Down" />
+                  <Menu mnemonicParsing="false" text="Commands">
+                     <items>
+                        <MenuItem fx:id="commandNextMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextNext" text="Show Previous Command" />
+                        <MenuItem fx:id="commandPreviousMenuItem" mnemonicParsing="false" onAction="#handlePreviousCommandTextPrevious" text="Show Previous Command" />  
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Filtered TaskList">
+                     <items>
+	                    <MenuItem fx:id="filteredListFirstMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToFirst" text=" Scroll to Top" />
+	                    <MenuItem fx:id="filteredListLastMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollToLast" text=" Scroll to Bottom" />
+	                    <MenuItem fx:id="filteredListPreviousMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollUp" text=" Scroll Up" />
+	                    <MenuItem fx:id="filteredListNextMenuItem" mnemonicParsing="false" onAction="#handleFilteredListPanelScrollDown" text=" Scroll Down" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Main TaskList">
+	                 <items>
+	                    <MenuItem fx:id="mainListFirstMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToFirst" text=" Scroll to Top" />
+	                    <MenuItem fx:id="mainListLastMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollToLast" text=" Scroll to Bottom" />
+	                    <MenuItem fx:id="mainListPreviousMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollUp" text=" Scroll Up" />
+	                    <MenuItem fx:id="mainListNextMenuItem" mnemonicParsing="false" onAction="#handleMainListPanelScrollDown" text=" Scroll Down" />
+	                </items>
+                  </Menu>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
