@@ -7,7 +7,7 @@
 * [Starting the program](#starting-the-program)
 * [Introduction](#introduction)
    * [Tasklist](#tasklist)
-   * [Task Card Indicator](#task-card-indicator)
+   * [Task Status Indicator](#task-status-indicator)
 * [Hotkeys](#hotkeys)
    * [Main Window](#main-window)
    * [Command](#command)
@@ -115,7 +115,7 @@ Sorted in order:
 
 
 <br>
-### Task Card Indicator
+### Task Status Indicator
 
 
 
