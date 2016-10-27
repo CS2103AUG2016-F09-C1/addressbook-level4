@@ -32,7 +32,7 @@ We are a team based in the School of Computing, National University of Singapore
    * [Unmark Task](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/UserGuide.md#unmark-a-task--unmark)
 * Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0146840E.md)][[test code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/test/A0146840E.md)][[docs](A0146840E.md)]
 * Other major contributions:
-  * [Did the final refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/863473fd47913a06ebd1408a391e8eb04c2d868c) ]
+  * [Did the final refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/863473fd47913a06ebd1408a391e8eb04c2d868c)
   * Set up Travis, Coveralls and Codacy
 
 
@@ -49,7 +49,7 @@ We are a team based in the School of Computing, National University of Singapore
    * [Select Task](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/UserGuide.md#select-a-task--select)
 * Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0140019W.md)][[test code](A0140019W.md)][[docs](A0140019W.md)]
 * Other major contributions:
-  * [Did the initial refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/2a42c3cef6476b9f531918cf6579214cc233dcb2) ]
+  * [Did the initial refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/2a42c3cef6476b9f531918cf6579214cc233dcb2) 
 
 
 -----
@@ -68,7 +68,7 @@ We are a team based in the School of Computing, National University of Singapore
 
 * Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0138516A.md)][[test code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/test/A0138516A.md)][[docs](A0138516A.md)]
 * Other major contributions:
-  * [Did the initial refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/2a42c3cef6476b9f531918cf6579214cc233dcb2) ]
+  * [Did the initial refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/2a42c3cef6476b9f531918cf6579214cc233dcb2) 
 
 
 -----
