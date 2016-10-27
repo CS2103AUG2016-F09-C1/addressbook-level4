@@ -58,6 +58,7 @@ public class UnmarkCommand extends CommandUndoExtension {
         return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
     }
     
+    // @@author A0138516A
     @Override
    	public CommandResult undo() {
        	try {
@@ -69,6 +70,7 @@ public class UnmarkCommand extends CommandUndoExtension {
            }
        	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToUnmark);
    	}
+    // @@author
 
     /**
      * Parses arguments in the context of the unmark task command.

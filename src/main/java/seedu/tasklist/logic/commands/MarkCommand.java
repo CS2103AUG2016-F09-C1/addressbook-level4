@@ -58,6 +58,7 @@ public class MarkCommand extends CommandUndoExtension {
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
     
+    // @@author A0138516A
     @Override
 	public CommandResult undo() {
     	try{
@@ -69,6 +70,7 @@ public class MarkCommand extends CommandUndoExtension {
         }
     	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToMark);
 	}
+    // @@author
 
     /**
      * Parses arguments in the context of the mark task command.

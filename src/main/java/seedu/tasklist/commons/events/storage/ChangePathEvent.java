@@ -2,6 +2,9 @@ package seedu.tasklist.commons.events.storage;
 
 import seedu.tasklist.commons.events.BaseEvent;
 
+//@@author A0138516A
+
+/** Indicates the filep path in the storage has changed*/
 public class ChangePathEvent extends BaseEvent{
 
 	private String filepath;

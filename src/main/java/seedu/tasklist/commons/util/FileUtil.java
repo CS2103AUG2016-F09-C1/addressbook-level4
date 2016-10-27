@@ -20,10 +20,13 @@ public class FileUtil {
         }
     }
     
+    //@@author A0138516A
+    /**To delete the file from the previous file location**/
     public static void deletePreviousFile(String filepath) throws IOException{
     	File deleteFile = new File(filepath);
     	deleteFile.delete();   	
     }
+    //@@author
     
     /**
      * Creates a file if it does not exist along with its missing parent directories

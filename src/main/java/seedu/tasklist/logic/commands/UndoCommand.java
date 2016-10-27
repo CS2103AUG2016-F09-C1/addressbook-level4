@@ -17,6 +17,9 @@ public class UndoCommand extends Command {
 
 	}
 
+	/**
+	 * To get the previous command from the CommandHistory and pass to the specific command's undo method
+	 */	
 	@Override
 	public CommandResult execute() {
 		try {
