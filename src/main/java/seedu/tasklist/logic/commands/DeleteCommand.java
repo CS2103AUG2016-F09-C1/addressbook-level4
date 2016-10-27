@@ -63,8 +63,7 @@ public class DeleteCommand extends CommandUndoExtension {
 		try {
 			model.unDoDelete(targetIndex, undoTask);
 		} catch (TaskNotFoundException e) {
-			System.out.println("There is no such task");
-
+			return new CommandResult("There is no such task");
 		}
 		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + undoTask);
 	}

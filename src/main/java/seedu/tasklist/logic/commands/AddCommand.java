@@ -74,7 +74,7 @@ public class AddCommand extends CommandUndoExtension {
     	try{
     		model.deleteTask(toAdd);
     	}catch(TaskNotFoundException e){
-    		System.out.println("There is no such task");
+    		return new CommandResult("There is no such task");
     	}
     	return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + toAdd);
     	
