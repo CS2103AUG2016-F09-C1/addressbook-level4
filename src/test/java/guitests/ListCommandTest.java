@@ -33,11 +33,11 @@ public class ListCommandTest extends TaskListGuiTest {
         
         commandBox.runCommand("list today");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "today"));
-        assertListSize(1);
+        assertListSize(2);
         
         commandBox.runCommand("list week");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "the week"));
-        assertListSize(1);
+        assertListSize(2);
         
         //list empty list
         commandBox.runCommand("clear");

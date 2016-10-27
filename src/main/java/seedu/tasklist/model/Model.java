@@ -8,7 +8,6 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * The API of the Model component.
