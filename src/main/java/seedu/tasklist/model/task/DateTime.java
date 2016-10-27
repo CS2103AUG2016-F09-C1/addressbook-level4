@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import seedu.tasklist.commons.exceptions.IllegalValueException;
 
+//@@author A0140019W
 /**
  * Represents a Task's date and time in the task list.
  * Guarantees: details are present and not null, field values are validated.
@@ -59,6 +60,7 @@ public class DateTime implements DateTimeComparator {
         return dateTime.trim();
     }
 
+    //@@author A0146840E
     @Override
     public boolean isDateTimeAfter(DateTime dateTime) {
         return (!isDateEmpty() && !dateTime.isDateEmpty()                                                   // isDateAfter

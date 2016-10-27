@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 
+//@@author A0140019W
 /**
  * Adds a task to the task list.
  */
@@ -73,7 +74,7 @@ public class AddCommand extends CommandUndoExtension {
     	}catch(TaskNotFoundException e){
     		System.out.println("There is no such task");
     	}
-    	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+toAdd);
+    	return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + toAdd);
     	
     }
 

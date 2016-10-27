@@ -48,6 +48,7 @@ public class TaskCard extends UiPart{
         return UiPartLoader.loadUiPart(card);
     }
 
+    //@@author A0146840E
     @FXML
     public void initialize() {
         initializeId();
@@ -119,6 +120,7 @@ public class TaskCard extends UiPart{
         }
     }
     
+    //@@author
     public HBox getLayout() {
         return cardPane;
     }

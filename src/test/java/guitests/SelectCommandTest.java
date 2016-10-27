@@ -6,6 +6,7 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.SelectCommand;
 import static org.junit.Assert.assertEquals;
 
+//@@author A0146840E
 public class SelectCommandTest extends TaskListGuiTest {
 
 

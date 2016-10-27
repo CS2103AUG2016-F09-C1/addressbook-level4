@@ -30,6 +30,7 @@ public class TaskListPanel extends UiPart {
     public enum Type {
         FILTERED_TASKLIST, MAIN_TASKLIST;
     }
+    
     private TaskListPanel.Type type;
     
     @FXML
@@ -93,6 +94,7 @@ public class TaskListPanel extends UiPart {
         });
     }
 
+    //@@author A0146840E
     public void scrollToPrevious() {
         Platform.runLater(() -> {
             if (scrollIndex > 0) scrollTo(--scrollIndex);
@@ -119,6 +121,7 @@ public class TaskListPanel extends UiPart {
         });
     }
 
+    //@@author
     class TaskListViewCell extends ListCell<ReadOnlyTask> {
 
         public TaskListViewCell() {

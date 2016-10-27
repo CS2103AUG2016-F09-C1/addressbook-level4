@@ -100,6 +100,7 @@ public class CommandBox extends UiPart {
         restoreCommandText();
     }
 
+    //@@author A0146840E
     /**
      * Restores the command box text to the previously entered command
      */
@@ -134,6 +135,7 @@ public class CommandBox extends UiPart {
         }
     }
 
+    //@@author
     /**
      * Sets the command box style to indicate an error
      */

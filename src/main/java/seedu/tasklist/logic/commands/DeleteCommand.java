@@ -8,7 +8,6 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
-import seedu.tasklist.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**

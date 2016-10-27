@@ -114,6 +114,7 @@ public class TaskList implements ReadOnlyTaskList {
         }
     }
     
+    //@@author A0146840E
     /**
      * Edits a task in the task list.
      * Also checks the new task's tags and updates {@link #tags} with any new tags found,
@@ -154,7 +155,7 @@ public class TaskList implements ReadOnlyTaskList {
     	task.replace(beforeEdit,afterEdit);
 		
 	}
-
+    //@@author
 //// tag-level operations
 
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
@@ -166,7 +167,6 @@ public class TaskList implements ReadOnlyTaskList {
     @Override
     public String toString() {
         return task.getInternalList().size() + " task, " + tags.getInternalList().size() +  " tags";
-        // TODO: refine later
     }
 
     @Override

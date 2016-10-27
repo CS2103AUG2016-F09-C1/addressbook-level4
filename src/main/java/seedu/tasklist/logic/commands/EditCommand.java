@@ -15,10 +15,9 @@ import seedu.tasklist.model.task.Description;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.Title;
-import seedu.tasklist.model.task.UniqueTaskList;
-import seedu.tasklist.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
+//@@author A0146840E
 /**
  * Edits a task identified using it's last displayed index from the task list.
  */
@@ -85,9 +84,8 @@ public class EditCommand extends CommandUndoExtension {
     	}catch(TaskNotFoundException e){
     		System.out.println("There is no such task");
     	}
-		return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+afterEdit);
+		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + afterEdit);
     }
-    
 
     /**
      * Combine the new editions with its original task
