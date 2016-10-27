@@ -24,7 +24,14 @@ public class TaskListPanel extends UiPart {
     private static final String FXML = "TaskListPanel.fxml";
     private VBox panel;
     private AnchorPane placeHolderPane;
+    
+    private int scrollIndex;
 
+    public enum Type {
+        FILTERED_TASKLIST, MAIN_TASKLIST;
+    }
+    private TaskListPanel.Type type;
+    
     @FXML
     private ListView<ReadOnlyTask> taskListView;
 
@@ -48,8 +55,9 @@ public class TaskListPanel extends UiPart {
     }
 
     public static TaskListPanel load(Stage primaryStage, AnchorPane taskListPlaceholder,
-            ObservableList<ReadOnlyTask> taskList) {
+            ObservableList<ReadOnlyTask> taskList, TaskListPanel.Type type) {
         TaskListPanel taskListPanel = UiPartLoader.loadUiPart(primaryStage, taskListPlaceholder, new TaskListPanel());
+        taskListPanel.type = type;
         taskListPanel.configure(taskList);
         return taskListPanel;
     }
@@ -82,31 +90,32 @@ public class TaskListPanel extends UiPart {
     public void scrollTo(int index) {
         Platform.runLater(() -> {
             taskListView.scrollTo(index);
-            taskListView.getSelectionModel().clearAndSelect(index);
         });
     }
 
-    public void selectPrevious() {
+    public void scrollToPrevious() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectPrevious();
+            if (scrollIndex > 0) scrollTo(--scrollIndex);
         });
     }
 
-    public void selectNext() {
+    public void scrollToNext() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectNext();
+            if (scrollIndex < 10) scrollTo(++scrollIndex);
         });
     }
     
-    public void selectLast() {
+    public void scrollToLast() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectLast();
+            scrollIndex = 10;
+            scrollTo(scrollIndex);
         });
     }
     
-    public void selectFirst() {
+    public void scrollToFirst() {
         Platform.runLater(() -> {
-            taskListView.getSelectionModel().selectFirst();
+            scrollIndex = 0;
+            scrollTo(scrollIndex);
         });
     }
 
@@ -122,8 +131,10 @@ public class TaskListPanel extends UiPart {
             if (empty || task == null) {
                 setGraphic(null);
                 setText(null);
-            } else {
+            } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
+            } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
+                setGraphic(TaskCard.load(task, -1).getLayout());
             }
         }
     }

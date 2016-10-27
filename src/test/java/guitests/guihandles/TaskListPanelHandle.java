@@ -36,6 +36,7 @@ public class TaskListPanelHandle extends GuiHandle {
         return taskList.getSelectionModel().getSelectedItems();
     }
 
+    @SuppressWarnings("unchecked")
     public ListView<ReadOnlyTask> getListView() {
         return (ListView<ReadOnlyTask>) getNode(TASK_LIST_VIEW_ID);
     }

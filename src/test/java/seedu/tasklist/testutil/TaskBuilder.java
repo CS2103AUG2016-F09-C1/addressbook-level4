@@ -42,6 +42,21 @@ public class TaskBuilder {
         return this;
     }
 
+    public TaskBuilder setCompleted(boolean isCompleted) {
+        this.task.setCompleted(isCompleted);
+        return this;
+    }
+    
+    public TaskBuilder setOverdue(boolean isOverdue) {
+        this.task.setOverdue(isOverdue);
+        return this;
+    }
+    
+    public TaskBuilder setFloating(boolean isFloating) {
+        this.task.setFloating(isFloating);
+        return this;
+    }
+    
     public TestTask build() {
         return this.task;
     }

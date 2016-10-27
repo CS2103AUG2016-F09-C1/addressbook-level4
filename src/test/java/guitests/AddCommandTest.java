@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import seedu.tasklist.testutil.TestTask;
 import seedu.tasklist.testutil.TestUtil;
+import seedu.tasklist.testutil.TypicalTestTasks;
 import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.AddCommand;
 
@@ -14,25 +15,27 @@ public class AddCommandTest extends TaskListGuiTest {
 
     @Test
     public void add() {
-        //add one task
         TestTask[] currentList = td.getTypicalTasks();
-        TestTask taskToAdd = td.task8;
+        commandBox.runCommand("list");
+        
+        //add one task
+        TestTask taskToAdd = TypicalTestTasks.task8;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add another task
-        taskToAdd = td.task9;
+        taskToAdd = TypicalTestTasks.task9;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add duplicate task
-        commandBox.runCommand(td.task8.getAddCommand());
+        commandBox.runCommand(TypicalTestTasks.task8.getAddCommand());
         assertResultMessage(AddCommand.MESSAGE_DUPLICATE_TASK);
         assertTrue(taskListPanel.isListMatching(currentList));
 
         //add to empty list
         commandBox.runCommand("clear");
-        assertAddSuccess(td.task1);
+        assertAddSuccess(TypicalTestTasks.task1);
 
         //invalid command
         commandBox.runCommand("adds Johnny");

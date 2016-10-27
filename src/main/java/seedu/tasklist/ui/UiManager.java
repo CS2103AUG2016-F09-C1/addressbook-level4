@@ -10,11 +10,9 @@ import seedu.tasklist.MainApp;
 import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.Config;
 import seedu.tasklist.commons.core.LogsCenter;
-import seedu.tasklist.commons.events.storage.ChangePathEvent;
 import seedu.tasklist.commons.events.storage.DataSavingExceptionEvent;
 import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.events.ui.ShowHelpRequestEvent;
-import seedu.tasklist.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.tasklist.commons.util.StringUtil;
 import seedu.tasklist.logic.Logic;
 import seedu.tasklist.model.UserPrefs;
@@ -63,7 +61,6 @@ public class UiManager extends ComponentManager implements Ui {
     public void stop() {
         prefs.updateLastUsedGuiSetting(mainWindow.getCurrentGuiSetting());
         mainWindow.hide();
-        mainWindow.releaseResources();
     }
 
     private void showFileOperationAlertAndWait(String description, String details, Throwable cause) {
@@ -118,9 +115,4 @@ public class UiManager extends ComponentManager implements Ui {
         mainWindow.getTaskListPanel().scrollTo(event.targetIndex);
     }
 
-    @Subscribe
-    private void handleTaskPanelSelectionChangedEvent(TaskPanelSelectionChangedEvent event){
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        mainWindow.loadTaskPage(event.getNewSelection());
-    }
 }

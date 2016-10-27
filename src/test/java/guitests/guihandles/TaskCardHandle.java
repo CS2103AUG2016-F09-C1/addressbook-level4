@@ -78,6 +78,6 @@ public class TaskCardHandle extends GuiHandle {
 
     @Override
     public String toString() {
-        return getTitle() + " " + getEndDateTime();
+        return getTitle() + " " + getDescription() + " " + getStartDateTime() + " " + getEndDateTime();
     }
 }

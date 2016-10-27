@@ -7,7 +7,7 @@ import seedu.tasklist.model.tag.UniqueTagList;
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyTask {
-
+    
     Title getTitle();
     Description getDescription();
     DateTime getStartDateTime();
@@ -36,7 +36,7 @@ public interface ReadOnlyTask {
     }
 
     /**
-     * Formats the task as text, showing all details.
+     * Formats the task as text, showing Title, Description, Start and End DateTime and Tags.
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
@@ -49,6 +49,26 @@ public interface ReadOnlyTask {
                 .append(getEndDateTime())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
+        return builder.toString();
+    }
+    
+    /**
+     * Formats the task as text, showing all details.
+     */
+    default String getAllAsText() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Title: ")
+                .append(getTitle())
+                .append("\nDescription: ")
+                .append(getDescription())
+                .append("\nStart: ")
+                .append(getStartDateTime())
+                .append("\nEnd: ")
+                .append(getEndDateTime())
+                .append("\nTags: ");
+        getTags().forEach(builder::append);
+        builder.append("\nCompleted: ")
+                .append(isCompleted());
         return builder.toString();
     }
 

@@ -7,6 +7,7 @@ import seedu.tasklist.commons.util.CollectionUtil;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
@@ -49,9 +50,35 @@ public class UniqueTaskList implements Iterable<Task> {
         assert toCheck != null;
         return internalList.contains(toCheck);
     }
+    
+    /**
+     * Sort the internal list in ascending end date time with floating tasks at the end.
+     */
+    private void sort() {
+        List<Task> completedList = internalList.stream().filter(t -> t.isCompleted()).collect(Collectors.toList());
+        internalList.removeAll(completedList);
+        
+        List<Task> floatingList = internalList.stream().filter(t -> t.isFloating()).collect(Collectors.toList());
+        internalList.removeAll(floatingList);
+        
+        internalList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task t1, Task t2) {
+                if (!t1.getEndDateTime().isDateEmpty() && !t2.getEndDateTime().isDateEmpty() 
+                        && t1.getEndDateTime().isDateTimeAfter(t2.getEndDateTime())) {
+                    return 1;
+                } else {
+                    return 0;
+                } 
+            }
+        });
+        
+        internalList.addAll(floatingList);
+        internalList.addAll(completedList);
+    }
 
     /**
-     * Adds a task to the list.
+     * Adds a task and sorts the list.
      *
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
@@ -61,10 +88,11 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
+        sort();
     }
 
     /**
-     * Edits the equivalent task from the list.
+     * Edits the equivalent task and sorts the list.
      *
      * @throws TaskNotFoundException if no such task could be found in the list.
      */
@@ -77,9 +105,8 @@ public class UniqueTaskList implements Iterable<Task> {
         if (index == notFoundInList) {
             throw new TaskNotFoundException();
         }
-        internalList.remove(index);
-        internalList.add(index, taskToEdit);
-//        internalList.set(index, taskToEdit);
+        internalList.set(index, taskToEdit);
+        sort();
     }
     
     /**
@@ -116,6 +143,7 @@ public class UniqueTaskList implements Iterable<Task> {
         final Task completeTask = internalList.get(index);
         completeTask.setCompleted(true);
         internalList.set(index, completeTask);
+        sort();
         
         return true;
     }
@@ -140,13 +168,14 @@ public class UniqueTaskList implements Iterable<Task> {
         final Task completeTask = internalList.get(index);
         completeTask.setCompleted(false);
         internalList.set(index, completeTask);
+        sort();
         
         return true;
     }
     
     //@@author A0138516A
     public void insert(int targetIndex, Task undoTask) throws TaskNotFoundException{
-    	internalList.add(targetIndex-1,undoTask);
+    	internalList.add(targetIndex-1, undoTask);
 	}
     
     //@@author A0138516A

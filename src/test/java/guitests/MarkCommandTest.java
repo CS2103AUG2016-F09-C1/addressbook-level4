@@ -12,12 +12,13 @@ public class MarkCommandTest extends TaskListGuiTest {
     @Test
     public void mark() {
         TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
         //mark first task
         assertMarkSuccess(1, currentList[0], currentList);
         
-        //mark last task
-        assertMarkSuccess(currentList.length, currentList[currentList.length-1], currentList);
+        //mark next task
+        assertMarkSuccess(1, currentList[1], currentList);
         
         //mark task that don't exist
         commandBox.runCommand("mark -10");
@@ -30,7 +31,7 @@ public class MarkCommandTest extends TaskListGuiTest {
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         
         //mark duplicate task
-        commandBox.runCommand("mark 1");
+        commandBox.runCommand("mark " + (currentList.length - 1));
         assertResultMessage(MarkCommand.MESSAGE_MARKED_TASK);
         commandBox.runCommand("mark " + currentList.length);
         assertResultMessage(MarkCommand.MESSAGE_MARKED_TASK);

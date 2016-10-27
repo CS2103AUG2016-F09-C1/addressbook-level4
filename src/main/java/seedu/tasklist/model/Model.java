@@ -1,7 +1,6 @@
 package seedu.tasklist.model;
 
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
-import seedu.tasklist.logic.commands.Command;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.UniqueTaskList;
@@ -38,19 +37,22 @@ public interface Model {
 
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
+    
+    /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
+    UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
     /** Updates the filter of the filtered task list to show all tasks */
-    void updateFilteredListToShowAll();
-
+    void updateFilteredTaskListToShowAll();
+    
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
-
-    /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
-    UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList();
+    
+    /** Updates the filter of the filtered task list to filter by the tasks status*/
+    int updateFilteredTaskList(String status);
 
     //@@author A0138516A
     /** Updates the task list after change file path*/
-    void updateFilePathChange();
+    void updateTaskListAfterFilePathChange();
     
     //@@author A0138516A
     /** Return the deleted task to original position**/

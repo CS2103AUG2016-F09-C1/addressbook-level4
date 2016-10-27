@@ -61,36 +61,39 @@ public class DateTime implements DateTimeComparator {
 
     @Override
     public boolean isDateTimeAfter(DateTime dateTime) {
-        return 
-                // Compare Dates
-                (!isDateEmpty() && !dateTime.isDateEmpty() 
-                && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate()))
+        return (!isDateEmpty() && !dateTime.isDateEmpty()                                                   // isDateAfter
+                    && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate()))
                 
-                // Dates are equal, compare Time
-                || (!isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
-                        && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
-                        && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
-                        || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime())))
+                || (!isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()  // isDateEqualAndTimeAfter
+                    && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
+                    && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
+                            || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime())))
                 
-                // No dates, compare Time
-                || (isDateEmpty() && !isTimeEmpty() && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
+                || (isDateEmpty() && !isTimeEmpty() && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()    // isNoDateAndTimeAfter
                         && getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime()));
     }
 
     @Override
-    public boolean isDateTimeAfterCurrentDateTime() {
-        return 
-                // Compare Dates
-                (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))
-
-                // Dates are equal, compare Time
-                || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())
-                        && getTime().getLocalTime().isBefore(LocalTime.now()))
+    public boolean isDateTimeAfterCurrentDateTime() {                
+        return (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))                           // isDateAfter
                 
-                // No dates, compare Time
-                || (!isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));
+                 || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())      // isDateEqualAndTimeAfter 
+                    && getTime().getLocalTime().isBefore(LocalTime.now()))
+                
+                 || (isDateEmpty() && !isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));    // isNoDateAndTimeAfter
     }
 
+    @Override
+    public boolean isDateEqualCurrentDate() {
+        return !isDateEmpty() && getDate().getLocalDate().isEqual(LocalDate.now());
+    }
+    
+    @Override
+    public boolean isDateEqualCurrentDateTillUpcomingWeek() {
+        return !isDateEmpty() && getDate().getLocalDate().isAfter(LocalDate.now().minusDays(1))
+                && getDate().getLocalDate().isBefore(LocalDate.now().plusWeeks(1));
+    }
+    
     @Override
     public boolean isDateTimeEmpty() {
         return getDate().getLocalDate() == null && getTime().getLocalTime() == null;
@@ -105,4 +108,5 @@ public class DateTime implements DateTimeComparator {
     public boolean isTimeEmpty() {
         return getTime().getLocalTime() == null;
     }
+
 }

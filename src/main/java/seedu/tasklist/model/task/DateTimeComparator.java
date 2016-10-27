@@ -11,12 +11,33 @@ public interface DateTimeComparator {
     public boolean isDateTimeAfter(DateTime dateTime);
 
     /**
-     * Check if date time is before current local time.
+     * Check if date time is before current local date time.
      */
     public boolean isDateTimeAfterCurrentDateTime();
+    
+    /**
+     * Check if date is equal to current local date.
+     */
+    public boolean isDateEqualCurrentDate();
+    
+    /**
+     * Check if date is equal to one week from current local date.
+     */
+    public boolean isDateEqualCurrentDateTillUpcomingWeek();
 
+    /**
+     * Check if date or time is empty.
+     */
     public boolean isDateTimeEmpty();
+    
+    /**
+     * Check if date is empty.
+     */
     public boolean isDateEmpty();
+    
+    /**
+     * Check if time is empty.
+     */
     public boolean isTimeEmpty();
 
 }

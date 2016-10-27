@@ -9,7 +9,14 @@ import seedu.tasklist.model.task.ReadOnlyTask;
 public class TaskCard extends UiPart{
 
     private static final String FXML = "TaskListCard.fxml";
-
+    
+    private static final String FX_BACKGROUND_PALE_GREEN = "-fx-background-color: #98FB98;";
+    private static final String FX_BACKGROUND_PALE_YELLOW = "-fx-background-color: #FFFFCC;";
+    private static final String FX_BACKGROUND_PALE_RED = "-fx-background-color: #ff9999;";
+    private static final String FX_BACKGROUND_WHITE = "-fx-background-color: white;";
+    
+    private static final int NOT_REQUIRED = -1;
+    
     @FXML
     private HBox cardPane;
     @FXML
@@ -27,6 +34,7 @@ public class TaskCard extends UiPart{
 
     private ReadOnlyTask task;
     private int displayedIndex;
+    private boolean isNotRequired;
 
     public TaskCard() {
 
@@ -36,6 +44,7 @@ public class TaskCard extends UiPart{
         TaskCard card = new TaskCard();
         card.task = task;
         card.displayedIndex = displayedIndex;
+        if (displayedIndex == NOT_REQUIRED) card.isNotRequired = true;
         return UiPartLoader.loadUiPart(card);
     }
 
@@ -46,11 +55,15 @@ public class TaskCard extends UiPart{
         initializeDateTime();
         initializeDescription();
         initializeTags();
-        setBackgroundColor();
+        setStyle();
     }
     
     private void initializeId() {
-        id.setText(displayedIndex + ". ");
+        if (isNotRequired) {
+            id.setText(null);
+        } else {
+            id.setText(displayedIndex + ". ");
+        }
     }
     
     private void initializeTitle() {
@@ -58,43 +71,51 @@ public class TaskCard extends UiPart{
     }
     
     private void initializeDescription() {
-        if (task.getDescription().description.equals("")) {
+        description.setText(task.getDescription().description);
+        
+        if (task.getDescription().description.equals("") || isNotRequired) {
             description.setManaged(false);
         } else {
             description.setManaged(true);
-            description.setText(task.getDescription().description);
         }
     }
 
     private void initializeDateTime() {
-        if(!task.getStartDateTime().toString().isEmpty()) {
-            startDateTime.setManaged(true);
-            startDateTime.setText("Start:  " + task.getStartDateTime().toString().replaceAll(" ", "    Time:  "));
-        } else {
+        startDateTime.setText("Start:  " + task.getStartDateTime().toString().replaceAll(" ", "    Time:  "));
+        
+        if (task.getStartDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
             startDateTime.setManaged(false);
+        } else {
+            startDateTime.setManaged(true);
         }
         
-        if(!task.getEndDateTime().toString().isEmpty()){
-            endDateTime.setManaged(true);
-            endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
-        } else {
+        endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
+        
+        if(task.getEndDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
             endDateTime.setManaged(false);
+        } else {
+            endDateTime.setManaged(true);
         }
     }
     
     private void initializeTags() {
         tags.setText(task.tagsString());
+        if (task.isCompleted()) {
+            tags.setManaged(false);
+        } else {
+            tags.setManaged(true);
+        }
     }
     
-    public void setBackgroundColor() {
-        if (task.isFloating()) {
-            cardPane.setStyle("-fx-background-color: #FFFFCC;");    //pale yellow
-        } else if (task.isCompleted()) {
-            cardPane.setStyle("-fx-background-color: #98FB98;");    //pale green
+    public void setStyle() {
+        if (task.isCompleted()) {
+            cardPane.setStyle(FX_BACKGROUND_PALE_GREEN);
+        } else if (task.isFloating()) {
+            cardPane.setStyle(FX_BACKGROUND_PALE_YELLOW);
         } else if (task.isOverdue()){
-            cardPane.setStyle("-fx-background-color: #ff9999;");    //pale red
+            cardPane.setStyle(FX_BACKGROUND_PALE_RED);
         } else {
-            cardPane.setStyle("-fx-background-color: white;");
+            cardPane.setStyle(FX_BACKGROUND_WHITE);
         }
     }
     
