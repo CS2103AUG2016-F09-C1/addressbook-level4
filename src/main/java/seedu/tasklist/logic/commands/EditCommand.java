@@ -84,7 +84,7 @@ public class EditCommand extends CommandUndoExtension {
     	try{
     	model.unDoEdit(beforeEdit,afterEdit);
     	}catch(TaskNotFoundException e){
-    		System.out.println("There is no such task");
+    		return new CommandResult("There is no such task");
     	}
 		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + afterEdit);
     }
