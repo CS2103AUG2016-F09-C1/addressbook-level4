@@ -7,6 +7,7 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.MarkCommand;
 import seedu.tasklist.testutil.TestTask;
 
+//@@author A0146840E
 public class MarkCommandTest extends TaskListGuiTest {
 
     @Test

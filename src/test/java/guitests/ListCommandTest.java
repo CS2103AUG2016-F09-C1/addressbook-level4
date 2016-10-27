@@ -6,6 +6,7 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.ListCommand;
 import seedu.tasklist.testutil.TypicalTestTasks;
 
+//@@author A0146840E
 public class ListCommandTest extends TaskListGuiTest {
 
     @Test
@@ -32,11 +33,11 @@ public class ListCommandTest extends TaskListGuiTest {
         
         commandBox.runCommand("list today");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "today"));
-        assertListSize(1);
+        assertListSize(2);
         
         commandBox.runCommand("list week");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "the week"));
-        assertListSize(1);
+        assertListSize(2);
         
         //list empty list
         commandBox.runCommand("clear");

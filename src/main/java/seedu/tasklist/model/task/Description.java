@@ -3,6 +3,7 @@ package seedu.tasklist.model.task;
 
 import seedu.tasklist.commons.exceptions.IllegalValueException;
 
+//@@author A0140019W
 /**
  * Represents a Task's description in the task list.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}

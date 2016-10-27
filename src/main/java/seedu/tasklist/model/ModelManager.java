@@ -6,7 +6,6 @@ import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.commons.events.model.TaskListChangedEvent;
 import seedu.tasklist.commons.util.StringUtil;
-import seedu.tasklist.logic.commands.Command;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.UniqueTaskList;
@@ -14,7 +13,6 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.Set;
-import java.util.Stack;
 import java.util.logging.Logger;
 
 /**
@@ -80,6 +78,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
     
+    //@@author A0146840E
     @Override
     public void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException {
         taskList.markTask(target);
@@ -92,6 +91,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
 
+    //@@author
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskList.addTask(task);
@@ -99,6 +99,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
     
+    //@@author A0146840E
     @Override
     public void editTask(Task taskToEdit, ReadOnlyTask target) throws TaskNotFoundException {
         taskList.editTask(taskToEdit, target);
@@ -120,7 +121,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
     
-  //@@author A0138516A
+    //@@author A0138516A
     @Override
   	public void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
     	taskList.replace(beforeEdit, afterEdit);
@@ -130,7 +131,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     //=========== Filtered Task List Accessors ===============================================================
-
+    //@@author
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         return new UnmodifiableObservableList<>(filteredTask);
@@ -146,20 +147,24 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
     }
     
+    //@@author A0146840E
     @Override
     public int updateFilteredTaskList(String status){
         updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
         return filteredTask.size();
     }
     
+    //@@author
     private void updateFilteredTaskList(Expression expression) {
         filteredTask.setPredicate(expression::satisfies);
     }
     
+    //@@author A0146840E
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList() {
         return new UnmodifiableObservableList<>(mainFilteredTaskList);
     }
+    //@@author
 
     //========== Inner classes/interfaces used for filtering ==================================================
 
@@ -191,7 +196,7 @@ public class ModelManager extends ComponentManager implements Model {
         boolean run(ReadOnlyTask task);
         String toString();
     }
-
+    
     private class TaskContentQualifier implements Qualifier {
         private Set<String> keyWords;
         
@@ -213,6 +218,7 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
     
+    //@@author A0146840E
     private class TaskStatusQualifier implements Qualifier {
         private String status;
         

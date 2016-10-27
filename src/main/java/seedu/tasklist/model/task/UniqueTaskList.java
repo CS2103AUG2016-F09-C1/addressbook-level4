@@ -4,8 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.tasklist.commons.exceptions.DuplicateDataException;
 import seedu.tasklist.commons.util.CollectionUtil;
-import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -51,6 +49,7 @@ public class UniqueTaskList implements Iterable<Task> {
         return internalList.contains(toCheck);
     }
     
+    //@@author A0146840E
     /**
      * Sort the internal list in ascending end date time with floating tasks at the end.
      */
@@ -76,7 +75,8 @@ public class UniqueTaskList implements Iterable<Task> {
         internalList.addAll(floatingList);
         internalList.addAll(completedList);
     }
-
+    
+    //@@author
     /**
      * Adds a task and sorts the list.
      *
@@ -91,6 +91,7 @@ public class UniqueTaskList implements Iterable<Task> {
         sort();
     }
 
+    //@@author A0146840E
     /**
      * Edits the equivalent task and sorts the list.
      *
@@ -109,6 +110,7 @@ public class UniqueTaskList implements Iterable<Task> {
         sort();
     }
     
+    //@@author
     /**
      * Removes the equivalent task from the list.
      *
@@ -123,6 +125,7 @@ public class UniqueTaskList implements Iterable<Task> {
         return taskFoundAndDeleted;
     }
     
+    //@@author A0146840E
     /**
      * Mark the equivalent task from the list.
      *
@@ -184,7 +187,7 @@ public class UniqueTaskList implements Iterable<Task> {
 		internalList.set(indexToReplace, beforeEdit);		
 	}
 
-
+    //@@author
     public ObservableList<Task> getInternalList() {
         return internalList;
     }

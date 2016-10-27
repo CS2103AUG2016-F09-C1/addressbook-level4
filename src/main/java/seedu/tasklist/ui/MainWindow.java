@@ -106,6 +106,7 @@ public class MainWindow extends UiPart {
         addEventFilters();
     }
 
+    //@@author A0146840E
     private void setAccelerators() {
         mainMenuItem.setAccelerator(KeyCombination.valueOf("F11"));
         
@@ -146,6 +147,7 @@ public class MainWindow extends UiPart {
         commandBox = CommandBox.load(primaryStage, getCommandBoxPlaceholder(), resultDisplay, logic);
     }
 
+    //@@author
     private AnchorPane getCommandBoxPlaceholder() {
         return commandBoxPlaceholder;
     }
@@ -201,6 +203,7 @@ public class MainWindow extends UiPart {
         helpWindow.show();
     }
     
+    //@@author A0146840E
     /**
      * Scroll to the first task in the main tasks list view
      */
@@ -293,6 +296,7 @@ public class MainWindow extends UiPart {
         commandBox.selectPreviousCommandTextPrevious();
     }
 
+    //@@author
     public void show() {
         primaryStage.show();
     }

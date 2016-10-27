@@ -7,6 +7,7 @@ import seedu.tasklist.model.tag.UniqueTagList;
 
 import java.util.Objects;
 
+//@@author A0140019W
 /**
  * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated.
@@ -66,6 +67,7 @@ public class Task implements ReadOnlyTask {
         this(source.getTitle(), source.getStartDateTime(), source.getDescription(), source.getEndDateTime(), source.getTags(), source.isCompleted(), source.isOverdue(), source.isFloating());
     }
     
+    //@@author A0146840E
     /**
      * Check whether startDateTime is before endDateTime
      * @throws IllegalValueException if startDateTime is before endDateTime
@@ -98,6 +100,7 @@ public class Task implements ReadOnlyTask {
         }
     }
     
+    //@@author A0140019W
     @Override
     public Title getTitle() {
         return title;

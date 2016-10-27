@@ -8,7 +8,6 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * The API of the Model component.
@@ -29,6 +28,7 @@ public interface Model {
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
     
+    //@@author A0146840E
     /** Marks the given task */
     void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException;
     
@@ -41,12 +41,14 @@ public interface Model {
     /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
+    //@@author
     /** Updates the filter of the filtered task list to show all tasks */
     void updateFilteredTaskListToShowAll();
     
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
     
+    //@@author A0146840E
     /** Updates the filter of the filtered task list to filter by the tasks status*/
     int updateFilteredTaskList(String status);
 

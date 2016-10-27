@@ -8,14 +8,18 @@ import seedu.tasklist.model.tag.UniqueTagList;
  */
 public interface ReadOnlyTask {
     
+    //@@author A0140019W
     Title getTitle();
     Description getDescription();
     DateTime getStartDateTime();
     DateTime getEndDateTime();
+    
+    //@@author A0146840E
     boolean isCompleted();
     boolean isOverdue();
     boolean isFloating();
 
+    //@@author
     /**
      * The returned TagList is a deep copy of the internal TagList,
      * changes on the returned list will not affect the task's internal tags.
@@ -52,6 +56,7 @@ public interface ReadOnlyTask {
         return builder.toString();
     }
     
+    //@@author A0146840E
     /**
      * Formats the task as text, showing all details.
      */
@@ -72,6 +77,7 @@ public interface ReadOnlyTask {
         return builder.toString();
     }
 
+    //@@author
     /**
      * Returns a string representation of this Task's tags
      */
