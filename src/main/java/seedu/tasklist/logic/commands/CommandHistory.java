@@ -16,10 +16,11 @@ public class CommandHistory {
 		commandHistory.push(command);
 	}
 	
-	public static CommandExtenstion getCommandHistory() {
+	public static CommandUndoExtension getCommandHistory() {
 		if (commandHistory.size() > 0) {
-			return (CommandExtenstion)commandHistory.pop();
-		}else
+			return (CommandUndoExtension) commandHistory.pop();
+		} else {
 			throw new EmptyStackException();
+		}
 	}
 }

@@ -4,9 +4,9 @@ package seedu.tasklist.logic.commands;
  /*
  * For those command has implemented undo function
  */
-public abstract class CommandExtenstion extends Command {
+public abstract class CommandUndoExtension extends Command {
 
-	public String MESSAGE_UNDO = "Command Undo: ";
+	public String MESSAGE_UNDO = "Undo: ";
 
 	public abstract CommandResult undo();
 

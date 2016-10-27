@@ -4,7 +4,7 @@ import java.util.EmptyStackException;
 
 //@@author A0138516A
 /*
- *Undo the previos command
+ * Undo the previous command
  */
 
 public class UndoCommand extends Command {

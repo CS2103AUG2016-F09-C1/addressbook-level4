@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * Unmarks a task identified using it's last displayed index from the task list.
  */
-public class UnmarkCommand extends CommandExtenstion {
+public class UnmarkCommand extends CommandUndoExtension {
     
     public static final String COMMAND_WORD = "unmark";
 
@@ -60,9 +60,9 @@ public class UnmarkCommand extends CommandExtenstion {
     
     @Override
    	public CommandResult undo() {
-       	try{
+       	try {
        		model.markTask(taskToUnmark);
-       	}catch (TaskNotFoundException pnfe) {
+       	} catch (TaskNotFoundException pnfe) {
                assert false : "The target task cannot be missing";
            } catch (TaskCompletionException e) {
                return new CommandResult("Task already Marked");

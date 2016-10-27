@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * Marks a task identified using it's last displayed index from the task list.
  */
-public class MarkCommand extends CommandExtenstion {
+public class MarkCommand extends CommandUndoExtension {
     
     public static final String COMMAND_WORD = "mark";
 

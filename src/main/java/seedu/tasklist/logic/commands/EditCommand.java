@@ -22,7 +22,7 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 /**
  * Edits a task identified using it's last displayed index from the task list.
  */
-public class EditCommand extends CommandExtenstion {
+public class EditCommand extends CommandUndoExtension {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD

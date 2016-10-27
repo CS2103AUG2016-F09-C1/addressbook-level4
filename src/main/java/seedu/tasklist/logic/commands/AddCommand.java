@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 /**
  * Adds a task to the task list.
  */
-public class AddCommand extends CommandExtenstion {
+public class AddCommand extends CommandUndoExtension {
 
     public static final String COMMAND_WORD = "add";
 

@@ -14,7 +14,7 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 /**
  * Deletes a task identified using it's last displayed index from the task list.
  */
-public class DeleteCommand extends CommandExtenstion {
+public class DeleteCommand extends CommandUndoExtension {
 
 	public static final String COMMAND_WORD = "delete";
 
