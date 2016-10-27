@@ -1,3 +1,13 @@
+/* @@author A0140019W */
+.bar {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
+        #98FB98;
+    -fx-background-insets: 0, 1, 2;
+}
+/* @@author */
+
 
 .error {
     -fx-background-color: #ff9999;
@@ -10,6 +20,7 @@
     -fx-border-radius: 3;
     -fx-background-radius: 3;
 }
+
 
 .tooltip-text {
     -fx-text-fill: white;
