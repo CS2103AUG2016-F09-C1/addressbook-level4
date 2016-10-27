@@ -188,6 +188,7 @@ public class MainApp extends Application {
         launch(args);
     }
     
+    //@@author A0138516A
     @Subscribe
     public void ChangePathRequestEvent(ChangePathEvent event){
     	 logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -206,4 +207,5 @@ public class MainApp extends Application {
     	 
     	 storage.setTaskListFilePath(event.toString());
     }
+    //@@author
 }

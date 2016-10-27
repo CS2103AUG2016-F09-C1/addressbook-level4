@@ -58,6 +58,8 @@ public class DeleteCommand extends CommandUndoExtension {
 		return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
 	}
 
+	// @@author A0138516A
+	@Override
 	public CommandResult undo() {
 		try {
 			model.unDoDelete(targetIndex, undoTask);
@@ -66,8 +68,8 @@ public class DeleteCommand extends CommandUndoExtension {
 
 		}
 		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + undoTask);
-
 	}
+	// @@author 
 
 	/**
 	 * Parses arguments in the context of the delete task command.

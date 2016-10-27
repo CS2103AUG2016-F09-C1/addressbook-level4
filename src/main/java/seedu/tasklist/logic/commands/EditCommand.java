@@ -79,6 +79,8 @@ public class EditCommand extends CommandUndoExtension {
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
     
+    // @@author A0138516A
+    @Override
     public CommandResult undo(){
     	try{
     	model.unDoEdit(beforeEdit,afterEdit);
@@ -87,7 +89,7 @@ public class EditCommand extends CommandUndoExtension {
     	}
 		return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+afterEdit);
     }
-    
+    // @@author 
 
     /**
      * Combine the new editions with its original task

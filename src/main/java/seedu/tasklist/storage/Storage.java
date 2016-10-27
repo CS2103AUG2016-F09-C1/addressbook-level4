@@ -37,5 +37,10 @@ public interface Storage extends TaskListStorage, UserPrefsStorage {
      */
     void handleTaskListEvent(TaskListChangedEvent taskListChangedEvent);
     
+    //@@author A0138516A
+    /**
+     * Set the new filepath to the storage
+     * @param filepath
+     */
     void setTaskListFilePath(String filepath);
 }
