@@ -24,7 +24,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final TaskList taskList;
     private final FilteredList<Task> filteredTask;
-    private final FilteredList<Task> mainFilteredTaskList;
 
     /**
      * Initializes a ModelManager with the given TaskList
@@ -39,9 +38,6 @@ public class ModelManager extends ComponentManager implements Model {
 
         taskList = new TaskList(src);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
-        
-        updateFilteredTaskList("week");
     }
 
     public ModelManager() {
@@ -51,9 +47,6 @@ public class ModelManager extends ComponentManager implements Model {
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
-        
-        updateFilteredTaskList("week");
     }
 
     @Override
@@ -78,7 +71,6 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
     
-    //@@author A0146840E
     @Override
     public void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException {
         taskList.markTask(target);
@@ -91,80 +83,56 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
 
-    //@@author
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskList.addTask(task);
-        updateFilteredTaskListToShowAll();
+        updateFilteredListToShowAll();
         indicateTaskListChanged();
     }
     
-    //@@author A0146840E
     @Override
     public void editTask(Task taskToEdit, ReadOnlyTask target) throws TaskNotFoundException {
         taskList.editTask(taskToEdit, target);
-        updateFilteredTaskListToShowAll();
+        updateFilteredListToShowAll();
         indicateTaskListChanged();
     }
     
-  //@@author A0138516A
     @Override
-    public void updateTaskListAfterFilePathChange() {
+    public void updateFilePathChange() {
     	indicateTaskListChanged();
     }
     
-  //@@author A0138516A
+    //@@author A0153837X
     @Override
-	public void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException{
-    	taskList.insertTask(targetIndex, undoTask);
-    	updateFilteredTaskListToShowAll();
-        indicateTaskListChanged();
-    }
-    
-    //@@author A0138516A
-    @Override
-  	public void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
-    	taskList.replace(beforeEdit, afterEdit);
-    	updateFilteredTaskListToShowAll();
-        indicateTaskListChanged();
-    	
+    public String timeTask (Task target) {
+    	return target.timeTask();
     }
     
     //=========== Filtered Task List Accessors ===============================================================
-    //@@author
+
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         return new UnmodifiableObservableList<>(filteredTask);
     }
 
     @Override
-    public void updateFilteredTaskListToShowAll() {
+    public void updateFilteredListToShowAll() {
         filteredTask.setPredicate(null);
     }
-    
+
     @Override
     public void updateFilteredTaskList(Set<String> keywords){
-        updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new TitleQualifier(keywords)));
     }
-    
-    //@@author A0146840E
-    @Override
-    public int updateFilteredTaskList(String status){
-        updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
-        return filteredTask.size();
-    }
-    
-    //@@author
+
     private void updateFilteredTaskList(Expression expression) {
         filteredTask.setPredicate(expression::satisfies);
     }
     
-    //@@author A0146840E
     @Override
-    public UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList() {
-        return new UnmodifiableObservableList<>(mainFilteredTaskList);
+    public UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList() {
+        return new UnmodifiableObservableList<>(filteredTask);
     }
-    //@@author
 
     //========== Inner classes/interfaces used for filtering ==================================================
 
@@ -177,7 +145,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         private final Qualifier qualifier;
 
-        private PredicateExpression(Qualifier qualifier) {
+        PredicateExpression(Qualifier qualifier) {
             this.qualifier = qualifier;
         }
 
@@ -196,56 +164,26 @@ public class ModelManager extends ComponentManager implements Model {
         boolean run(ReadOnlyTask task);
         String toString();
     }
-    
-    private class TaskContentQualifier implements Qualifier {
-        private Set<String> keyWords;
-        
-        private TaskContentQualifier(Set<String> keyWords) {
-            this.keyWords = keyWords;
+
+    private class TitleQualifier implements Qualifier {
+        private Set<String> titleKeyWords;
+
+        TitleQualifier(Set<String> titleKeyWords) {
+            this.titleKeyWords = titleKeyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            return keyWords.stream()
+            return titleKeyWords.stream()
                     .filter(keyword -> StringUtil.containsIgnoreCase(task.getAsText(), keyword))
                     .findAny()
-                    .isPresent();   
+                    .isPresent();
         }
 
         @Override
         public String toString() {
-            return "Task content =" + String.join(", ", keyWords);
+            return "title=" + String.join(", ", titleKeyWords);
         }
     }
-    
-    //@@author A0146840E
-    private class TaskStatusQualifier implements Qualifier {
-        private String status;
-        
-        private TaskStatusQualifier(String status) {
-            this.status = status;
-        }
 
-        @Override
-        public boolean run(ReadOnlyTask task) {
-            if (status.contains("isCompleted")) {
-                return task.isCompleted();
-            } else if (status.contains("isOverdue")) {
-                return task.isOverdue();
-            } else if (status.contains("isFloating")) {
-                return task.isFloating();
-            } else if (status.contains("today")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate() || task.isFloating();
-            } else if (status.contains("week")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek() || task.isFloating();
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public String toString() {
-            return "Task status =" + String.join(", ", status);
-        }
-    }
 }

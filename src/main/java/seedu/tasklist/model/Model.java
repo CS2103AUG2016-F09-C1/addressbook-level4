@@ -28,7 +28,6 @@ public interface Model {
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
     
-    //@@author A0146840E
     /** Marks the given task */
     void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException;
     
@@ -37,31 +36,20 @@ public interface Model {
 
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
-    
-    /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
-    UnmodifiableObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
-    //@@author
     /** Updates the filter of the filtered task list to show all tasks */
-    void updateFilteredTaskListToShowAll();
-    
+    void updateFilteredListToShowAll();
+
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
-    
-    //@@author A0146840E
-    /** Updates the filter of the filtered task list to filter by the tasks status*/
-    int updateFilteredTaskList(String status);
 
-    //@@author A0138516A
+    /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
+    UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList();
+
     /** Updates the task list after change file path*/
-    void updateTaskListAfterFilePathChange();
+    void updateFilePathChange();
     
-    //@@author A0138516A
-    /** Return the deleted task to original position**/
-	void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException;
+    /** Gives the time remaining before a deadline/ an event*/
+    String timeTask(Task target) throws UniqueTaskList.TaskNotFoundException;
 
-	//@@author A0138516A
-    /** Replace the edited task to original task**/
-	void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException;
-    
 }

@@ -4,7 +4,6 @@ import seedu.tasklist.commons.exceptions.IllegalValueException;
 import seedu.tasklist.model.TaskList;
 import seedu.tasklist.model.task.*;
 
-//@@author A0146840E
 /**
  *
  */
@@ -21,20 +20,22 @@ public class TypicalTestTasks {
                     .withTags("notime", "toughlife").build();
             task3 = new TaskBuilder().withTitle("Competition 2006").withDescription("train harder")
                     .withStartDateTime("05052005").withEndDateTime("06062006").build();
-            task4 = new TaskBuilder().withTitle("Test Failure").withStartDateTime("")
-                    .withDescription("study harder").withEndDateTime("").build();
+            task4 = new TaskBuilder().withTitle("Test Failure").withStartDateTime("05112014 1100")
+                    .withDescription("study harder").withEndDateTime("10112018").build();
             task5 = new TaskBuilder().withTitle("Tutorial 1").withStartDateTime("01012001")
                     .withDescription("refer to lecture notes").withEndDateTime("10042012").build();
             task6 = new TaskBuilder().withTitle("Quiz Failure").withStartDateTime("03032003")
                     .withDescription("keep trying").withEndDateTime("05012013").build();
             task7 = new TaskBuilder().withTitle("Task Name").withStartDateTime("04042004")
-                    .withDescription("Description Name").withEndDateTime("05062014").build();
+                    .withDescription("Description Name").withEndDateTime("").build();
 
             // Manually added
             task8 = new TaskBuilder().withTitle("Revision").withStartDateTime("05062001").withDescription("dont stop studying")
-                    .withEndDateTime("01102014").build();
+                    .withEndDateTime("01022004").build();
             task9 = new TaskBuilder().withTitle("Hard Labor").withStartDateTime("07062001 2359")
-                    .withDescription("need to get strong").withEndDateTime("03072015 0000").build();
+                    .withDescription("need to get strong").withEndDateTime("03042005 0000").build();
+            
+            
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import seedu.tasklist.commons.exceptions.IllegalValueException;
 
-//@@author A0140019W
 /**
  * Represents a Task's date and time in the task list.
  * Guarantees: details are present and not null, field values are validated.
@@ -60,42 +59,38 @@ public class DateTime implements DateTimeComparator {
         return dateTime.trim();
     }
 
-    //@@author A0146840E
     @Override
     public boolean isDateTimeAfter(DateTime dateTime) {
-        return (!isDateEmpty() && !dateTime.isDateEmpty()                                                   // isDateAfter
-                    && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate()))
+        return 
+                // Compare Dates
+                (!isDateEmpty() && !dateTime.isDateEmpty() 
+                && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate()))
                 
-                || (!isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()  // isDateEqualAndTimeAfter
-                    && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
-                    && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
-                            || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime())))
+                // Dates are equal, compare Time
+                || (!isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
+                        && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
+                        && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
+                        || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime())))
                 
-                || (isDateEmpty() && !isTimeEmpty() && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()    // isNoDateAndTimeAfter
+                // No dates, compare Time
+                || (isDateEmpty() && !isTimeEmpty() && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
                         && getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime()));
     }
 
     @Override
-    public boolean isDateTimeAfterCurrentDateTime() {                
-        return (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))                           // isDateAfter
+    public boolean isDateTimeAfterCurrentDateTime() {
+        return 
+                // Compare Dates
+                (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))
+
+                // Dates are equal, compare Time
+                || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())
+                        && getTime().getLocalTime().isBefore(LocalTime.now()))
                 
-                 || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())      // isDateEqualAndTimeAfter 
-                    && getTime().getLocalTime().isBefore(LocalTime.now()))
-                
-                 || (isDateEmpty() && !isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));    // isNoDateAndTimeAfter
+                // No dates, compare Time
+                || (!isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));
     }
 
-    @Override
-    public boolean isDateEqualCurrentDate() {
-        return !isDateEmpty() && getDate().getLocalDate().isEqual(LocalDate.now());
-    }
-    
-    @Override
-    public boolean isDateEqualCurrentDateTillUpcomingWeek() {
-        return !isDateEmpty() && getDate().getLocalDate().isAfter(LocalDate.now().minusDays(1))
-                && getDate().getLocalDate().isBefore(LocalDate.now().plusWeeks(1));
-    }
-    
     @Override
     public boolean isDateTimeEmpty() {
         return getDate().getLocalDate() == null && getTime().getLocalTime() == null;
@@ -110,5 +105,32 @@ public class DateTime implements DateTimeComparator {
     public boolean isTimeEmpty() {
         return getTime().getLocalTime() == null;
     }
-
+    
+    //@@author A0153837X
+    public String timeLeft(){
+    	String hour= null;
+    	String day = null;
+    	
+    	// Unable to calculate time left if EndDateTime is not specified
+    	if (this.isDateEmpty() == true){
+    		return "Task has no date time specification!";
+    	}
+    	// Unable to calculate time left for overdued task
+    	else if (this.isDateTimeAfterCurrentDateTime() == true){
+    		return "Task is overdue!";
+    	}
+    	
+    	day = this.getDate().daysFromNow() + " day(s)";
+    	
+    	// Different outputs when users have not specified time
+    	if (this.isTimeEmpty() == true){
+    		hour = ".";
+    	}
+    	else{
+    		hour = ", " + this.getTime().hoursFromNow() + " hour(s) left.";
+    	}
+    	
+    	String result = day + hour;
+    	return result;
+    }
 }
