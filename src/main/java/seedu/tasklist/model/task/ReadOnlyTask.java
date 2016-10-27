@@ -48,9 +48,9 @@ public interface ReadOnlyTask {
                 .append(" Description: ")
                 .append(getDescription())
                 .append(" Start: ")
-                .append(getStartDateTime())
+                .append(getStartDateTime().toString().replace(":", ""))
                 .append(" End: ")
-                .append(getEndDateTime())
+                .append(getEndDateTime().toString().replace(":", ""))
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
