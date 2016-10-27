@@ -100,7 +100,7 @@ public class StatusBarFooter extends UiPart {
     
     @Subscribe
     public void handleUpdatedFilePathEvent(ChangePathEvent event) {
-    	setSaveLocation("./" +event.toString());
+    	setSaveLocation("./"+event.toString());
     }
     
 }

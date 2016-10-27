@@ -1,6 +1,7 @@
 package seedu.tasklist.model;
 
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
+import seedu.tasklist.logic.commands.Command;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.UniqueTaskList;
@@ -8,6 +9,7 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * The API of the Model component.
@@ -46,7 +48,16 @@ public interface Model {
     /** Returns the filtered task list for list command as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getListCommandFilteredTaskList();
 
+    //@@author A0138516A
     /** Updates the task list after change file path*/
     void updateFilePathChange();
+    
+    //@@author A0138516A
+    /** Return the deleted task to original position**/
+	void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException;
 
+	//@@author A0138516A
+    /** Replace the edited task to original task**/
+	void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException;
+    
 }

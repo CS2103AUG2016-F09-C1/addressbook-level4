@@ -6,6 +6,7 @@ import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.commons.events.model.TaskListChangedEvent;
 import seedu.tasklist.commons.util.StringUtil;
+import seedu.tasklist.logic.commands.Command;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
 import seedu.tasklist.model.task.UniqueTaskList;
@@ -13,6 +14,7 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskCompletionException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.Set;
+import java.util.Stack;
 import java.util.logging.Logger;
 
 /**
@@ -97,9 +99,27 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTaskListChanged();
     }
     
+  //@@author A0138516A
     @Override
     public void updateFilePathChange(){
     	indicateTaskListChanged();
+    }
+    
+  //@@author A0138516A
+    @Override
+	public void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException{
+    	taskList.insertTask(targetIndex,undoTask);
+    	updateFilteredListToShowAll();
+        indicateTaskListChanged();
+    }
+    
+  //@@author A0138516A
+    @Override
+  	public void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
+    	taskList.replace(beforeEdit,afterEdit);
+    	updateFilteredListToShowAll();
+        indicateTaskListChanged();
+    	
     }
     
     //=========== Filtered Task List Accessors ===============================================================

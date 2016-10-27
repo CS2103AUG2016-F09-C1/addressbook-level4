@@ -4,6 +4,7 @@ import seedu.tasklist.commons.exceptions.IllegalValueException;
 import seedu.tasklist.model.tag.Tag;
 import seedu.tasklist.model.tag.UniqueTagList;
 import seedu.tasklist.model.task.*;
+import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 import static seedu.tasklist.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
@@ -14,7 +15,7 @@ import java.util.regex.Matcher;
 /**
  * Adds a task to the task list.
  */
-public class AddCommand extends Command {
+public class AddCommand extends CommandUndoExtension {
 
     public static final String COMMAND_WORD = "add";
 
@@ -57,11 +58,23 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             model.addTask(toAdd);
+            CommandHistory.addCommandHistory(this);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
         }
 
+    }
+    
+    public CommandResult undo(){
+    	assert model != null;
+    	try{
+    		model.deleteTask(toAdd);
+    	}catch(TaskNotFoundException e){
+    		System.out.println("There is no such task");
+    	}
+    	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+toAdd);
+    	
     }
 
     /**

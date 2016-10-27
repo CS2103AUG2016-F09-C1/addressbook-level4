@@ -140,6 +140,20 @@ public class TaskList implements ReadOnlyTaskList {
             throw new UniqueTaskList.TaskNotFoundException();
         }
     }
+    
+    //@@author A0138516A
+    public void insertTask(int targetIndex, Task undoTask) throws TaskNotFoundException{
+    	syncTagsWithMasterList(undoTask);
+    	task.insert(targetIndex,undoTask);
+    	
+	}
+    
+    //@@author A0138516A
+    public void replace(Task beforeEdit, Task afterEdit) throws TaskNotFoundException {
+    	syncTagsWithMasterList(afterEdit);
+    	task.replace(beforeEdit,afterEdit);
+		
+	}
 
 //// tag-level operations
 

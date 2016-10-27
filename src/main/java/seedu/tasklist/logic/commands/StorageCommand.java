@@ -10,7 +10,7 @@ import seedu.tasklist.commons.events.storage.ChangePathEvent;
 import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.exceptions.IllegalValueException;
 
-
+//@@author A0138516A
 /**
  * Change File path
  */
@@ -18,7 +18,7 @@ import seedu.tasklist.commons.exceptions.IllegalValueException;
 public class StorageCommand extends Command {
 
 	private String filepath;
-
+	
 	public static final String COMMAND_WORD = "storage";
 
 	public static final String MESSAGE_USAGE = COMMAND_WORD + ": Change the storage file location.\n"
@@ -49,6 +49,7 @@ public class StorageCommand extends Command {
 				
 		EventsCenter.getInstance().post(new ChangePathEvent(filepath));
 		model.updateFilePathChange();
+		CommandHistory.addCommandHistory(this);
 		return new CommandResult(MESSAGE_CHANGE_PATH_SUCCESS + filepath);
 	}
 	
@@ -69,5 +70,4 @@ public class StorageCommand extends Command {
 		return new StorageCommand(filepath);
 
 	}
-
 }

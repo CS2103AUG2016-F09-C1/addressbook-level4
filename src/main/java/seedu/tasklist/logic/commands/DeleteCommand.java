@@ -7,67 +7,83 @@ import java.util.Optional;
 import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.model.task.ReadOnlyTask;
+import seedu.tasklist.model.task.Task;
+import seedu.tasklist.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Deletes a task identified using it's last displayed index from the task list.
  */
-public class DeleteCommand extends Command {
+public class DeleteCommand extends CommandUndoExtension {
 
-    public static final String COMMAND_WORD = "delete";
+	public static final String COMMAND_WORD = "delete";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the task identified by the index number used in the last task listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: \n" + COMMAND_WORD + " 1\n" + COMMAND_WORD + " 2";
+	public static final String MESSAGE_USAGE = COMMAND_WORD
+			+ ": Deletes the task identified by the index number used in the last task listing.\n"
+			+ "Parameters: INDEX (must be a positive integer)\n" + "Example: \n" + COMMAND_WORD + " 1\n" + COMMAND_WORD
+			+ " 2";
 
-    public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+	public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 
-    private int targetIndex;
+	private int targetIndex;
+	private Task undoTask;
 
-    public DeleteCommand() {};
-    
-    public DeleteCommand(int targetIndex) {
-        this.targetIndex = targetIndex;
-    }
+	public DeleteCommand() {
+	};
 
+	public DeleteCommand(int targetIndex) {
+		this.targetIndex = targetIndex;
+	}
 
-    @Override
-    public CommandResult execute() {
+	@Override
+	public CommandResult execute() {
 
-        UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
+		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
-        if (lastShownList.size() < targetIndex) {
-            indicateAttemptToExecuteIncorrectCommand();
-            return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-        }
+		if (lastShownList.size() < targetIndex) {
+			indicateAttemptToExecuteIncorrectCommand();
+			return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+		}
 
-        ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
+		ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
+		undoTask = new Task(taskToDelete);
 
-        try {
-            model.deleteTask(taskToDelete);
-        } catch (TaskNotFoundException pnfe) {
-            assert false : "The target task cannot be missing";
-        }
+		try {
+			model.deleteTask(taskToDelete);
+			CommandHistory.addCommandHistory(this);
+		} catch (TaskNotFoundException pnfe) {
+			assert false : "The target task cannot be missing";
+		}
 
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
-    }
+		return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+	}
 
-    /**
-     * Parses arguments in the context of the delete task command.
-     *
-     * @param args full command args string
-     * @return the prepared command
-     */
-    @Override
-    public Command prepare(String args) {
-        Optional<Integer> index = parseIndex(args);
-        if(!index.isPresent()){
-            return new IncorrectCommand(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
-        }
+	public CommandResult undo() {
+		try {
+			model.unDoDelete(targetIndex, undoTask);
+		} catch (TaskNotFoundException e) {
+			System.out.println("There is no such task");
 
-        return new DeleteCommand(index.get());
-    }
+		}
+		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + undoTask);
+
+	}
+
+	/**
+	 * Parses arguments in the context of the delete task command.
+	 *
+	 * @param args
+	 *            full command args string
+	 * @return the prepared command
+	 */
+	@Override
+	public Command prepare(String args) {
+		Optional<Integer> index = parseIndex(args);
+		if (!index.isPresent()) {
+			return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
+		}
+
+		return new DeleteCommand(index.get());
+	}
 
 }

@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * Unmarks a task identified using it's last displayed index from the task list.
  */
-public class UnmarkCommand extends Command {
+public class UnmarkCommand extends CommandUndoExtension {
     
     public static final String COMMAND_WORD = "unmark";
 
@@ -26,6 +26,7 @@ public class UnmarkCommand extends Command {
     public static final String MESSAGE_UNMARKED_TASK = "This task is already unmarked in the task list.";
 
     public int targetIndex;
+    private ReadOnlyTask taskToUnmark;
     
     public UnmarkCommand() {};
     
@@ -43,10 +44,11 @@ public class UnmarkCommand extends Command {
             return new CommandResult(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
-        ReadOnlyTask taskToUnmark = lastShownList.get(targetIndex - 1);
+        taskToUnmark = lastShownList.get(targetIndex - 1);
 
         try {
             model.unmarkTask(taskToUnmark);
+            CommandHistory.addCommandHistory(this);
         } catch (TaskNotFoundException pnfe) {
             assert false : "The target task cannot be missing";
         } catch (TaskCompletionException e) {
@@ -55,6 +57,18 @@ public class UnmarkCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
     }
+    
+    @Override
+   	public CommandResult undo() {
+       	try {
+       		model.markTask(taskToUnmark);
+       	} catch (TaskNotFoundException pnfe) {
+               assert false : "The target task cannot be missing";
+           } catch (TaskCompletionException e) {
+               return new CommandResult("Task already Marked");
+           }
+       	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToUnmark);
+   	}
 
     /**
      * Parses arguments in the context of the unmark task command.
