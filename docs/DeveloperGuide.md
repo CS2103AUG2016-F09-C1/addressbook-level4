@@ -135,7 +135,7 @@ command `delete 1`.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
-<img src="images\SDforDeleteTaskEventHandling.png" width="800">
+<img src="images\SDforDeleteTaskEventHandling.PNG" width="800">
 
 
 
