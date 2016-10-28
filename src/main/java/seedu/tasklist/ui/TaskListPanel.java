@@ -97,19 +97,23 @@ public class TaskListPanel extends UiPart {
     //@@author A0146840E
     public void scrollToPrevious() {
         Platform.runLater(() -> {
-            if (scrollIndex > 0) scrollTo(--scrollIndex);
+            if (scrollIndex > 0) {
+                scrollTo(--scrollIndex);
+            }
         });
     }
 
     public void scrollToNext() {
         Platform.runLater(() -> {
-            if (scrollIndex < 10) scrollTo(++scrollIndex);
+            if (scrollIndex < placeHolderPane.getHeight()) {
+                scrollTo(++scrollIndex);
+            }
         });
     }
     
     public void scrollToLast() {
         Platform.runLater(() -> {
-            scrollIndex = 10;
+            scrollIndex = (int) placeHolderPane.getHeight();
             scrollTo(scrollIndex);
         });
     }
@@ -131,13 +135,18 @@ public class TaskListPanel extends UiPart {
         protected void updateItem(ReadOnlyTask task, boolean empty) {
             super.updateItem(task, empty);
 
-            if (empty || task == null) {
+            if (empty || task == null ) {
                 setGraphic(null);
                 setText(null);
             } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
             } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
-                setGraphic(TaskCard.load(task, -1).getLayout());
+                if (task.isCompleted()) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    setGraphic(TaskCard.load(task, -1).getLayout());
+                }
             }
         }
     }

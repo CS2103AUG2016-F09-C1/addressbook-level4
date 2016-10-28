@@ -231,9 +231,9 @@ public class ModelManager extends ComponentManager implements Model {
             if (status.contains("isCompleted")) {
                 return task.isCompleted();
             } else if (status.contains("isOverdue")) {
-                return task.isOverdue();
+                return task.isOverdue() && !task.isCompleted();
             } else if (status.contains("isFloating")) {
-                return task.isFloating();
+                return task.isFloating() && !task.isCompleted();
             } else if (status.contains("today")) {
                 return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate() || task.isFloating();
             } else if (status.contains("week")) {
