@@ -112,26 +112,25 @@ public class DateTime implements DateTimeComparator {
     }
 
     //@@author A0153837X
-    public String timeLeft(){
+    public String timeLeft() {
     	String hour= null;
     	String day = null;
     	
     	// Unable to calculate time left if EndDateTime is not specified
-    	if (this.isDateEmpty() == true){
+    	if (this.isDateEmpty()) {
     		return "Task has no date time specification!";
     	}
     	// Unable to calculate time left for overdued task
-    	else if (this.isDateTimeAfterCurrentDateTime() == true){
+    	else if (this.isDateTimeAfterCurrentDateTime()) {
     		return "Task is overdue!";
     	}
     	
     	day = this.getDate().daysFromNow() + " day(s)";
     	
     	// Different outputs when users have not specified time
-    	if (this.isTimeEmpty() == true){
+    	if (this.isTimeEmpty()) {
     		hour = ".";
-    	}
-    	else{
+    	} else {
     		hour = ", " + this.getTime().hoursFromNow() + " hour(s) left.";
     	}
     	
