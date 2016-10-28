@@ -2,6 +2,7 @@ package seedu.tasklist.model.task;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import seedu.tasklist.commons.exceptions.IllegalValueException;
 
@@ -70,4 +71,11 @@ public class Time {
         return localTime.hashCode();
     }
     
+    //@@author A0153837X
+    public String hoursFromNow(){
+    	long hours = ChronoUnit.HOURS.between(LocalTime.now(), localTime);
+    	
+    	return Long.toString(hours);
+    
+    }
 }

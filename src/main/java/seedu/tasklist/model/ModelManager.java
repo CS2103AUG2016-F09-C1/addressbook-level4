@@ -112,7 +112,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateTaskListAfterFilePathChange() {
     	indicateTaskListChanged();
     }
-    
+
   //@@author A0138516A
     @Override
 	public void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException{
@@ -130,8 +130,15 @@ public class ModelManager extends ComponentManager implements Model {
     	
     }
     
+    //@@author A0153837X
+    @Override
+    public String timeTask (Task target) {
+    	return target.timeTask();
+    }
+    
+	//@@author
     //=========== Filtered Task List Accessors ===============================================================
-    //@@author
+
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         return new UnmodifiableObservableList<>(filteredTask);
@@ -141,7 +148,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskListToShowAll() {
         filteredTask.setPredicate(null);
     }
-    
+
     @Override
     public void updateFilteredTaskList(Set<String> keywords){
         updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
@@ -209,7 +216,7 @@ public class ModelManager extends ComponentManager implements Model {
             return keyWords.stream()
                     .filter(keyword -> StringUtil.containsIgnoreCase(task.getAsText(), keyword))
                     .findAny()
-                    .isPresent();   
+                    .isPresent();
         }
 
         @Override
