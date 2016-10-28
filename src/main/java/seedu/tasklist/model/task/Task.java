@@ -173,5 +173,10 @@ public class Task implements ReadOnlyTask {
     public String toString() {
         return getAsText();
     }
+    
+    //@@author A0153837X
+    public String timeTask(){
+    	return (this.getEndDateTime().timeLeft());
+    }
 
 }

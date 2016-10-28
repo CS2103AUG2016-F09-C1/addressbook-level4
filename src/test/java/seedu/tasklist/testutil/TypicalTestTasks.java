@@ -35,6 +35,7 @@ public class TypicalTestTasks {
                     .withEndDateTime("01102014").build();
             task9 = new TaskBuilder().withTitle("Hard Labor").withStartDateTime("07062001 2359")
                     .withDescription("need to get strong").withEndDateTime("03072015 0000").build();
+            
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
