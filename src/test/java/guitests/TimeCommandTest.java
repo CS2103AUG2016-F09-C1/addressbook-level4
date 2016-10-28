@@ -2,8 +2,6 @@ package guitests;
 
 import org.junit.Test;
 
-import seedu.tasklist.testutil.TypicalTestTasks;
-
 //@@author A0153837X
 public class TimeCommandTest extends TaskListGuiTest{
 	
