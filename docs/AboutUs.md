@@ -47,7 +47,7 @@ We are a team based in the School of Computing, National University of Singapore
 * Features implemented:
    * [Add Task](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/UserGuide.md#adding-a-task--add)
    * [Select Task](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/UserGuide.md#select-a-task--select)
-* Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0140019W.md)][[test code](A0140019W.md)][[docs](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/docs/A0140019W.md)]
+* Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0140019W.md)][test code][[docs](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/docs/A0140019W.md)]
 * Other major contributions:
   * [Did the initial refactoring from AddressBook to Tasklist](https://github.com/CS2103AUG2016-F09-C1/main/commit/2a42c3cef6476b9f531918cf6579214cc233dcb2)
 
@@ -81,6 +81,6 @@ We are a team based in the School of Computing, National University of Singapore
 * Aspects/tools in charge of: Git, Code Quality
 * Features implemented:
    * [Today Command (unused)](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837Xunused.md)
-* Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837Xunused.md)][[test code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/test/A0153837X.md)][[docs](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/docs/A0153837X.md)]
+* Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837Xunused.md)][test code][[docs](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/docs/A0153837X.md)]
 
 
