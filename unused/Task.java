@@ -172,8 +172,8 @@ public class Task implements ReadOnlyTask {
     //@@author A0153837X
     //Not used due to list command
     public boolean isToday() {
-    	if(this.getEndDateTime() != null){
-        	return (this.getEndDateTime().isToday());
+    	if(this.getEndDateTime().getDate().getLocalDate() != null){
+        	return (this.getEndDateTime().getDate().getLocalDate().isEqual(LocalDate.now()));
     	}
     	return false;
     }
