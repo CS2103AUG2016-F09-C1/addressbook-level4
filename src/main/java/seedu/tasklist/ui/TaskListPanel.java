@@ -116,7 +116,6 @@ public class TaskListPanel extends UiPart {
         scrollTo(scrollIndex);
     }
 
-    //@@author
     class TaskListViewCell extends ListCell<ReadOnlyTask> {
 
         public TaskListViewCell() {
@@ -142,6 +141,7 @@ public class TaskListPanel extends UiPart {
         }
     }
 
+    //@@author
     public ListView<ReadOnlyTask> getTaskListView() {
         return taskListView;
     }

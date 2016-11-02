@@ -12,7 +12,7 @@ import java.util.Optional;
 
 //@@author A0146840E
 /**
- * Marks a task identified using it's last displayed index from the task list.
+ * Mark a task
  */
 public class MarkCommand extends CommandUndoExtension {
     
@@ -31,6 +31,9 @@ public class MarkCommand extends CommandUndoExtension {
     
     public MarkCommand() {};
     
+    /**
+     * Marks a task identified using it's last displayed index from the task list.
+     */
     public MarkCommand(int targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -71,8 +74,8 @@ public class MarkCommand extends CommandUndoExtension {
         }
     	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToMark);
 	}
-    // @@author
-
+    
+    //@@author A0146840E
     /**
      * Parses arguments in the context of the mark task command.
      *

@@ -6,7 +6,7 @@ import seedu.tasklist.commons.exceptions.IllegalValueException;
 
 //@@author A0146840E
 /**
- * Lists tasks in the task list to the user.
+ * List tasks
  */
 public class ListCommand extends Command {
 
@@ -27,11 +27,10 @@ public class ListCommand extends Command {
 
     private ListCommand.List type;
 
-    public ListCommand() {
-    }
+    public ListCommand() {}
 
     /**
-     * List Command Constructor
+     * Lists tasks in the task list to the user.
      * 
      * @param args
      *            containing the requested parameter
@@ -40,26 +39,32 @@ public class ListCommand extends Command {
      */
     public ListCommand(String args) throws IllegalValueException {
         switch (args.trim()) {
-        case "":
-            type = ListCommand.List.ALL;
-            break;
-        case "completed":
-            type = ListCommand.List.COMPLETED_TASKS;
-            break;
-        case "overdue":
-            type = ListCommand.List.OVERDUE_TASKS;
-            break;
-        case "floating":
-            type = ListCommand.List.FLOATING_TASKS;
-            break;
-        case "today":
-            type = ListCommand.List.TODAY_TASKS;
-            break;
-        case "week":
-            type = ListCommand.List.WEEK_TASKS;
-            break;
-        default:
-            throw new IllegalValueException("");
+            case "" :
+                type = ListCommand.List.ALL;
+                break;
+                
+            case "completed" :
+                type = ListCommand.List.COMPLETED_TASKS;
+                break;
+                
+            case "overdue":
+                type = ListCommand.List.OVERDUE_TASKS;
+                break;
+                
+            case "floating":
+                type = ListCommand.List.FLOATING_TASKS;
+                break;
+                
+            case "today" :
+                type = ListCommand.List.TODAY_TASKS;
+                break;
+                
+            case "week" :
+                type = ListCommand.List.WEEK_TASKS;
+                break;
+                
+            default :
+                throw new IllegalValueException("");
         }
     }
 
@@ -67,35 +72,35 @@ public class ListCommand extends Command {
     public CommandResult execute() {
         int filteredListSize;
         switch (type) {
-            case ALL:
+            case ALL :
                 model.updateFilteredTaskListToShowAll();
                 return new CommandResult(String.format(MESSAGE_SUCCESS, ""));
             
-            case COMPLETED_TASKS:
+            case COMPLETED_TASKS :
                 model.updateFilteredTaskList("isCompleted");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "completed "));
             
-            case OVERDUE_TASKS:
+            case OVERDUE_TASKS :
                 model.updateFilteredTaskList("isOverdue");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "overdue "));
             
-            case FLOATING_TASKS:
+            case FLOATING_TASKS :
                 model.updateFilteredTaskList("isFloating");
                 return new CommandResult(String.format(MESSAGE_SUCCESS, "floating "));
             
-            case TODAY_TASKS:
+            case TODAY_TASKS :
                 filteredListSize = model.updateFilteredTaskList("today");
                 if (filteredListSize > 0) {
                     return new CommandResult(String.format(MESSAGE_SUCCESS_2, "today"));
-                }else {
+                } else {
                     return new CommandResult(MESSAGE_NO_TASK_TODAY);
                 }
             
-            case WEEK_TASKS:
+            case WEEK_TASKS :
                 filteredListSize = model.updateFilteredTaskList("week");
                 if (filteredListSize > 0) {
                     return new CommandResult(String.format(MESSAGE_SUCCESS_2, "the week"));
-                }else {
+                } else {
                     return new CommandResult(MESSAGE_NO_TASK_WEEK);
                 }
             

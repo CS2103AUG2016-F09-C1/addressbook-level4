@@ -12,7 +12,7 @@ import java.util.Optional;
 
 //@@author A0146840E
 /**
- * Unmarks a task identified using it's last displayed index from the task list.
+ * Unmark a task
  */
 public class UnmarkCommand extends CommandUndoExtension {
     
@@ -31,6 +31,9 @@ public class UnmarkCommand extends CommandUndoExtension {
     
     public UnmarkCommand() {};
     
+    /**
+     * Unmarks a task identified using it's last displayed index from the task list.
+     */
     public UnmarkCommand(int targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -71,8 +74,8 @@ public class UnmarkCommand extends CommandUndoExtension {
            }
        	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToUnmark);
    	}
-    // @@author
-
+    
+    //@@author A0146840E
     /**
      * Parses arguments in the context of the unmark task command.
      *
@@ -88,7 +91,6 @@ public class UnmarkCommand extends CommandUndoExtension {
         }
 
         return new UnmarkCommand(index.get());
-
     }
     
 }
