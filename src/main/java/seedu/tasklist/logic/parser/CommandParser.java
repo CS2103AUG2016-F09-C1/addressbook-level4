@@ -33,17 +33,20 @@ public interface CommandParser {
 
     final Pattern TASK_INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>.+)");
 
+    
     final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
-    final Pattern TASK_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+    // '/' forward slashes are reserved for delimiter prefixes
+    final Pattern TASK_DATA_ARGS_FORMAT = 
             Pattern.compile("(?<title>[^/]+)"
                     + "(?<isDescriptionPrivate>p?)(?<description>(?: d/[^/]+)*)"
                     + "(?<isStartDateTimePrivate>p?)(?<startDateTime>(?: s/[^/]+)*)"
                     + "(?<isEndDateTimePrivate>p?)(?<endDateTime>(?: e/[^/]+)*)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
     
-    final Pattern EDIT_TASK_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+    // '/' forward slashes are reserved for delimiter prefixes
+    final Pattern EDIT_TASK_DATA_ARGS_FORMAT = 
             Pattern.compile("(?<targetIndex>[^/\\s]+)"
                     + "(?<title>(?: [^/]+)*)"
                     + "(?<isDescriptionPrivate>p?)(?<description>(?: d/[^/]+)*)"
