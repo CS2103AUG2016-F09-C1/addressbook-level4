@@ -20,7 +20,7 @@ public abstract class UiPart {
      */
     public Stage primaryStage;
 
-    public UiPart(){}
+    public UiPart() {}
 
     /**
      * Raises the event via {@link EventsCenter#post(BaseEvent)}
