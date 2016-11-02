@@ -34,16 +34,13 @@ public class MainWindow extends UiPart {
     private TaskListPanel filteredTaskListPanel;
     private TaskListPanel mainTaskListPanel;
     private ResultDisplay resultDisplay;
+    @SuppressWarnings("unused")
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
     private Config config;
-    private UserPrefs userPrefs;
-
     // Handles to elements of this Ui container
     private VBox rootLayout;
     private Scene scene;
-
-    private String taskListName;
 
     @FXML
     private AnchorPane commandBoxPlaceholder;
@@ -90,10 +87,7 @@ public class MainWindow extends UiPart {
 
         // Set dependencies
         this.logic = logic;
-        this.taskListName = taskListName;
         this.config = config;
-        this.userPrefs = prefs;
-
         // Configure the UI
         setTitle(appTitle);
         setIcon(ICON);
