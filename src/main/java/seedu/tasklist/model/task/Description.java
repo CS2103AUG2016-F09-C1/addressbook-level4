@@ -23,11 +23,10 @@ public class Description {
      */
     public Description(String description) throws IllegalValueException {
         assert description != null;
-        description = description.trim();
-        if (!isValidDescription(description)) {
+        if (!isValidDescription(description.trim())) {
             throw new IllegalValueException(MESSAGE_DESCRIPTION_CONSTRAINTS);
         }
-        this.description = description;
+        this.description = description.trim();
     }
 
     /**
