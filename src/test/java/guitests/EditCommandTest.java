@@ -16,7 +16,7 @@ import seedu.tasklist.testutil.TestTask;
 public class EditCommandTest extends TaskListGuiTest {
 
     @Test
-    public void editTask_nonEmptyList_successReturned() {
+    public void editTask_nonEmptyList_successResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
@@ -39,7 +39,7 @@ public class EditCommandTest extends TaskListGuiTest {
     }
 
     @Test
-    public void editTask_nonEmptyList_invalidDateTimeReturned() {
+    public void editTask_nonEmptyList_invalidDateTimeResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
@@ -72,7 +72,7 @@ public class EditCommandTest extends TaskListGuiTest {
     }
     
     @Test
-    public void editTask_nonEmptyList_invalidCommandReturned() {
+    public void editTask_nonEmptyList_invalidCommandResultMessage() {
         commandBox.runCommand("edits 1");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand("edit index");

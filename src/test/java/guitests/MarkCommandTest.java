@@ -11,39 +11,53 @@ import seedu.tasklist.testutil.TestTask;
 public class MarkCommandTest extends TaskListGuiTest {
 
     @Test
-    public void mark() {
+    public void markTask_nonEmptyList_successResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
-        //mark first task
         assertMarkSuccess(1, currentList[0], currentList);
+        assertMarkSuccess(1, currentList[1], currentList);     
+    }
+
+    @Test
+    public void markTask_nonEmptyList_invalidTaskIndexResultMessage() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
-        //mark next task
-        assertMarkSuccess(1, currentList[1], currentList);
-        
-        //mark task that don't exist
-        commandBox.runCommand("mark -10");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
-        commandBox.runCommand("mark -1");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
         commandBox.runCommand("mark " + (currentList.length + 1));
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         commandBox.runCommand("mark " + (currentList.length + 10));
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void markTask_nonEmptyList_markedTaskResultMessage() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
-        //mark duplicate task
         commandBox.runCommand("mark " + (currentList.length - 1));
+        commandBox.runCommand("mark " + (currentList.length));
         assertResultMessage(MarkCommand.MESSAGE_MARKED_TASK);
-        commandBox.runCommand("mark " + currentList.length);
-        assertResultMessage(MarkCommand.MESSAGE_MARKED_TASK);
-        
-        //invalid command
+    }
+
+    @Test
+    public void markTask_nonEmptyList_invalidCommandResultMessage() {
+        commandBox.runCommand("mark -10");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
+        commandBox.runCommand("mark -1");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
         commandBox.runCommand("marks 1");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand("mark index");
         assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
     }
 
+    @Test
+    public void markTask_emptyList_invalidTaskIndexResultMessage() {
+        commandBox.runCommand("mark 1");
+        assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+    
     private void assertMarkSuccess(int index, TestTask taskToMark, TestTask... currentList) {
         commandBox.runCommand("mark " + index);
         taskToMark.setCompleted(true);
