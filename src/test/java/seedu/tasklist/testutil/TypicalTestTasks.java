@@ -6,7 +6,7 @@ import seedu.tasklist.model.task.*;
 
 //@@author A0146840E
 /**
- *
+ * Contains a list of tasks for testing
  */
 public class TypicalTestTasks {
 

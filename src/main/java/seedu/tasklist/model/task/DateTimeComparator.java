@@ -27,7 +27,7 @@ public interface DateTimeComparator {
     public boolean isDateEqualCurrentDateTillUpcomingWeek();
 
     /**
-     * Check if date or time is empty.
+     * Check if date and time is empty.
      */
     public boolean isDateTimeEmpty();
     

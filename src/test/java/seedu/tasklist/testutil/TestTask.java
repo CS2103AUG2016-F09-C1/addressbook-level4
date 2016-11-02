@@ -98,12 +98,19 @@ public class TestTask implements ReadOnlyTask {
         return getAsText();
     }
 
+  //@@author A0146840E
     public String getAddCommand() {
         StringBuilder sb = new StringBuilder();
         sb.append("add " + this.getTitle().fullTitle + " ");
-        sb.append("d/" + this.getDescription().description + " ");
-        sb.append("s/" + this.getStartDateTime().toString().replaceAll(":", "").replaceAll("-", "") + " ");
-        sb.append("e/" + this.getEndDateTime().toString().replaceAll(":", "").replaceAll("-", "") + " ");
+        if (!this.getDescription().description.isEmpty()) {
+            sb.append("d/" + this.getDescription().description + " ");
+        }
+        if (!this.getStartDateTime().isDateTimeEmpty()) {
+            sb.append("s/" + this.getStartDateTime().toString().replaceAll(":", "").replaceAll("-", "") + " ");
+        }
+        if (!this.getEndDateTime().isDateTimeEmpty()) {
+            sb.append("e/" + this.getEndDateTime().toString().replaceAll(":", "").replaceAll("-", "") + " ");
+        }
         this.getTags().getInternalList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
         return sb.toString();
     }
