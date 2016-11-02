@@ -63,7 +63,7 @@ public class TaskListPanel extends UiPart {
         return taskListPanel;
     }
 
-    void configure(ObservableList<ReadOnlyTask> taskList) {
+    private void configure(ObservableList<ReadOnlyTask> taskList) {
         setConnections(taskList);
         addToPlaceholder();
     }

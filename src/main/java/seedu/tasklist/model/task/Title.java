@@ -21,11 +21,10 @@ public class Title {
      */
     public Title(String title) throws IllegalValueException {
         assert title != null;
-        title = title.trim();
-        if (!isValidTitle(title)) {
+        if (!isValidTitle(title.trim())) {
             throw new IllegalValueException(MESSAGE_TITLE_CONSTRAINTS);
         }
-        this.fullTitle = title;
+        this.fullTitle = title.trim();
     }
 
     /**

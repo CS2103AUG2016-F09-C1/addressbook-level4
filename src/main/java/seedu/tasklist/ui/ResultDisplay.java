@@ -14,7 +14,6 @@ import seedu.tasklist.commons.util.FxViewUtil;
 public class ResultDisplay extends UiPart {
     public static final String RESULT_DISPLAY_ID = "resultDisplay";
     private static final String STATUS_BAR_STYLE_SHEET = "result-display";
-    private TextArea resultDisplayArea;
     private final StringProperty displayed = new SimpleStringProperty("");
 
     private static final String FXML = "ResultDisplay.fxml";
@@ -30,7 +29,7 @@ public class ResultDisplay extends UiPart {
     }
 
     public void configure() {
-        resultDisplayArea = new TextArea();
+        TextArea resultDisplayArea = new TextArea();
         resultDisplayArea.setEditable(false);
         resultDisplayArea.setId(RESULT_DISPLAY_ID);
         resultDisplayArea.getStyleClass().removeAll();

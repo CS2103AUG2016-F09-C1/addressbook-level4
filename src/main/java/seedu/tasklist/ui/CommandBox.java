@@ -30,7 +30,6 @@ public class CommandBox extends UiPart {
 
     @FXML
     private TextField commandTextField;
-    private CommandResult mostRecentResult;
 
     public static CommandBox load(Stage primaryStage, AnchorPane commandBoxPlaceholder, ResultDisplay resultDisplay,
             Logic logic) {
@@ -80,7 +79,7 @@ public class CommandBox extends UiPart {
          * #handleIncorrectCommandAttempted}
          */
         setStyleToIndicateCorrectCommand();
-        mostRecentResult = logic.execute(previousCommandList.get(previousCommandIndex));
+        CommandResult mostRecentResult = logic.execute(previousCommandList.get(previousCommandIndex));
         resultDisplay.postMessage(mostRecentResult.feedbackToUser);
         logger.info("Result: " + mostRecentResult.feedbackToUser);
     }

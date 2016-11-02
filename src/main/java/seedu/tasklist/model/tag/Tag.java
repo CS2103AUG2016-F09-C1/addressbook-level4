@@ -14,21 +14,19 @@ public class Tag {
 
     public String tagName;
 
-    public Tag() {
-    }
+    public Tag() {}
 
     /**
      * Validates given tag name.
      *
      * @throws IllegalValueException if the given tag name string is invalid.
      */
-    public Tag(String name) throws IllegalValueException {
-        assert name != null;
-        name = name.trim();
-        if (!isValidTagName(name)) {
+    public Tag(String tagName) throws IllegalValueException {
+        assert tagName != null;
+        if (!isValidTagName(tagName.trim())) {
             throw new IllegalValueException(MESSAGE_TAG_CONSTRAINTS);
         }
-        this.tagName = name;
+        this.tagName = tagName.trim();
     }
 
     /**
