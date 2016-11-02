@@ -18,14 +18,7 @@ import seedu.tasklist.logic.commands.Command;
  * Parser interface for interaction with the Command classes.
  */
 public interface CommandParser {
-    
-    /**
-     * Parses arguments in the context of the requested task command.
-     * @param args full command args string
-     * @return the prepared command
-     */
-    public Command prepare(String args);
-    
+        
     /**
      * Used for initial separation of command word and args.
      */
@@ -53,7 +46,15 @@ public interface CommandParser {
                     + "(?<isStartDateTimePrivate>p?)(?<startDateTime>(?: s/[^/]+)*)"
                     + "(?<isEndDateTimePrivate>p?)(?<endDateTime>(?: e/[^/]+)*)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
-        
+    
+    /**
+     * Parses arguments in the context of the requested task command.
+     * 
+     * @param args full command args string
+     * @return the prepared command
+     */
+    public Command prepare(String args);
+    
     /**
      * Returns the specified index in the {@code command} IF a positive unsigned integer is given as the index.
      *   Returns an {@code Optional.empty()} otherwise.
