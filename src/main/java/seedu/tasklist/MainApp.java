@@ -190,7 +190,7 @@ public class MainApp extends Application {
     
     //@@author A0138516A
     @Subscribe
-    public void ChangePathRequestEvent(ChangePathEvent event){
+    public void changePathRequestEvent(ChangePathEvent event){
     	 logger.info(LogsCenter.getEventHandlingLogMessage(event));
     	 String previousFilePath = config.getTaskListFilePath();
     	 config.setTaskListFilePath(event.toString());
