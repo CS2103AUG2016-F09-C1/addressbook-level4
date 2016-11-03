@@ -25,11 +25,13 @@ public class MainWindowTest extends TaskListGuiTest {
     @Test
     public void mainMenu_usingMenu_maximizedWindow() {       
         mainMenu.toggleFullScreenUsingMenu();
+        mainMenu.toggleFullScreenUsingMenu();
         assertTrue(mainMenu.isFullScreen());
     }
     
     @Test
     public void mainMenu_usingMenu_minimizedWindow() {       
+        mainMenu.toggleFullScreenUsingMenu();
         mainMenu.toggleFullScreenUsingMenu();
         assertFalse(mainMenu.isFullScreen());
     }
@@ -56,5 +58,5 @@ public class MainWindowTest extends TaskListGuiTest {
         mainMenu.selectPreviousCommandUsingMenu();
         assertTrue(commandBox.getCommandInput().equals(TypicalTestTasks.task9.getAddCommand()));
     }
-    
+
 }
