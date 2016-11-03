@@ -31,7 +31,7 @@
 
 1. **JDK 8** or later
 2. **Eclipse** IDE
-3. **e(fx)clipse** plugin for Eclipse
+3. **e(fx)clipse** plugin for Eclipse 
 
 
 
@@ -56,13 +56,13 @@
 
 
 **Problem: Eclipse reports compile errors after new commits are pulled from Git**
-* Reason: Eclipse fails to recognize new files that appeared due to the Git pull.
-* Solution: Refresh the project in Eclipse:<br>
+* Reason: Eclipse fails to recognize new files that appeared due to the Git pull. 
+* Solution: Refresh the project in Eclipse:<br> 
   Right click on the project (in Eclipse package explorer), choose `Gradle` -> `Refresh Gradle Project`.
-
+  
 
 **Problem: Eclipse reports some required libraries missing**
-* Reason: Required libraries may not have been downloaded during the project import.
+* Reason: Required libraries may not have been downloaded during the project import. 
 * Solution: [Run tests using Gradle](UsingGradle.md) once (to refresh the libraries).
 
 
@@ -118,7 +118,7 @@ interface and exposes its functionality using the `LogicManager.java` class.<br>
 
 
 
-#### Events-Driven nature of the design
+#### Events-Driven nature of the design 
 
 
 
@@ -135,7 +135,7 @@ command `delete 1`.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
-<img src="images\SDforDeleteTaskEventHandling.PNG" width="800">
+<img src="images\SDforDeleteTaskEventHandling.png" width="800">
 
 
 
@@ -298,7 +298,7 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 
 
-Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
+Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file 
 (default: `config.json`):
 
 
@@ -336,36 +336,36 @@ We have two types of tests:
 2. **Non-GUI Tests** - These are tests not involving the GUI. They include,
    1. _Unit tests_ targeting the lowest level methods/classes. <br>
       e.g. `seedu.tasklist.commons.UrlUtilTest`
-   2. _Integration tests_ that are checking the integration of multiple code units
+   2. _Integration tests_ that are checking the integration of multiple code units 
      (those code units are assumed to be working).<br>
       e.g. `seedu.tasklist.storage.StorageManagerTest`
-   3. Hybrids of unit and integration tests. These test are checking multiple code units as well as
+   3. Hybrids of unit and integration tests. These test are checking multiple code units as well as 
       how the are connected together.<br>
       e.g. `seedu.tasklist.logic.LogicManagerTest`
-
+  
 
 #### Headless GUI Testing
 
 
 
 Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
- our GUI tests can be run in the _headless_ mode.
+ our GUI tests can be run in the _headless_ mode. 
  In the headless mode, GUI tests do not show up on the screen.
  That means the developer can do other things on the Computer while the tests are running.<br>
  See [UsingGradle.md](UsingGradle.md#running-tests) to learn how to run tests in headless mode.
-
+ 
 
 #### Troubleshooting tests
 
 
 
  **Problem: Tests fail because NullPointException when AssertionError is expected**
- * Reason: Assertions are not enabled for JUnit tests.
+ * Reason: Assertions are not enabled for JUnit tests. 
    This can happen if you are not using a recent Eclipse version (i.e. _Neon_ or later)
- * Solution: Enable assertions in JUnit tests as described
+ * Solution: Enable assertions in JUnit tests as described 
    [here](http://stackoverflow.com/questions/2522897/eclipse-junit-ea-vm-option). <br>
    Delete run configurations created when you ran tests earlier.
-
+  
 
 ## Dev Ops
 
@@ -403,13 +403,13 @@ We use [Codacy](https://www.codacy.com/) to perform _Code Review_ on our project
 
 
 Here are the steps to create a new release.
-
+ 
 
  1. Generate a JAR file [using Gradle](UsingGradle.md#creating-the-jar-file).
  2. Tag the repo with the version number. e.g. `v0.1`
- 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
+ 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/) 
     and upload the JAR file you created.
-
+   
 
 ### Managing Dependencies
 
@@ -452,7 +452,8 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *`| user | display the number of tasks completed or left | keep track of my progress
 `* * *`| user | mark the task as done | know which tasks are completed
 `* * * `| user | clear all the task | start a totally new task list
-`* * * `| user | exit the application | close the application
+`* * * `| user | exit the application | close the application 
+` * *`| user | know how much time do I have before a deadline | don't need to calculate manually how much do I have left
 `* * `| new user | set my username | regard the app as my own
 `* * `| user | hide private tasks by default | minimize chance of someone else seeing them by accident
 `* * `| user | change the command words | make it more intuitive
@@ -517,7 +518,7 @@ Use case ends.
 
 
 1. User requests to add task
-2. TaskList add the task
+2. TaskList add the task 
 Use case ends.
 
 
@@ -640,7 +641,7 @@ Use case ends.
 1. User requests to list tasks
 2. TaskList shows a list of tasks
 3. User requests to delete a specific task in the list
-4. TaskList deletes the task
+4. TaskList deletes the task 
 Use case ends.
 
 
@@ -722,6 +723,25 @@ Use case ends.
 
 
 > Use case ends
+
+
+### Use case: `Check time remaining for a task`
+
+
+
+
+**MSS**
+
+
+
+
+1. User requests to check the time remaining for specified task
+2. TaskList show the time remaining for that task
+
+
+> Use case ends
+
+
 
 
 
@@ -902,3 +922,7 @@ Use case ends.
         * Mini calendar widget
     * Weaknesses:
         * Some users face integration error between devices.
+
+
+
+
