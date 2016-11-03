@@ -13,9 +13,14 @@ public class TimeCommandTest extends TaskListGuiTest{
 		commandBox.runCommand("time 1");
         assertResultMessage("Task is overdue!");
 		
-        //Task with no endDate
-        commandBox.runCommand("add meeting");
+        //Task with endTime but without endDate
+        commandBox.runCommand("add meeting e/2300");
 		commandBox.runCommand("time 8");
+        assertResultMessage("Task has no date time specification!");
+        
+        //Task without endDate and endTime
+        commandBox.runCommand("add meeting");
+		commandBox.runCommand("time 9");
         assertResultMessage("Task has no date time specification!");
         
 	}

@@ -491,6 +491,28 @@ Format: `clear`
 > `Note`: Clearing all task will remove all entries in the task list
 
 
+
+<br>
+<!-- @@author A0153837X -->
+### Check the time remaining for a task : `time`
+Gives the time remaining for a task (in days and hours) at the scecified ‘INDEX’.<br>
+Format: `time INDEX`
+
+
+> Gives the time remaining to the deadline/ event <br>
+> The index refers to the index number shown in the most recent listing.<br>
+> The index **must be a positive integer** 1, 2, 3, ...
+
+
+Examples:
+* `list`<br>
+  `time 1`<br>
+  16 day(s), 5 hour(s) left.
+* `list` <br>
+  `time 2`<br>
+  Task is overdue!
+
+
 <br>
 ### Exiting the program : `exit`
 Exits the program.<br>
@@ -703,6 +725,25 @@ Examples:
 * `add CS2103` <br>
   `undo`<br>
   Undo the previous command, added task will be removed.
+
+
+
+
+<br>
+
+**Time** : `time`
+<br>
+
+
+
+
+Examples:
+* `list`<br>
+  `time 1`<br>
+  16 day(s), 5 hour(s) left.
+* `list` <br>
+  `time 2`<br>
+  Task is overdue!
 
 
 
