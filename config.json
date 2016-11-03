@@ -1,7 +1,7 @@
 {
-  "appTitle" : "Over-Do-It",
+  "appTitle" : "TaskList",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.json",
-  "taskListFilePath" : "./data/tasklist.xml",
+  "taskListFilePath" : "data/tasklist.xml",
   "taskListName" : "TaskList"
 }

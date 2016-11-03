@@ -5,13 +5,13 @@
 
 
 
-# User Guide
+# Survival Guide
 <br>
 
 
 
 
-* [Starting the program](#starting-the-program)
+* [Getting Started](#starting-the-program)
 * [Introduction](#introduction)
    * [Tasklist](#tasklist)
    * [Task Card Indicator](#task-card-indicator)
@@ -32,10 +32,13 @@
    * [Mark](#mark-a-task--mark)
    * [Unmark](#unmark-a-task--unmark)
    * [Undo](#undo-a-task--undo)
+   * [Time](#check-the-time-remaining--time)
    * [Clear](#clearing-all-entries--clear)
    * [Exit](#exiting-the-program--exit)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
+
+
 
 
 
@@ -47,12 +50,12 @@
 
 
 0. Ensure that you have installed Java version `1.8.0_60` or later on your computer.<br>
-> This program will not work with earlier versions of java including java 8.
+> This program will not work with earlier versions of java including java 8. 
 
 
 
 
-1. Download the latest version of `Task.List.jar` from the releases tab.
+1. Download the latest version of `Over-Do-It.jar` from the releases tab.
 
 
 
@@ -64,8 +67,6 @@
 
 3. Double click the file to start the application. The application should run and GUI should appear shortly.<br><br>
 <img src="images/Ui.png">
-
-
 
 
 4. Type the command in the command box at the top and press <kbd>Enter</kbd> to execute the command.<br>
@@ -102,8 +103,6 @@ After startup, the application will always show overdue tasks, if any, and tasks
 
 
 Interactive tasklist (left panel) and Overall tasklist (right panel) are sorted in chronological order starting from the earliest date.
-
-
 
 
 Sorted in order:
@@ -236,7 +235,7 @@ Sorted in order:
 > * Words in `UPPER_CASE` are the parameters.
 > * Items in `SQUARE_BRACKETS` are optional.
 > * Items with `...` after them can have multiple instances.
-> * Order of parameters are fixed.
+> * Order of parameters are fixed. 
 
 
 <br>
@@ -247,17 +246,17 @@ Format: `help`
 
 
 > Help is also shown if you press <kbd>F1</kbd>
-
+ 
 <br>
 ### Adding a task : `add`
-Adds a task to the task list<br>
+If you want to add the a task to the TaskList, here are the format to follow<br>
 Format: `add TITLE [d/DETAILS] [s/START DATE TIME] [e/END DATE TIME] [t/TAG]...`
 
 
 > Title, details and tags are alphanumeric. Date and time are numeric.
 >
 > Date and time is in 24hr format : `DDMMYY HHMM`
->
+> 
 > Tasks can have any number of tags (including 0)
 >
 > Floating tasks can be added without any date and time
@@ -265,17 +264,17 @@ Format: `add TITLE [d/DETAILS] [s/START DATE TIME] [e/END DATE TIME] [t/TAG]...`
 
 
 
-Examples:
+Examples: 
 * `add CS1020 Tutorial d/many questions e/05102016 1200  t/needhelp`
 * `add Meeting d/for project s/05102016 1200 e/05102016 1400 t/priority1`
 * `add CS1010 Take home lab d/hard to do s/05102016 1200`
 * `add CS2103 Project d/hard to do`
 * `add CS1231 Mid-Term Test`
-
-
 <br>
+
+
 ### Listing tasks : `list`
-Lists the stipulated tasks in the task list <br>
+This command help you to lists the stipulated tasks in the task list <br>
 Format: `list [PARAMETERS]`
 
 
@@ -301,7 +300,7 @@ list all tasks for the week
 
 <br>
 ### Finding tasks : `find`
-Finds tasks whose title, description, date, time and tags contain any of the given keywords.<br>
+If you want to find tasks whose title, description, date, time and tags contain any of the information you want to search for.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 
@@ -312,7 +311,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 
 
-Examples:
+Examples: 
 * `find cs2103`<br>
   Display tasks containing `CS2103` and `cs2103`
 * `find cs1010 15 2016`<br>
@@ -323,22 +322,22 @@ Examples:
 
 <br>
 ### Set storage file location : `storage`
-Changing the storage file location. <br>
+Saving the TaskList to anywhere you want. <br>
 Format: `storage FILEPATH`
 
 
 
 
 > Task list data are saved in a file called `data\tasklist.xml` in the root folder by default.
->
+> 
 > The file name must end in `.xml` for it to be acceptable to the program.
 >
 > `Note`: The previous storage file will be deleted.
+> 
+> Irreversible with `undo`
 
 
-
-
-Example:
+Example: 
 * `storage \folder\file.xml` <br>
   Storage file location has been changed to `\folder\file.xml`.
 * `storage \data\newtasklist.xml` <br>
@@ -347,7 +346,7 @@ Example:
 
 <br>
 ### Edit a task : `edit`
-Edit the task’s information from the task list <br>
+Edit any information you want to edit from the task <br>
 Format: `edit INDEX [TITLE] [d/DETAILS] [s/STARTTIME] [e/ENDTIME]`
 
 
@@ -371,24 +370,24 @@ Examples:
 
 <br>
 ### Deleting a task : `delete`
-Deletes the specified task from the task list. <br>
+Delete any task if you is not needed or not important<br>
 Format: `delete INDEX`
 
 
 
 
-> Deletes the task at the specified `INDEX`.
+> Deletes the task at the specified `INDEX`. 
 > The index refers to the index number shown in the most recent listing.
 > The index **must be a positive integer** 1, 2, 3, ...
 
 
 
 
-Examples:
+Examples: 
 * `list`<br>
   `delete 2`<br>
   Deletes the 2nd task in the task list.
-* `find cs2103`<br>
+* `find cs2103`<br> 
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
 
@@ -408,11 +407,11 @@ Format: `select INDEX`
 
 
 
-Examples:
+Examples: 
 * `list`<br>
   `select 2`<br>
   Selects the 2nd task in the task list.
-* `find CS2103` <br>
+* `find CS2103` <br> 
   `select 1`<br>
   Selects the 1st task in the results of the `find` command.
 
@@ -420,7 +419,7 @@ Examples:
 <br>
 <!-- @@author A0138516A -->
 ### Mark a task : `mark`
-Mark the task as completed at the specified ‘INDEX’.<br>
+You can mark the task as completed at the specified ‘INDEX’.<br>
 Format: `mark INDEX`
 
 
@@ -429,18 +428,18 @@ Format: `mark INDEX`
 > The index **must be a positive integer** 1, 2, 3, ...
 
 
-Examples:
+Examples: 
 * `list`<br>
   `mark 2`<br>
   Marks the 2nd task in the task list.
-* `find CS2103` <br>
+* `find CS2103` <br> 
   `mark 1`<br>
   Marks the 1st task in the results of the `find` command.
 
 
 <br>
 ### Unmark a task : `unmark`
-Unmark the task as not completed at the specified ‘INDEX’.<br>
+You can unmark the task as not completed at the specified ‘INDEX’.<br>
 Format: `unmark INDEX`
 
 
@@ -449,18 +448,18 @@ Format: `unmark INDEX`
 > The index **must be a positive integer** 1, 2, 3, ...
 
 
-Examples:
+Examples: 
 * `list`<br>
   `unmark 2`<br>
   Unmarks the 2nd task in the task list.
-* `find Homework 2` <br>
+* `find Homework 2` <br> 
   `unmark 1`<br>
   Unmarks the 1st task in the results of the `find` command.
 
 
 <br>
 ### Undo a task : `undo`
-Undo the previous command.<br>
+You can undo the previous command if you want.<br>
 Format: `undo`
 
 
@@ -471,46 +470,50 @@ Format: `undo`
 
 
 
-Examples:
+Examples: 
 * `mark 1`<br>
   `undo`<br>
   Undo the previous command, and the first task will be unmark.
-* `add CS2103` <br>
+* `add CS2103` <br> 
   `undo`<br>
   Undo the previous command, added task will be removed.
 
 
 <br>
+ <!-- @@author A0153837X -->
+### Check the time remaining : `time`
+Gives the time remaining for a task (in days and hours) at the specified ‘INDEX’.<br>
+Format: `time INDEX`
+ 
+ 
+ > Gives the time remaining to the deadline/ event <br>
+ > The index refers to the index number shown in the most recent listing.<br>
+ > The index **must be a positive integer** 1, 2, 3, ...
+ 
+ 
+ Examples:
+ * `list`<br>
+   `time 1`<br>
+   16 day(s), 5 hour(s) left.
+ * `list` <br>
+   `time 2`<br>
+   Task is overdue!
+
+
+  <!-- @@author A0138516A -->
+
+
+<br>
 ### Clearing all entries : `clear`
-Clears all tasks from the task list.<br>
+Have a  fresh start with everything cleared<br>
 Format: `clear`  
 
 
 
 
 > `Note`: Clearing all task will remove all entries in the task list
-
-
-
-<br>
-<!-- @@author A0153837X -->
-### Check the time remaining for a task : `time`
-Gives the time remaining for a task (in days and hours) at the scecified ‘INDEX’.<br>
-Format: `time INDEX`
-
-
-> Gives the time remaining to the deadline/ event <br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
-
-
-Examples:
-* `list`<br>
-  `time 1`<br>
-  16 day(s), 5 hour(s) left.
-* `list` <br>
-  `time 2`<br>
-  Task is overdue!
+> 
+> Irreversible with `undo`
 
 
 <br>
@@ -531,7 +534,7 @@ Format: `exit`
 <br>
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with
+**A**: Install the app in the other computer and overwrite the empty data file it creates with 
        the file that contains the data of your previous Address Book folder.
 
 
@@ -555,7 +558,7 @@ Format: `exit`
 
 
 
-Examples:
+Examples: 
   * `add CS1020 Tutorial d/many questions e/05102016 1200  t/needhelp`
   * `add Meeting d/for project s/05102016 1200 e/05102016 1400 t/priority1`
   * `add CS1010 Take home lab d/hard to do s/05102016 1200`
@@ -572,7 +575,7 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `list’<br>
   list all tasks
   * `list completed’<br>
@@ -596,7 +599,7 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `find cs2103`<br>
   Display tasks containing `CS2103` and `cs2103`
   * `find cs1010 15 2016`<br>
@@ -614,7 +617,7 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `storage \folder\file.xml` <br>
   Storage file location has been changed to `\folder\file.xml`.
   * `storage \data\newtasklist.xml` <br>
@@ -630,7 +633,7 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `list`<br>
   `edit 1 d/new updates`<br>
   Edits the 1st task in the task list, changing the task description to `new updates`.
@@ -648,11 +651,11 @@ Examples:
 
 
 
-Examples:
+Examples: 
   *  `list`<br>
   `delete 2`<br>
   Deletes the 2nd task in the task list.
-  * `find cs2103`<br>
+  * `find cs2103`<br> 
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
 
@@ -666,11 +669,11 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `list`<br>
   `select 2`<br>
   Selects the 2nd task in the task list.
-  * `find CS2103` <br>
+  * `find CS2103` <br> 
   `select 1`<br>
   Selects the 1st task in the results of the `find` command.
 
@@ -684,11 +687,11 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `list`<br>
   `mark 2`<br>
   Marks the 2nd task in the task list.
-  * `find CS2103` <br>
+  * `find CS2103` <br> 
   `mark 1`<br>
   Marks the 1st task in the results of the `find` command.
 
@@ -702,11 +705,11 @@ Examples:
 
 
 
-Examples:
+Examples: 
   * `list`<br>
   `unmark 2`<br>
   Unmarks the 2nd task in the task list.
-  * `find Homework 2` <br>
+  * `find Homework 2` <br> 
   `unmark 1`<br>
   Unmarks the 1st task in the results of the `find` command.
 
@@ -718,37 +721,34 @@ Examples:
 
 
 
-Examples:
+Examples: 
 * `mark 1`<br>
   `undo`<br>
   Undo the previous command, and the first task will be unmark.
-* `add CS2103` <br>
+* `add CS2103` <br> 
   `undo`<br>
   Undo the previous command, added task will be removed.
 
 
-
-
 <br>
-
+ <!-- @@author A0153837X -->
 **Time** : `time`
-<br>
+ <br>
 
 
 
 
-Examples:
-* `list`<br>
-  `time 1`<br>
-  16 day(s), 5 hour(s) left.
-* `list` <br>
-  `time 2`<br>
-  Task is overdue!
+ Examples:
+ * `list`<br>
+   `time 1`<br>
+   16 day(s), 5 hour(s) left.
+ * `list` <br>
+   `time 2`<br>
+   Task is overdue!
+ <br>
+  <!-- @@author A0138516A -->
 
 
-
-
-<br>
 **Clear** : `clear`
 
 
@@ -756,3 +756,6 @@ Examples:
 
 <br>
 **Exit** : `exit`
+`
+
+
