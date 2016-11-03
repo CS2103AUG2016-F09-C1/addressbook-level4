@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <tasklist>
     <tasks>
-        <title>Alice Pauline</title>
-        <startDate>010101</startDate>
+        <title>Exam Revision</title>
         <description>studying in NUS</description>
-        <dueDate>020202</dueDate>
+        <startDateTime>01012001</startDateTime>
+        <endDateTime>02022002</endDateTime>
         <isCompleted>false</isCompleted>
-        <tagged>friends</tagged>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>urgent</tagged>
     </tasks>
     <tasks>
-        <title>Benson Meier</title>
-        <startDate>300303</startDate>
+        <title>Upcoming Quiz</title>
         <description>have a hard time in comsci</description>
-        <dueDate>040404</dueDate>
+        <startDateTime>30032003 1300</startDateTime>
+        <endDateTime>04042004 1700</endDateTime>
         <isCompleted>false</isCompleted>
-        <tagged>owesMoney</tagged>
-        <tagged>friends</tagged>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>notime</tagged>
+        <tagged>toughlife</tagged>
     </tasks>
     <tasks>
-        <title>Carl Kurz</title>
-        <startDate>050505</startDate>
-        <description>likes to play too hard with Bensen</description>
-        <dueDate>060606</dueDate>
+        <title>Competition 2006</title>
+        <description>train harder</description>
+        <startDateTime>05052005</startDateTime>
+        <endDateTime>06062006</endDateTime>
         <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
     </tasks>
     <tasks>
-        <title>Daniel Meier Failure</title>
-        <startDate>051114</startDate>
-        <description>likes Carl</description>
-        <dueDate>101118</dueDate>
+        <title>Test Failure</title>
+        <description>study harder</description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
         <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
     </tasks>
     <tasks>
-        <title>Elle Meyer</title>
-        <startDate>010101</startDate>
-        <description>love triangle with Daniel</description>
-        <dueDate>100412</dueDate>
+        <title>Tutorial 1</title>
+        <description>refer to lecture notes</description>
+        <startDateTime>01012001</startDateTime>
+        <endDateTime>10042012</endDateTime>
         <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
     </tasks>
     <tasks>
-        <title>Fiona Kunz Failure</title>
-        <startDate>030303</startDate>
-        <description>ditched Elle</description>
-        <dueDate>050113</dueDate>
+        <title>Quiz Failure</title>
+        <description>keep trying</description>
+        <startDateTime>03032003</startDateTime>
+        <endDateTime>05012013</endDateTime>
         <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
     </tasks>
     <tasks>
-        <title>George Best</title>
-        <startDate>040404</startDate>
-        <description>get together with Fiona</description>
-        <dueDate>050603</dueDate>
+        <title>Task Name</title>
+        <description>Description Name</description>
+        <startDateTime>04042004</startDateTime>
+        <endDateTime>05062014</endDateTime>
         <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
     </tasks>
     <tags>
-        <tagName>friends</tagName>
+        <tagName>urgent</tagName>
     </tags>
     <tags>
-        <tagName>owesMoney</tagName>
+        <tagName>notime</tagName>
+    </tags>
+    <tags>
+        <tagName>toughlife</tagName>
     </tags>
 </tasklist>

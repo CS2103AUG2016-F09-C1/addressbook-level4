@@ -71,13 +71,12 @@ public class AddCommand extends CommandUndoExtension {
     @Override
     public CommandResult undo() {
     	assert model != null;
-    	try{
+    	try {
     		model.deleteTask(toAdd);
-    	}catch(TaskNotFoundException e){
+    	}catch (TaskNotFoundException e) {
     		return new CommandResult("There is no such task");
     	}
     	return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + toAdd);
-    	
     }
     // @@author
 

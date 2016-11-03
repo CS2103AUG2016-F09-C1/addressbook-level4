@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 
 import seedu.tasklist.commons.core.EventsCenter;
 import seedu.tasklist.commons.events.storage.ChangePathEvent;
+import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0138516A
 /**
@@ -32,7 +33,7 @@ public class StorageCommand extends Command {
 	public StorageCommand(String filepath) {
 		this.filepath = filepath;
 	}
-	
+		
 	  /**
      * Convenience constructor using raw values.
      *
@@ -44,12 +45,12 @@ public class StorageCommand extends Command {
 		if (!file.isDirectory() && !filepath.contains(".xml")) {
 			return new CommandResult(MESSAGE_FILE_PATH_NOT_EXIST);
 		}
-				
+		CommandHistory.addCommandHistory(this);		
 		EventsCenter.getInstance().post(new ChangePathEvent(filepath));
 		model.updateTaskListAfterFilePathChange();
 		return new CommandResult(MESSAGE_CHANGE_PATH_SUCCESS + filepath);
 	}
-	
+
 	 /**
      * Parses arguments in the context of the storage command.
      *

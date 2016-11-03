@@ -21,7 +21,7 @@ public class FileUtil {
     }
     
     //@@author A0138516A
-    /**To delete the file from the previous file location**/
+    /**Delete the file from the previous file location**/
     public static void deletePreviousFile(String filepath) throws IOException{
     	File deleteFile = new File(filepath);
     	deleteFile.delete();   	

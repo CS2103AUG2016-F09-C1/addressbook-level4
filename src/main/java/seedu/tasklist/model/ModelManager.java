@@ -127,7 +127,6 @@ public class ModelManager extends ComponentManager implements Model {
     	taskList.replace(beforeEdit, afterEdit);
     	updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
-    	
     }
     
     //@@author A0153837X

@@ -80,10 +80,10 @@ public class EditCommand extends CommandUndoExtension {
     
     // @@author A0138516A
     @Override
-    public CommandResult undo(){
-    	try{
-    	model.unDoEdit(beforeEdit,afterEdit);
-    	}catch(TaskNotFoundException e){
+    public CommandResult undo() {
+    	try {
+    		model.unDoEdit(beforeEdit,afterEdit);
+    	} catch (TaskNotFoundException e) {
     		return new CommandResult("There is no such task");
     	}
 		return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + afterEdit);

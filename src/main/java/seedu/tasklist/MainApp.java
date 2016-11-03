@@ -192,7 +192,7 @@ public class MainApp extends Application {
     @Subscribe
     public void ChangePathRequestEvent(ChangePathEvent event){
     	 logger.info(LogsCenter.getEventHandlingLogMessage(event));
-    	 String previousFilePath = config.getTaskListFilePath();
+    	 String previousFilePath = config.getTaskListFilePath().trim();
     	 config.setTaskListFilePath(event.toString());
     	 try{
     		 ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
