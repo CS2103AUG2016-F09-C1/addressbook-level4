@@ -25,7 +25,6 @@ public class MainWindowTest extends TaskListGuiTest {
     @Test
     public void mainMenu_usingMenu_maximizedWindow() {       
         mainMenu.toggleFullScreenUsingMenu();
-        mainMenu.toggleFullScreenUsingMenu();
         assertTrue(mainMenu.isFullScreen());
     }
     

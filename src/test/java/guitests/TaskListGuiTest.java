@@ -70,6 +70,9 @@ public abstract class TaskListGuiTest {
         FxToolkit.showStage();
         while (!stage.isShowing());
         mainGui.focusOnMainApp();
+        if (mainMenu.isFullScreen()) {
+            mainMenu.toggleFullScreen();
+        }
     }
 
     /**
