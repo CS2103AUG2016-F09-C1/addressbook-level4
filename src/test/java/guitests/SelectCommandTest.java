@@ -6,7 +6,7 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.SelectCommand;
 import static org.junit.Assert.assertEquals;
 
-//@@author A0146840E
+//@@author A0140019W
 public class SelectCommandTest extends TaskListGuiTest {
 
 
@@ -22,12 +22,25 @@ public class SelectCommandTest extends TaskListGuiTest {
         int middleIndex = taskCount / 2;
         assertSelectionSuccess(middleIndex); //a task in the middle of the list
 
+        //Testing for boundary cases
         assertSelectionInvalidIndex(taskCount + 1); //invalid index
-        
-        assertSelectionInvalid(0); //invalid
-        assertSelectionInvalid(-1); //invalid
+        assertSelectionInvalidIndex(taskCount + 2); //invalid index
+        assertSelectionInvalid(0); //invalid index
+        assertSelectionInvalid(-1); //invalid index
     }
-
+    
+    @Test
+    public void selectTask_invalidCommand(){
+        commandBox.runCommand("select @");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, SelectCommand.MESSAGE_USAGE));
+        
+        commandBox.runCommand("select first");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, SelectCommand.MESSAGE_USAGE));
+        
+        commandBox.runCommand("select 1,");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, SelectCommand.MESSAGE_USAGE));
+    }
+    
     @Test
     public void selectTask_emptyList(){
         commandBox.runCommand("clear");
