@@ -11,44 +11,57 @@ import seedu.tasklist.testutil.TestTask;
 public class UnmarkCommandTest extends TaskListGuiTest {
 
     @Test
-    public void unmark() {
+    public void unmarkTask_nonEmptyList_successResultMessage() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
+        commandBox.runCommand("mark " + 1);
+        commandBox.runCommand("mark " + 1);
+        
+        assertUnmarkSuccess(currentList.length, currentList[0], currentList);
+        assertUnmarkSuccess(currentList.length, currentList[1], currentList);
+    }
+
+    @Test
+    public void unmarkTask_nonEmptyList_invalidTaskIndexResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
-        //mark tasks
-        commandBox.runCommand("mark " + 1);
-        commandBox.runCommand("mark " + 1);
-        
-        //unmark first task
-        assertUnmarkSuccess(currentList.length, currentList[0]);
-        
-        //unmark next task
-        assertUnmarkSuccess(currentList.length, currentList[1]);
-        
-        //unmark task that don't exist
-        commandBox.runCommand("unmark -10");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
-        commandBox.runCommand("unmark -1");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
         commandBox.runCommand("unmark " + (currentList.length + 1));
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         commandBox.runCommand("unmark " + (currentList.length + 10));
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+    
+    @Test
+    public void unmarkTask_nonEmptyList_unmarkedTaskResultMessage() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
         
-        //unmark duplicate task
         commandBox.runCommand("unmark 1");
         assertResultMessage(UnmarkCommand.MESSAGE_UNMARKED_TASK);
         commandBox.runCommand("unmark " + currentList.length);
         assertResultMessage(UnmarkCommand.MESSAGE_UNMARKED_TASK);
-        
-        //invalid command
+    }
+    
+    @Test
+    public void unmarkTask_nonEmptyList_invalidCommandResultMessage() {
+        commandBox.runCommand("unmark -10");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
+        commandBox.runCommand("unmark -1");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
         commandBox.runCommand("unmarks 1");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand("unmark index");
         assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
     }
-
-    private void assertUnmarkSuccess(int index, TestTask taskToUnmark) {
+    
+    @Test
+    public void unmarkTask_emptyList_invalidTaskIndexResultMessage() {
+        commandBox.runCommand("unmark 1");
+        assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+    
+    private void assertUnmarkSuccess(int index, TestTask taskToUnmark, TestTask... currentList) {
         commandBox.runCommand("unmark " + index);
         taskToUnmark.setCompleted(false);
         

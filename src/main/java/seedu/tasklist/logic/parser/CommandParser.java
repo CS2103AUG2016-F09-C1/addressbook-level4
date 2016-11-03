@@ -18,7 +18,7 @@ import seedu.tasklist.logic.commands.Command;
  * Parser interface for interaction with the Command classes.
  */
 public interface CommandParser {
-        
+
     /**
      * Used for initial separation of command word and args.
      */
@@ -26,7 +26,6 @@ public interface CommandParser {
 
     final Pattern TASK_INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>.+)");
 
-    
     final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
@@ -57,7 +56,7 @@ public interface CommandParser {
     
     /**
      * Returns the specified index in the {@code command} IF a positive unsigned integer is given as the index.
-     *   Returns an {@code Optional.empty()} otherwise.
+     * Returns an {@code Optional.empty()} otherwise.
      */
     default Optional<Integer> parseIndex(String command) {
         final Matcher matcher = TASK_INDEX_ARGS_FORMAT.matcher(command.trim());

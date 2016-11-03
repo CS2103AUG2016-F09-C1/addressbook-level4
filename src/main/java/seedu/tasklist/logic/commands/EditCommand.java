@@ -19,7 +19,7 @@ import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0146840E
 /**
- * Edits a task identified using it's last displayed index from the task list.
+ * Edit a task in the task list.
  */
 public class EditCommand extends CommandUndoExtension {
     public static final String COMMAND_WORD = "edit";
@@ -40,6 +40,11 @@ public class EditCommand extends CommandUndoExtension {
 
     public EditCommand() {};
     
+    /**
+     * Edit a task identified using it's last displayed index from the task list.
+     * 
+     * @throws IllegalValueException if input contains invalid format
+     */
     public EditCommand(int targetIndex, String title, String startDateTime, String description, String endDateTime,
             Set<String> tags) throws IllegalValueException {
         this.targetIndex = targetIndex;
@@ -92,18 +97,20 @@ public class EditCommand extends CommandUndoExtension {
 
     //@@author A0146840E
     /**
-     * Combine the new editions with its original task
+     * Combines the new editions with its original task
+     * 
      * @param taskToEdit containing the parameters to change
      * @return new edited task
      * @throws IllegalValueException if input contains invalid format
      */
     private Task editTask(ReadOnlyTask taskToEdit) throws IllegalValueException {
         return new Task(editTitle(taskToEdit), editStartDateTime(taskToEdit), editDescription(taskToEdit),
-                editEndDateTime(taskToEdit), editTags(taskToEdit));
+                        editEndDateTime(taskToEdit), editTags(taskToEdit));
     }
     
     /**
      * Retrieve a Title by replacing the original Title with the new Title, if any.
+     * 
      * @param taskToEdit containing the parameters to change
      * @return Title with the edited Title
      */
@@ -113,6 +120,7 @@ public class EditCommand extends CommandUndoExtension {
     
     /**
      * Retrieve a Description by replacing the original Description with the new Description, if any.
+     * 
      * @param taskToEdit containing the parameters to change
      * @return Description with the edited Description
      */
@@ -122,6 +130,7 @@ public class EditCommand extends CommandUndoExtension {
     
     /**
      * Retrieve a DateTime by replacing the original DateTime with the new DateTime, if any.
+     * 
      * @param taskToEdit containing the parameters to change
      * @return DateTime with the edited DateTime 
      * @throws IllegalValueException if invalid DateTime format
@@ -135,6 +144,7 @@ public class EditCommand extends CommandUndoExtension {
     
     /**
      * Retrieve a DateTime by replacing the original DateTime with the new DateTime, if any.
+     * 
      * @param taskToEdit containing the parameters to change
      * @return DateTime with the edited DateTime 
      * @throws IllegalValueException if invalid DateTime format
@@ -148,6 +158,7 @@ public class EditCommand extends CommandUndoExtension {
     
     /**
      * Retrieve a UniqueTagList by replacing the original Tags with the new Tags, if any.
+     * 
      * @param taskToEdit containing the parameters to change
      * @return UniqueTagList containing the edited Tags
      */
@@ -173,7 +184,7 @@ public class EditCommand extends CommandUndoExtension {
         // Validate arg index
         Optional<Integer> index = parseIndex(matcher.group("targetIndex"));
         
-        if(!index.isPresent()){
+        if (!index.isPresent()) {
             return new IncorrectCommand(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }
         

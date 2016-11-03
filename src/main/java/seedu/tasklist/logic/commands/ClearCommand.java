@@ -20,6 +20,7 @@ public class ClearCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
+    //@@author A0146840E
     @Override
     public Command prepare(String args) {
         return new ClearCommand();

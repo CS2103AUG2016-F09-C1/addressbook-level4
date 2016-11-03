@@ -34,6 +34,7 @@ public class FindCommand extends Command {
         return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
     }
 
+    //@@author A0146840E
     /**
      * Parses arguments in the context of the find task command.
      *

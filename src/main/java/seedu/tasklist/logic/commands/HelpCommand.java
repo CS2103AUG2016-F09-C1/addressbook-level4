@@ -24,6 +24,13 @@ public class HelpCommand extends Command {
         return new CommandResult(SHOWING_HELP_MESSAGE);
     }
 
+    //@@author A0146840E
+    /**
+     * Parses arguments in the context of the help command.
+     *
+     * @param args should be empty
+     * @return the prepared command
+     */
     @Override
     public Command prepare(String args) {
         return new HelpCommand();

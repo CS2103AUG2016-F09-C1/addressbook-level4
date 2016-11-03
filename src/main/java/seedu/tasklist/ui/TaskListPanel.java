@@ -1,6 +1,5 @@
 package seedu.tasklist.ui;
 
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,6 +25,7 @@ public class TaskListPanel extends UiPart {
     private AnchorPane placeHolderPane;
     
     private int scrollIndex;
+    private int taskListSize;
 
     public enum Type {
         FILTERED_TASKLIST, MAIN_TASKLIST;
@@ -71,6 +71,7 @@ public class TaskListPanel extends UiPart {
     private void setConnections(ObservableList<ReadOnlyTask> taskList) {
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
+        taskListSize = taskList.size();
         setEventHandlerForSelectionChangeEvent();
     }
 
@@ -88,40 +89,33 @@ public class TaskListPanel extends UiPart {
         });
     }
 
+  //@@author A0146840E
     public void scrollTo(int index) {
-        Platform.runLater(() -> {
-            taskListView.scrollTo(index);
-        });
+        taskListView.scrollTo(index);
     }
 
-    //@@author A0146840E
     public void scrollToPrevious() {
-        Platform.runLater(() -> {
-            if (scrollIndex > 0) scrollTo(--scrollIndex);
-        });
+        if (scrollIndex > 0) {
+            scrollTo(--scrollIndex);
+        }
     }
 
     public void scrollToNext() {
-        Platform.runLater(() -> {
-            if (scrollIndex < 10) scrollTo(++scrollIndex);
-        });
+        if (scrollIndex < taskListSize - 1) {
+            scrollTo(++scrollIndex);
+        }
     }
     
     public void scrollToLast() {
-        Platform.runLater(() -> {
-            scrollIndex = 10;
-            scrollTo(scrollIndex);
-        });
+        scrollIndex = taskListSize - 1;
+        scrollTo(scrollIndex);
     }
     
     public void scrollToFirst() {
-        Platform.runLater(() -> {
-            scrollIndex = 0;
-            scrollTo(scrollIndex);
-        });
+        scrollIndex = 0;
+        scrollTo(scrollIndex);
     }
 
-    //@@author
     class TaskListViewCell extends ListCell<ReadOnlyTask> {
 
         public TaskListViewCell() {
@@ -131,17 +125,23 @@ public class TaskListPanel extends UiPart {
         protected void updateItem(ReadOnlyTask task, boolean empty) {
             super.updateItem(task, empty);
 
-            if (empty || task == null) {
+            if (empty || task == null ) {
                 setGraphic(null);
                 setText(null);
             } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
             } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
-                setGraphic(TaskCard.load(task, -1).getLayout());
+                if (task.isCompleted()) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    setGraphic(TaskCard.load(task, -1).getLayout());
+                }
             }
         }
     }
 
+    //@@author
     public ListView<ReadOnlyTask> getTaskListView() {
         return taskListView;
     }

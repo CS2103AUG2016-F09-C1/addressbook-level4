@@ -14,8 +14,9 @@ import seedu.tasklist.testutil.TestTask;
 
 //@@author A0146840E
 public class EditCommandTest extends TaskListGuiTest {
+
     @Test
-    public void edit() {
+    public void editTask_nonEmptyList_successResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
@@ -34,9 +35,16 @@ public class EditCommandTest extends TaskListGuiTest {
         assertEditEndTimeSuccess(6, "1234", currentList[5]);
         
         //edit everything
-        assertEditSuccess(7, "title", "description", "11012014 1100", "11012014 1200", currentList[6]);
+        assertEditSuccess(7, "title", "description", "11012014 1100", "11012014 1200", currentList[6]); 
+    }
 
-        //invalid date time entry
+    @Test
+    public void editTask_nonEmptyList_invalidDateTimeResultMessage() {
+        TestTask[] currentList = td.getTypicalTasks();
+        commandBox.runCommand("list");
+        
+        assertEditSuccess(7, "title", "description", "11012014 1100", "11012014 1200", currentList[6]);
+        
         commandBox.runCommand("edit 1 s/01019999");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
         commandBox.runCommand("edit 1 e/01010000");
@@ -61,20 +69,23 @@ public class EditCommandTest extends TaskListGuiTest {
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
         commandBox.runCommand("edit 7 e/10012014 0000");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
-        
-        //edit to empty list
+    }
+    
+    @Test
+    public void editTask_nonEmptyList_invalidCommandResultMessage() {
+        commandBox.runCommand("edits 1");
+        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+        commandBox.runCommand("edit index");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+    }
+    
+    @Test
+    public void editTask_emptyList() {
         commandBox.runCommand("clear");
         commandBox.runCommand("edit 1 CS2103");
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         commandBox.runCommand("edit 10 CS2103");
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
-
-        //invalid command
-        commandBox.runCommand("edits 1");
-        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
-        commandBox.runCommand("edit index");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
-        
     }
 
     private void assertEditTitleSuccess(int index, String title, TestTask taskToEdit) {

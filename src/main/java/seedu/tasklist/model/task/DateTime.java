@@ -61,51 +61,106 @@ public class DateTime implements DateTimeComparator {
     }
 
     //@@author A0146840E
+    /**
+     * Check if this date time is after the compared DateTime.
+     */
     @Override
     public boolean isDateTimeAfter(DateTime dateTime) {
-        return (!isDateEmpty() && !dateTime.isDateEmpty()                                                   // isDateAfter
-                    && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate()))
-                
-                || (!isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()  // isDateEqualAndTimeAfter
-                    && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
-                    && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
-                            || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime())))
-                
-                || (isDateEmpty() && !isTimeEmpty() && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()    // isNoDateAndTimeAfter
-                        && getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime()));
+        return isDateAfter(dateTime) || isDateEqualAndTimeAfter(dateTime) || isNoDateAndTimeAfter(dateTime);
     }
 
+    /**
+     * Check if this date is after the compared DateTime's date.
+     */
+    private boolean isDateAfter(DateTime dateTime) {
+        return !isDateEmpty() && !dateTime.isDateEmpty() && getDate().getLocalDate().isAfter(dateTime.getDate().getLocalDate());
+    }
+    
+    /**
+     * Check if both dates are equal and the compared DateTime's time is after this object's time
+     */
+    private boolean isDateEqualAndTimeAfter(DateTime dateTime) {
+        return !isDateEmpty() && !isTimeEmpty() && !dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
+                && getDate().getLocalDate().isEqual(dateTime.getDate().getLocalDate())
+                && (getTime().getLocalTime().equals(dateTime.getTime().getLocalTime())
+                || getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime()));
+    }
+    
+    /**
+     * Check if both dates are empty and the compared DateTime's time is after this object's time
+     */
+    private boolean isNoDateAndTimeAfter(DateTime dateTime) {
+        return isDateEmpty() && !isTimeEmpty() 
+                && dateTime.isDateEmpty() && !dateTime.isTimeEmpty()
+                && getTime().getLocalTime().isAfter(dateTime.getTime().getLocalTime());
+    }
+
+    /**
+     * Check if this date time is before current local date time.
+     */
     @Override
     public boolean isDateTimeAfterCurrentDateTime() {                
-        return (!isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now()))                           // isDateAfter
-                
-                 || (!isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now())      // isDateEqualAndTimeAfter 
-                    && getTime().getLocalTime().isBefore(LocalTime.now()))
-                
-                 || (isDateEmpty() && !isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now()));    // isNoDateAndTimeAfter
+        return isDateAfterCurrentDate() || isDateEqualAndTimeAfterCurrentTime() || isNoDateAndTimeAfterCurrentTime();
     }
 
+    /**
+     * Check if this date is after the current local date
+     */
+    private boolean isDateAfterCurrentDate() {
+        return !isDateEmpty() && getDate().getLocalDate().isBefore(LocalDate.now());
+    }
+   
+    /**
+     * Check if this date is equal to current local date and this time is after the current local time
+     */
+    private boolean isDateEqualAndTimeAfterCurrentTime() {
+        return !isDateEmpty() && !isTimeEmpty() && getDate().getLocalDate().isEqual(LocalDate.now()) 
+                && getTime().getLocalTime().isBefore(LocalTime.now());
+    }
+    
+    /**
+     * Check if this date is empty and this time is not empty and this time is after the current local time
+     */
+    private boolean isNoDateAndTimeAfterCurrentTime() {
+        return isDateEmpty() && !isTimeEmpty() && getTime().getLocalTime().isBefore(LocalTime.now());
+    }
+
+    /**
+     * Check if date is equal to current local date.
+     */
     @Override
     public boolean isDateEqualCurrentDate() {
         return !isDateEmpty() && getDate().getLocalDate().isEqual(LocalDate.now());
     }
     
+    /**
+     * Check if date is equal to one week from current local date.
+     */
     @Override
     public boolean isDateEqualCurrentDateTillUpcomingWeek() {
         return !isDateEmpty() && getDate().getLocalDate().isAfter(LocalDate.now().minusDays(1))
                 && getDate().getLocalDate().isBefore(LocalDate.now().plusWeeks(1));
     }
     
+    /**
+     * Check if date and time is empty.
+     */
     @Override
     public boolean isDateTimeEmpty() {
         return getDate().getLocalDate() == null && getTime().getLocalTime() == null;
     }
 
+    /**
+     * Check if date is empty.
+     */
     @Override
     public boolean isDateEmpty() {
         return getDate().getLocalDate() == null;
     }
 
+    /**
+     * Check if time is empty.
+     */
     @Override
     public boolean isTimeEmpty() {
         return getTime().getLocalTime() == null;

@@ -34,6 +34,7 @@ public class MainWindow extends UiPart {
     private TaskListPanel filteredTaskListPanel;
     private TaskListPanel mainTaskListPanel;
     private ResultDisplay resultDisplay;
+    @SuppressWarnings("unused")
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
     private Config config;

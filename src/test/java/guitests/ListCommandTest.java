@@ -10,9 +10,7 @@ import seedu.tasklist.testutil.TypicalTestTasks;
 public class ListCommandTest extends TaskListGuiTest {
 
     @Test
-    public void list() {
-        
-        //list
+    public void listTasks_nonEmptyList_successResultMessage() {
         commandBox.runCommand("list");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, ""));
         
@@ -38,8 +36,20 @@ public class ListCommandTest extends TaskListGuiTest {
         commandBox.runCommand("list week");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "the week"));
         assertListSize(2);
-        
-        //list empty list
+    }
+    
+    @Test
+    public void listTasks_nonEmptyList_invalidCommandResultMessage() {
+        commandBox.runCommand("lists");
+        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+        commandBox.runCommand("lists 0");
+        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+        commandBox.runCommand("list Johnny");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+    }
+    
+    @Test
+    public void listTasks_emptyList() {
         commandBox.runCommand("clear");
         
         commandBox.runCommand("list today");
@@ -47,14 +57,6 @@ public class ListCommandTest extends TaskListGuiTest {
         
         commandBox.runCommand("list week");
         assertResultMessage(ListCommand.MESSAGE_NO_TASK_WEEK);
-        
-        //invalid command
-        commandBox.runCommand("lists");
-        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
-        commandBox.runCommand("lists 0");
-        assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
-        commandBox.runCommand("list Johnny");
-        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
     }
     
 }

@@ -26,6 +26,7 @@ public class Task implements ReadOnlyTask {
 
     /**
      * Every field must be present and not null.
+     * 
      * @throws IllegalValueException 
      */
     public Task(Title title, DateTime startDateTime, Description description, DateTime endDateTime, UniqueTagList tags) throws IllegalValueException {
@@ -73,6 +74,7 @@ public class Task implements ReadOnlyTask {
     //@@author A0146840E
     /**
      * Check whether startDateTime is before endDateTime
+     * 
      * @throws IllegalValueException if startDateTime is before endDateTime
      */
     private void validateDateTime(DateTime startDateTime, DateTime endDateTime) throws IllegalValueException {

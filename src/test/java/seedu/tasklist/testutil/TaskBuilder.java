@@ -5,7 +5,7 @@ import seedu.tasklist.model.tag.Tag;
 import seedu.tasklist.model.task.*;
 
 /**
- *
+ * Build tasks for testing
  */
 public class TaskBuilder {
 
