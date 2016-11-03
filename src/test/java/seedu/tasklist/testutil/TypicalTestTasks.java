@@ -10,7 +10,7 @@ import seedu.tasklist.model.task.*;
  */
 public class TypicalTestTasks {
 
-    public static TestTask task1, task2, task3, task4, task5, task6, task7, task8, task9,taskTest;
+    public static TestTask task1, task2, task3, task4, task5, task6, task7, task8, task9, taskTest;
 
     public TypicalTestTasks() {
         try {

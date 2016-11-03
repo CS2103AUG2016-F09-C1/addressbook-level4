@@ -14,7 +14,7 @@ import seedu.tasklist.testutil.TypicalTestTasks;
 public class UndoCommandTest extends TaskListGuiTest {
 
 	@Test
-	public void undo_add_success() {
+	public void undoAddTaskSuccess() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 
@@ -27,7 +27,7 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undo_delete_success() {
+	public void undoDeleteTaskSuccess() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 		// add one task
@@ -40,7 +40,7 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undo_edit_success() {
+	public void undoEditTaskSuccess() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 		// add one task
@@ -54,7 +54,7 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undo_markAndUnmark_success() {
+	public void undoMarkAndUnmarkSuccess() {
 		// Test for mark command
 		TestTask[] currentList = td.getTypicalTasks();
 		TestTask beforeMarkTitle = currentList[0];

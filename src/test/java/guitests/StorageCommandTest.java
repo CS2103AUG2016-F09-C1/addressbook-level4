@@ -21,11 +21,11 @@ public class StorageCommandTest extends TaskListGuiTest {
 	private String defaultConfigFile = "TestConfig.json";
 	private String testFileName = "testTaskList.xml";
 
-	Config Config = assertFilePathChange(defaultConfigFile);
+	private Config Config = assertFilePathChange(defaultConfigFile);
 
 	@Test
 	// Change File Path
-	public void storage_success() {
+	public void storageChangePathSuccess() {
 		commandBox.runCommand("storage " + testStorageCommandFilePath);
 		assertTrue(getPath(testStorageCommandFilePath).equals(testFileName));
 
@@ -33,14 +33,14 @@ public class StorageCommandTest extends TaskListGuiTest {
 
 	@Test
 	// Invalid Command
-	public void storage_unknownCommand() {
+	public void storageUnknownCommandSuccess() {
 		commandBox.runCommand("storages docs/");
 		assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
 	}
 
 	@Test
 	// Invalid file Path
-	public void storage_invalid() {
+	public void storageInvalidPathSuccess() {
 		commandBox.runCommand("storage doc");
 		assertResultMessage(StorageCommand.MESSAGE_FILE_PATH_NOT_EXIST);
 	}

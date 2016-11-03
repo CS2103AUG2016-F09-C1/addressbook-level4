@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 
 import seedu.tasklist.commons.core.EventsCenter;
 import seedu.tasklist.commons.events.storage.ChangePathEvent;
-import seedu.tasklist.model.task.UniqueTaskList.TaskNotFoundException;
 
 //@@author A0138516A
 /**
