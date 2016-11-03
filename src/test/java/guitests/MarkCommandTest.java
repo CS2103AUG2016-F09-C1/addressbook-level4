@@ -15,8 +15,8 @@ public class MarkCommandTest extends TaskListGuiTest {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
-        assertMarkSuccess(1, currentList[0], currentList);
-        assertMarkSuccess(1, currentList[1], currentList);     
+        assertMarkSuccess(1, currentList[0]);
+        assertMarkSuccess(1, currentList[1]);     
     }
 
     @Test
@@ -58,7 +58,7 @@ public class MarkCommandTest extends TaskListGuiTest {
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
     
-    private void assertMarkSuccess(int index, TestTask taskToMark, TestTask... currentList) {
+    private void assertMarkSuccess(int index, TestTask taskToMark) {
         commandBox.runCommand("mark " + index);
         taskToMark.setCompleted(true);
         

@@ -17,8 +17,8 @@ public class UnmarkCommandTest extends TaskListGuiTest {
         commandBox.runCommand("mark " + 1);
         commandBox.runCommand("mark " + 1);
         
-        assertUnmarkSuccess(currentList.length, currentList[0], currentList);
-        assertUnmarkSuccess(currentList.length, currentList[1], currentList);
+        assertUnmarkSuccess(currentList.length, currentList[0]);
+        assertUnmarkSuccess(currentList.length, currentList[1]);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class UnmarkCommandTest extends TaskListGuiTest {
         assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
     
-    private void assertUnmarkSuccess(int index, TestTask taskToUnmark, TestTask... currentList) {
+    private void assertUnmarkSuccess(int index, TestTask taskToUnmark) {
         commandBox.runCommand("unmark " + index);
         taskToUnmark.setCompleted(false);
         
