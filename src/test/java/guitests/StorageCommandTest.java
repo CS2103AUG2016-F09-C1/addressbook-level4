@@ -12,7 +12,6 @@ import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.commons.exceptions.DataConversionException;
 import seedu.tasklist.commons.util.ConfigUtil;
 import seedu.tasklist.logic.commands.StorageCommand;
-import seedu.tasklist.storage.Storage;
 
 //@@author A0138516A
 public class StorageCommandTest extends TaskListGuiTest {
@@ -21,7 +20,7 @@ public class StorageCommandTest extends TaskListGuiTest {
 	private String defaultConfigFile = "TestConfig.json";
 	private String testFileName = "testTaskList.xml";
 
-	private Config Config = assertFilePathChange(defaultConfigFile);
+	private Config config = assertFilePathChange(defaultConfigFile);
 
 	@Test
 	// Change File Path
