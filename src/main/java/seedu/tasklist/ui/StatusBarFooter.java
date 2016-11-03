@@ -62,7 +62,7 @@ public class StatusBarFooter extends UiPart {
         addSyncStatus();
         setSyncStatus("Not updated yet in this session");
         addSaveLocation();
-        setSaveLocation("./" + saveLocation);
+        setSaveLocation(saveLocation);
         registerAsAnEventHandler(this);
         addProgressBar(taskList);
     }
@@ -145,7 +145,7 @@ public class StatusBarFooter extends UiPart {
     /**To update new file path on the UI**/
     @Subscribe
     public void handleUpdatedFilePathEvent(ChangePathEvent event) {
-    	setSaveLocation("./"+event.toString());
+    	setSaveLocation(event.toString());
     }
     //@@author 
     
