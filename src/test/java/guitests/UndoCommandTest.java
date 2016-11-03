@@ -14,12 +14,12 @@ import seedu.tasklist.testutil.TypicalTestTasks;
 public class UndoCommandTest extends TaskListGuiTest {
 
 	@Test
-	public void undoAddTaskSuccess() {
+	public void undo_addTask() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 
 		// add one task
-		TestTask taskToAdd = TypicalTestTasks.taskTest;
+		TestTask taskToAdd = TypicalTestTasks.task10;
 		commandBox.runCommand(taskToAdd.getAddCommand());
 		TestUtil.addTasksToList(currentList, taskToAdd);
 		commandBox.runCommand("undo");
@@ -27,11 +27,11 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undoDeleteTaskSuccess() {
+	public void undo_deleteTask() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 		// add one task
-		TestTask taskToAdd = TypicalTestTasks.taskTest;
+		TestTask taskToAdd = TypicalTestTasks.task10;
 		commandBox.runCommand(taskToAdd.getAddCommand());
 		currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 		commandBox.runCommand("delete " + currentList.length);
@@ -40,11 +40,11 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undoEditTaskSuccess() {
+	public void undo_editTask() {
 		TestTask[] currentList = td.getTypicalTasks();
 		commandBox.runCommand("list");
 		// add one task
-		TestTask taskToAdd = TypicalTestTasks.taskTest;
+		TestTask taskToAdd = TypicalTestTasks.task10;
 		commandBox.runCommand(taskToAdd.getAddCommand());
 		currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 		Title beforeEditTitle = currentList[currentList.length - 1].getTitle();
@@ -54,7 +54,7 @@ public class UndoCommandTest extends TaskListGuiTest {
 	}
 
 	@Test
-	public void undoMarkAndUnmarkSuccess() {
+	public void undo_markAndUnmark() {
 		// Test for mark command
 		TestTask[] currentList = td.getTypicalTasks();
 		TestTask beforeMarkTitle = currentList[0];

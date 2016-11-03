@@ -25,7 +25,7 @@ public class StorageCommandTest extends TaskListGuiTest {
 
 	@Test
 	// Change File Path
-	public void storageChangePathSuccess() {
+	public void storage_changePath() {
 		commandBox.runCommand("storage " + testStorageCommandFilePath);
 		assertTrue(getPath(testStorageCommandFilePath).equals(testFileName));
 
@@ -33,14 +33,14 @@ public class StorageCommandTest extends TaskListGuiTest {
 
 	@Test
 	// Invalid Command
-	public void storageUnknownCommandSuccess() {
+	public void storage_UnknownCommand() {
 		commandBox.runCommand("storages docs/");
 		assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
 	}
 
 	@Test
 	// Invalid file Path
-	public void storageInvalidPathSuccess() {
+	public void storage_InvalidPath() {
 		commandBox.runCommand("storage doc");
 		assertResultMessage(StorageCommand.MESSAGE_FILE_PATH_NOT_EXIST);
 	}
