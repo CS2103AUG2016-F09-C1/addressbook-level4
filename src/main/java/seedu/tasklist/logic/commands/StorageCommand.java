@@ -21,8 +21,8 @@ public class StorageCommand extends Command {
 
 	public static final String MESSAGE_USAGE = COMMAND_WORD + ": Change the storage file location.\n"
 			+ "Parameters: FILEPATH\n" + "Example: \n" 
-			+ COMMAND_WORD + " \\data\\tasklist.xml\n"
-			+ COMMAND_WORD + " \\storagefile.xml";
+			+ COMMAND_WORD + " ./data/tasklist.xml\n"
+			+ COMMAND_WORD + " ./storagefile.xml";
 	public static final String MESSAGE_CHANGE_PATH_SUCCESS = "Storage file location has been updated to ";
 	public static final String MESSAGE_FILE_PATH_NOT_EXIST = "Requested storage file location does not exist!";
 
