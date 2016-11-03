@@ -2,10 +2,15 @@ package guitests;
 
 import static org.junit.Assert.assertTrue;
 import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
+
 import org.junit.Test;
 
 import seedu.tasklist.commons.core.Config;
 import seedu.tasklist.commons.core.Messages;
+import seedu.tasklist.commons.exceptions.DataConversionException;
+import seedu.tasklist.commons.util.ConfigUtil;
 import seedu.tasklist.logic.commands.StorageCommand;
 import seedu.tasklist.storage.Storage;
 
@@ -13,43 +18,29 @@ import seedu.tasklist.storage.Storage;
 public class StorageCommandTest extends TaskListGuiTest {
 
 	private String testStorageCommandFilePath = "src/test/data/StorageCommandTestFolder/testTaskList.xml";
+	private String defaultConfigFile = "TestConfig.json";
 	private String testFileName = "testTaskList.xml";
-	private final String COMMAND_WORD = "storage ";
-	private String defaultFilePath = "src/test/data/sandbox/tempTaskList.xml";
-	private String defaultConfigFile = "src/test/data/ConfigUtilTest/TestConfig.json";
-	
 
-	private Config config;
-	private Storage storage;
-	
-	/*@Before
-	 public void setup(){
-		config.setTaskListFilePath(defaultFilePath);
-		try {
-			ConfigUtil.saveConfig(config, defaultConfigFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		 storage.setTaskListFilePath(defaultFilePath);
+	private Config Config = assertFilePathChange(defaultConfigFile);
+
+	@Test
+	// Change File Path
+	public void storage_changePath() {
+		commandBox.runCommand("storage " + testStorageCommandFilePath);
+		assertTrue(getPath(testStorageCommandFilePath).equals(testFileName));
+
 	}
-*/
-	/*// Change File path
+
 	@Test
-	public void ChangeFilePath() {
-
-		assertFilePathChange(COMMAND_WORD + testStorageCommandFilePath, getPath(testStorageCommandFilePath));
-	}*/
-
 	// Invalid Command
-	@Test
-	public void invalidStorageCommand() {
+	public void storage_UnknownCommand() {
 		commandBox.runCommand("storages docs/");
 		assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
 	}
 
-	// Invalid file Path
 	@Test
-	public void invalidFilePath() {
+	// Invalid file Path
+	public void storage_InvalidPath() {
 		commandBox.runCommand("storage doc");
 		assertResultMessage(StorageCommand.MESSAGE_FILE_PATH_NOT_EXIST);
 	}
@@ -60,8 +51,27 @@ public class StorageCommandTest extends TaskListGuiTest {
 		return fileName;
 	}
 
-	private void assertFilePathChange(String filepath, String fileName) {
-		commandBox.runCommand(filepath);
-		assertTrue(fileName.equals(testFileName));
+	private Config assertFilePathChange(String filepath) {
+		Config initialTestConfig;
+		String configFilepathUsed = defaultConfigFile;
+
+		if (filepath != null) {
+			configFilepathUsed = filepath;
+		}
+
+		try {
+			Optional<Config> configOptional = ConfigUtil.readConfig(configFilepathUsed);
+			initialTestConfig = configOptional.orElse(new Config());
+		} catch (DataConversionException e) {
+			initialTestConfig = new Config();
+		}
+
+		// Save config file
+		try {
+			ConfigUtil.saveConfig(initialTestConfig, configFilepathUsed);
+		} catch (IOException e) {
+		}
+		return initialTestConfig;
 	}
+
 }

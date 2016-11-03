@@ -64,12 +64,12 @@ public class MarkCommand extends CommandUndoExtension {
 	public CommandResult undo() {
     	try{
     		model.unmarkTask(taskToMark);
-    	}catch (TaskNotFoundException pnfe) {
+    	} catch (TaskNotFoundException pnfe) {
             assert false : "The target task cannot be missing";
         } catch (TaskCompletionException e) {
             return new CommandResult("Task already un Mark");
         }
-    	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToMark);
+    	return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + taskToMark);
 	}
     // @@author
 

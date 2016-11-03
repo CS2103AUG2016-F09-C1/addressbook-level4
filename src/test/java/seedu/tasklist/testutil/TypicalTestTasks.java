@@ -10,7 +10,7 @@ import seedu.tasklist.model.task.*;
  */
 public class TypicalTestTasks {
 
-    public static TestTask task1, task2, task3, task4, task5, task6, task7, task8, task9;
+    public static TestTask task1, task2, task3, task4, task5, task6, task7, task8, task9, task10;
 
     public TypicalTestTasks() {
         try {
@@ -35,6 +35,9 @@ public class TypicalTestTasks {
                     .withEndDateTime("01102014").build();
             task9 = new TaskBuilder().withTitle("Hard Labor").withStartDateTime("07062001 2359")
                     .withDescription("need to get strong").withEndDateTime("03072015 0000").build();
+            
+            task10 = new TaskBuilder().withTitle("Order pizza").withStartDateTime("05112016 1030")
+                    .withDescription("need order two large pizza").withEndDateTime("05112016 1100").build();
             
         } catch (IllegalValueException e) {
             e.printStackTrace();

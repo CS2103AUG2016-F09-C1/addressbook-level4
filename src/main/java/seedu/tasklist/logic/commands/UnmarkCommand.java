@@ -69,7 +69,7 @@ public class UnmarkCommand extends CommandUndoExtension {
            } catch (TaskCompletionException e) {
                return new CommandResult("Task already Marked");
            }
-       	return new CommandResult(MESSAGE_UNDO+COMMAND_WORD+" "+taskToUnmark);
+       	return new CommandResult(MESSAGE_UNDO + COMMAND_WORD + " " + taskToUnmark);
    	}
     // @@author
 
