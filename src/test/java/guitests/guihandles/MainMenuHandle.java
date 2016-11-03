@@ -36,6 +36,11 @@ public class MainMenuHandle extends GuiHandle {
     }
     
     //@@author A0146840E
+    public void toggleFullScreenUsingMenu() {
+        clickOn("File", "FullScreen");
+        guiRobot.sleep(500);
+    }
+    
     public void toggleFullScreen() {
         useF11Accelerator();
     }
@@ -48,4 +53,28 @@ public class MainMenuHandle extends GuiHandle {
         guiRobot.push(KeyCode.F11);
         guiRobot.sleep(500);
     }
+    
+    public void selectPreviousCommandUsingMenu() {
+        clickOn("Navigate", "Commands", "Show Previous Command");
+        guiRobot.sleep(500);
+    }
+    
+    public void pressUpKey() {
+        useUpAccelerator();
+    }
+    
+    private void useUpAccelerator() {
+        guiRobot.push(KeyCode.UP);
+        guiRobot.sleep(500);
+    }
+    
+    public void pressDownKey() {
+        useDownAccelerator();
+    }
+    
+    private void useDownAccelerator() {
+        guiRobot.push(KeyCode.DOWN);
+        guiRobot.sleep(500);
+    }
+    
 }
