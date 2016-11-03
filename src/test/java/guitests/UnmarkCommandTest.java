@@ -20,10 +20,10 @@ public class UnmarkCommandTest extends TaskListGuiTest {
         commandBox.runCommand("mark " + 1);
         
         //unmark first task
-        assertUnmarkSuccess(currentList.length, currentList[0], currentList);
+        assertUnmarkSuccess(currentList.length, currentList[0]);
         
         //unmark next task
-        assertUnmarkSuccess(currentList.length, currentList[1], currentList);
+        assertUnmarkSuccess(currentList.length, currentList[1]);
         
         //unmark task that don't exist
         commandBox.runCommand("unmark -10");
@@ -48,7 +48,7 @@ public class UnmarkCommandTest extends TaskListGuiTest {
         assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
     }
 
-    private void assertUnmarkSuccess(int index, TestTask taskToUnmark, TestTask... currentList) {
+    private void assertUnmarkSuccess(int index, TestTask taskToUnmark) {
         commandBox.runCommand("unmark " + index);
         taskToUnmark.setCompleted(false);
         

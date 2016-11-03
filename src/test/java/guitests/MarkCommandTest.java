@@ -16,10 +16,10 @@ public class MarkCommandTest extends TaskListGuiTest {
         commandBox.runCommand("list");
         
         //mark first task
-        assertMarkSuccess(1, currentList[0], currentList);
+        assertMarkSuccess(1, currentList[0]);
         
         //mark next task
-        assertMarkSuccess(1, currentList[1], currentList);
+        assertMarkSuccess(1, currentList[1]);
         
         //mark task that don't exist
         commandBox.runCommand("mark -10");
@@ -44,7 +44,7 @@ public class MarkCommandTest extends TaskListGuiTest {
         assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
     }
 
-    private void assertMarkSuccess(int index, TestTask taskToMark, TestTask... currentList) {
+    private void assertMarkSuccess(int index, TestTask taskToMark) {
         commandBox.runCommand("mark " + index);
         taskToMark.setCompleted(true);
         
