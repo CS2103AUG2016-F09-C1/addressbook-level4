@@ -34,4 +34,18 @@ public class MainMenuHandle extends GuiHandle {
         guiRobot.push(KeyCode.F1);
         guiRobot.sleep(500);
     }
+    
+    //@@author A0146840E
+    public void toggleFullScreen() {
+        useF11Accelerator();
+    }
+    
+    public boolean isFullScreen() {
+        return primaryStage.isFullScreen();
+    }
+    
+    private void useF11Accelerator() {
+        guiRobot.push(KeyCode.F11);
+        guiRobot.sleep(500);
+    }
 }
