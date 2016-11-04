@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import seedu.tasklist.commons.core.Messages;
 import seedu.tasklist.logic.commands.ListCommand;
-import seedu.tasklist.testutil.TypicalTestTasks;
 
 //@@author A0146840E
 public class ListCommandTest extends TaskListGuiTest {
@@ -19,7 +18,7 @@ public class ListCommandTest extends TaskListGuiTest {
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, "completed "));
         assertListSize(1);
         
-        commandBox.runCommand(TypicalTestTasks.task9.getAddCommand());        
+        commandBox.runCommand("add overdue e/11112011");        
         commandBox.runCommand("list overdue");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, "overdue "));
         assertListSize(1);
@@ -28,14 +27,20 @@ public class ListCommandTest extends TaskListGuiTest {
         commandBox.runCommand("list floating");
         assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, "floating "));
         assertListSize(1);
+    }
+    
+    @Test
+    public void listTasks_nonEmptyList_noTaskResultMessage() {
+        commandBox.runCommand("list");
+        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS, ""));
         
         commandBox.runCommand("list today");
-        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "today"));
-        assertListSize(2);
+        assertResultMessage(ListCommand.MESSAGE_NO_TASK_TODAY);
+        assertListSize(0);
         
         commandBox.runCommand("list week");
-        assertResultMessage(String.format(ListCommand.MESSAGE_SUCCESS_2, "the week"));
-        assertListSize(2);
+        assertResultMessage(ListCommand.MESSAGE_NO_TASK_WEEK);
+        assertListSize(0);
     }
     
     @Test

@@ -35,7 +35,7 @@ public class EditCommandTest extends TaskListGuiTest {
         assertEditEndTimeSuccess(6, "1234", currentList[5]);
         
         //edit everything
-        assertEditSuccess(7, "title", "description", "11012014 1100", "11012014 1200", currentList[6]); 
+        assertEditSuccess(7, "title", "description", "11012214 1100", "11012214 1200", currentList[6]); 
     }
 
     @Test
@@ -43,7 +43,7 @@ public class EditCommandTest extends TaskListGuiTest {
         TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
         
-        assertEditSuccess(7, "title", "description", "11012014 1100", "11012014 1200", currentList[6]);
+        assertEditSuccess(7, "title", "description", "11012214 1100", "11012214 1200", currentList[6]);
         
         commandBox.runCommand("edit 1 s/01019999");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
@@ -56,18 +56,18 @@ public class EditCommandTest extends TaskListGuiTest {
         commandBox.runCommand("edit 7 e/1100");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
         
-        assertEditSuccess(7, "title", "description", "10012014 2345", "11012014 2345", currentList[6]);
+        assertEditSuccess(7, "title", "description", "10012214 2345", "11012214 2345", currentList[6]);
         
-        commandBox.runCommand("edit 7 s/11012014");
+        commandBox.runCommand("edit 7 s/11012214");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
-        commandBox.runCommand("edit 7 e/10012014");
+        commandBox.runCommand("edit 7 e/10012214");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
         
-        assertEditSuccess(7, "title", "description", "10012014 0000", "11012014 2359", currentList[6]);
+        assertEditSuccess(7, "title", "description", "10012214 0000", "11012214 2359", currentList[6]);
         
-        commandBox.runCommand("edit 7 s/11012014 2359");
+        commandBox.runCommand("edit 7 s/11012214 2359");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
-        commandBox.runCommand("edit 7 e/10012014 0000");
+        commandBox.runCommand("edit 7 e/10012214 0000");
         assertResultMessage(Messages.MESSAGE_INVALID_DATE_TIME_ENTRY);
     }
     
