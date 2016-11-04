@@ -97,13 +97,14 @@ public class UniqueTaskList implements Iterable<Task> {
      *
      * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
-    public void add(Task toAdd) throws DuplicateTaskException {
+    public int add(Task toAdd) throws DuplicateTaskException {
         assert toAdd != null;
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
         sort();
+        return internalList.indexOf(toAdd);
     }
 
     //@@author A0146840E
@@ -112,7 +113,7 @@ public class UniqueTaskList implements Iterable<Task> {
      *
      * @throws TaskNotFoundException if no such task could be found in the list.
      */
-    public void edit(Task taskToEdit, ReadOnlyTask toEdit) throws TaskNotFoundException {
+    public int edit(Task taskToEdit, ReadOnlyTask toEdit) throws TaskNotFoundException {
         assert toEdit != null;
         assert taskToEdit != null;
         final int notFoundInList = -1;
@@ -123,6 +124,7 @@ public class UniqueTaskList implements Iterable<Task> {
         }
         internalList.set(index, taskToEdit);
         sort();
+        return internalList.indexOf(taskToEdit);
     }
     
     //@@author
@@ -192,14 +194,18 @@ public class UniqueTaskList implements Iterable<Task> {
     }
     
     //@@author A0138516A
-    public void insert(int targetIndex, Task undoTask) throws TaskNotFoundException{
+    public int insert(int targetIndex, Task undoTask) throws TaskNotFoundException{
     	internalList.add(targetIndex-1, undoTask);
+    	sort();
+    	return internalList.indexOf(undoTask);
 	}
     
     //@@author A0138516A
-    public void replace(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
+    public int replace(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
 		int indexToReplace = internalList.indexOf(afterEdit);
-		internalList.set(indexToReplace, beforeEdit);		
+		internalList.set(indexToReplace, beforeEdit);	
+		sort();
+		return internalList.indexOf(beforeEdit);
 	}
 
     //@@author

@@ -5,6 +5,7 @@ import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.commons.events.model.TaskListChangedEvent;
+import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.util.StringUtil;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
@@ -79,6 +80,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     //@@author A0146840E
+    /** Raises an event to focus on model */
+    private void indicateJumpToList(int index) {
+        raise(new JumpToListRequestEvent(index));
+    }
+    
     @Override
     public void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException {
         taskList.markTask(target);
@@ -94,17 +100,20 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        taskList.addTask(task);
+        int index = taskList.addTask(task);
         updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
+        
     }
     
     //@@author A0146840E
     @Override
     public void editTask(Task taskToEdit, ReadOnlyTask target) throws TaskNotFoundException {
-        taskList.editTask(taskToEdit, target);
+        int index = taskList.editTask(taskToEdit, target);
         updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
   //@@author A0138516A
@@ -116,17 +125,19 @@ public class ModelManager extends ComponentManager implements Model {
   //@@author A0138516A
     @Override
 	public void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException{
-    	taskList.insertTask(targetIndex, undoTask);
+    	int index = taskList.insertTask(targetIndex, undoTask);
     	updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
     //@@author A0138516A
     @Override
   	public void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
-    	taskList.replace(beforeEdit, afterEdit);
+    	int index = taskList.replace(beforeEdit, afterEdit);
     	updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
     //@@author A0153837X

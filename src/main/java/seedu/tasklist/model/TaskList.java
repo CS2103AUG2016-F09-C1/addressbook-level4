@@ -76,11 +76,12 @@ public class TaskList implements ReadOnlyTaskList {
      * Also checks the new task's tags and updates {@link #tags} with any new tags found,
      * and updates the Tag objects in the task to point to those in {@link #tags}.
      *
+     * @return index of the task in the task list
      * @throws UniqueTaskList.DuplicateTaskException if an equivalent task already exists.
      */
-    public void addTask(Task t) throws UniqueTaskList.DuplicateTaskException {
+    public int addTask(Task t) throws UniqueTaskList.DuplicateTaskException {
         syncTagsWithMasterList(t);
-        task.add(t);
+        return task.add(t);
     }
 
     /**
@@ -120,11 +121,12 @@ public class TaskList implements ReadOnlyTaskList {
      * Also checks the new task's tags and updates {@link #tags} with any new tags found,
      * and updates the Tag objects in the task to point to those in {@link #tags}.
      * 
+     * @return index of the task in the task list
      * @throws TaskNotFoundException if task does not exist.
      */
-    public void editTask(Task taskToEdit, ReadOnlyTask key) throws TaskNotFoundException {
+    public int editTask(Task taskToEdit, ReadOnlyTask key) throws TaskNotFoundException {
         syncTagsWithMasterList(taskToEdit);
-        task.edit(taskToEdit, key);
+        return task.edit(taskToEdit, key);
     }
 
     /**
@@ -154,16 +156,16 @@ public class TaskList implements ReadOnlyTaskList {
     }
     
     //@@author A0138516A
-    public void insertTask(int targetIndex, Task undoTask) throws TaskNotFoundException{
+    public int insertTask(int targetIndex, Task undoTask) throws TaskNotFoundException{
     	syncTagsWithMasterList(undoTask);
-    	task.insert(targetIndex,undoTask);
+    	return task.insert(targetIndex,undoTask);
     	
 	}
     
     //@@author A0138516A
-    public void replace(Task beforeEdit, Task afterEdit) throws TaskNotFoundException {
+    public int replace(Task beforeEdit, Task afterEdit) throws TaskNotFoundException {
     	syncTagsWithMasterList(afterEdit);
-    	task.replace(beforeEdit,afterEdit);
+    	return task.replace(beforeEdit,afterEdit);
 		
 	}
     //@@author
