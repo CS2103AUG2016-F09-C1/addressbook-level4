@@ -131,12 +131,7 @@ public class TaskListPanel extends UiPart {
             } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
             } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
-                if (task.isCompleted()) {
-                    setGraphic(null);
-                    setText(null);
-                } else {
-                    setGraphic(TaskCard.load(task, -1).getLayout());
-                }
+                setGraphic(TaskCard.load(task, -1).getLayout());
             }
         }
     }

@@ -27,6 +27,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Task> filteredTask;
     private final FilteredList<Task> mainFilteredTaskList;
 
+    //@@author A0146840E
     /**
      * Initializes a ModelManager with the given TaskList
      * TaskList and its variables should not be null
@@ -40,23 +41,30 @@ public class ModelManager extends ComponentManager implements Model {
 
         taskList = new TaskList(src);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> isTaskOverdueAndFloating(t)));
         
-        updateFilteredTaskList("today");
+        updateFilteredTaskList("week");
     }
 
+    //@@author
     public ModelManager() {
         this(new TaskList(), new UserPrefs());
     }
 
+    //@@author A0146840E
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> isTaskOverdueAndFloating(t)));
         
-        updateFilteredTaskList("today");
+        updateFilteredTaskList("week");
+    }
+    
+    private boolean isTaskOverdueAndFloating(Task task) {
+        return !task.isCompleted() && task.isOverdue() || !task.isCompleted() && task.isFloating();
     }
 
+    //@@author
     @Override
     public void resetData(ReadOnlyTaskList newData) {
         taskList.resetData(newData);

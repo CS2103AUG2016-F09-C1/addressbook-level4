@@ -84,7 +84,7 @@ public class TaskCard extends UiPart{
     private void initializeDateTime() {
         startDateTime.setText("Start:  " + task.getStartDateTime().toString().replaceAll(" ", "    Time:  "));
         
-        if (task.getStartDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
+        if (task.getStartDateTime().toString().isEmpty() || isNotRequired) {
             startDateTime.setManaged(false);
         } else {
             startDateTime.setManaged(true);
@@ -92,7 +92,7 @@ public class TaskCard extends UiPart{
         
         endDateTime.setText("End:    " + task.getEndDateTime().toString().replaceAll(" ", "    Time:  "));
         
-        if(task.getEndDateTime().toString().isEmpty() || (isNotRequired && task.isCompleted())) {
+        if(task.getEndDateTime().toString().isEmpty() || isNotRequired) {
             endDateTime.setManaged(false);
         } else {
             endDateTime.setManaged(true);
