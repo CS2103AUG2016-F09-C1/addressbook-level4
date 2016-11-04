@@ -60,11 +60,26 @@ public class UniqueTaskList implements Iterable<Task> {
         List<Task> floatingList = internalList.stream().filter(t -> t.isFloating()).collect(Collectors.toList());
         internalList.removeAll(floatingList);
         
+        //Sort task without end date time to the bottom, and those with end date time in ascending order
         internalList.sort(new Comparator<Task>() {
             @Override
             public int compare(Task t1, Task t2) {
-                if (!t1.getEndDateTime().isDateEmpty() && !t2.getEndDateTime().isDateEmpty() 
-                        && t1.getEndDateTime().isDateTimeAfter(t2.getEndDateTime())) {
+                if (t1.getEndDateTime().isDateEmpty()
+                    || !t1.getEndDateTime().isDateEmpty() && !t2.getEndDateTime().isDateEmpty() 
+                    && t1.getEndDateTime().isDateTimeAfter(t2.getEndDateTime())) {
+                    return 1;
+                } else {
+                    return 0;
+                } 
+            }
+        });
+        
+        //Sort task without end date time in ascending order according to its start date time
+        internalList.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task t1, Task t2) {
+                if (t1.getEndDateTime().isDateEmpty() && t2.getEndDateTime().isDateEmpty() 
+                    && t1.getStartDateTime().isDateTimeAfter(t2.getStartDateTime())) {
                     return 1;
                 } else {
                     return 0;

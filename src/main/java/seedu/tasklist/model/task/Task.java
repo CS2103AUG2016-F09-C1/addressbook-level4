@@ -60,8 +60,8 @@ public class Task implements ReadOnlyTask {
         this.isOverdue = isOverdue;
         this.isFloating = isFloating;
         
-//        initializeOverdue();
-//        initializeFloating();
+        initializeOverdue();
+        initializeFloating();
     }
 
     /**
