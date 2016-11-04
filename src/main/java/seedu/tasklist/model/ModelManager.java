@@ -40,8 +40,8 @@ public class ModelManager extends ComponentManager implements Model {
         logger.fine("Initializing with task list: " + src + " and user prefs " + userPrefs);
 
         taskList = new TaskList(src);
-        filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> isTaskOverdueAndFloating(t)));
+        filteredTask = new FilteredList<>(taskList.getTask().filtered(t -> !t.isCompleted()));
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
     }
@@ -54,14 +54,10 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author A0146840E
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
-        filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> isTaskOverdueAndFloating(t)));
+        filteredTask = new FilteredList<>(taskList.getTask().filtered(t -> !t.isCompleted()));
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
-    }
-    
-    private boolean isTaskOverdueAndFloating(Task task) {
-        return !task.isCompleted() && task.isOverdue() || !task.isCompleted() && task.isFloating();
     }
 
     //@@author

@@ -105,6 +105,10 @@ public class Task implements ReadOnlyTask {
         }
     }
     
+    public boolean isOverdueAndFloating() {
+        return !isCompleted() && isOverdue() || !isCompleted() && isFloating();
+    }
+    
     //@@author A0140019W
     @Override
     public Title getTitle() {
