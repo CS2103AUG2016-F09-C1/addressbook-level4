@@ -40,7 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
         logger.fine("Initializing with task list: " + src + " and user prefs " + userPrefs);
 
         taskList = new TaskList(src);
-        filteredTask = new FilteredList<>(taskList.getTask().filtered(t -> !t.isCompleted()));
+        filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
@@ -54,7 +54,7 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author A0146840E
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
-        filteredTask = new FilteredList<>(taskList.getTask().filtered(t -> !t.isCompleted()));
+        filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
@@ -164,13 +164,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateFilteredTaskList(Set<String> keywords){
+    public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
     }
     
     //@@author A0146840E
     @Override
-    public int updateFilteredTaskList(String status){
+    public int updateFilteredTaskList(String status) {
         updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
         return filteredTask.size();
     }

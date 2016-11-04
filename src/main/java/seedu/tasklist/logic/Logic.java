@@ -1,5 +1,7 @@
 package seedu.tasklist.logic;
 
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.tasklist.logic.commands.CommandResult;
 import seedu.tasklist.model.task.ReadOnlyTask;
@@ -22,4 +24,6 @@ public interface Logic {
     /** Returns the weekly filtered list of tasks */
     ObservableList<ReadOnlyTask> getMainFilteredTaskList();
 
+    /** Returns the entire list of tasks */
+    List<ReadOnlyTask> getTaskList();
 }

@@ -51,13 +51,13 @@ public class StatusBarFooter extends UiPart {
 
     private static final String FXML = "StatusBarFooter.fxml";
 
-    public static StatusBarFooter load(Stage stage, AnchorPane placeHolder, String saveLocation, ObservableList<ReadOnlyTask> taskList) {
+    public static StatusBarFooter load(Stage stage, AnchorPane placeHolder, String saveLocation, List<ReadOnlyTask> taskList) {
         StatusBarFooter statusBarFooter = UiPartLoader.loadUiPart(stage, placeHolder, new StatusBarFooter());
         statusBarFooter.configure(saveLocation, taskList);
         return statusBarFooter;
     }
 
-    public void configure(String saveLocation, ObservableList<ReadOnlyTask> taskList) {
+    public void configure(String saveLocation, List<ReadOnlyTask> taskList) {
         addMainPane();
         addSyncStatus();
         setSyncStatus("Not updated yet in this session");
@@ -68,7 +68,7 @@ public class StatusBarFooter extends UiPart {
     }
     
     //@@author A0140019W
-    private void addProgressBar(ObservableList<ReadOnlyTask> taskList) {
+    private void addProgressBar(List<ReadOnlyTask> taskList) {
         text = new Text("");
         text.setFont(Font.font("Arial", 12));
         
@@ -106,15 +106,15 @@ public class StatusBarFooter extends UiPart {
     }
     
     //@@author A0140019W
-    private void progressBarStatus(List<ReadOnlyTask> tasklist) {
+    private void progressBarStatus(List<ReadOnlyTask> taskList) {
         double count = 0;
-        for (ReadOnlyTask readOnlyTask : tasklist) {
+        for (ReadOnlyTask readOnlyTask : taskList) {
             if(readOnlyTask.isCompleted()) {
                 count++;
             }
         }
-        text.setText((int)count + " / " + tasklist.size());
-        progressbar.setProgress(count/tasklist.size());
+        text.setText((int)count + " / " + taskList.size());
+        progressbar.setProgress(count/taskList.size());
     }
     //@@author
 

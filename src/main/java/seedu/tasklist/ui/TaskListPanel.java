@@ -128,9 +128,9 @@ public class TaskListPanel extends UiPart {
             if (empty || task == null ) {
                 setGraphic(null);
                 setText(null);
-            } else if (type == TaskListPanel.Type.FILTERED_TASKLIST){
+            } else if (type == TaskListPanel.Type.FILTERED_TASKLIST) {
                 setGraphic(TaskCard.load(task, getIndex() + 1).getLayout());
-            } else if (type == TaskListPanel.Type.MAIN_TASKLIST){
+            } else if (type == TaskListPanel.Type.MAIN_TASKLIST) {
                 setGraphic(TaskCard.load(task, -1).getLayout());
             }
         }
