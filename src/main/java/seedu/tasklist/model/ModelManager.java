@@ -42,7 +42,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask());
         
-        updateFilteredTaskList("week");
+        updateFilteredTaskList("today");
     }
 
     public ModelManager() {
@@ -54,7 +54,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTask = new FilteredList<>(taskList.getTask());
         mainFilteredTaskList = new FilteredList<>(taskList.getTask());
         
-        updateFilteredTaskList("week");
+        updateFilteredTaskList("today");
     }
 
     @Override
@@ -252,9 +252,9 @@ public class ModelManager extends ComponentManager implements Model {
             } else if (status.contains("isFloating")) {
                 return task.isFloating() && !task.isCompleted();
             } else if (status.contains("today")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate() || task.isFloating();
+                return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.contains("week")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek() || task.isFloating();
+                return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
             } else {
                 return false;
             }
