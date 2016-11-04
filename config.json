@@ -1,7 +1,0 @@
-{
-  "appTitle" : "TaskList",
-  "logLevel" : "INFO",
-  "userPrefsFilePath" : "preferences.json",
-  "taskListFilePath" : "data/tasklist.xml",
-  "taskListName" : "TaskList"
-}
