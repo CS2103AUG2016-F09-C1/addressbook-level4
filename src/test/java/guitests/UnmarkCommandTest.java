@@ -13,12 +13,14 @@ public class UnmarkCommandTest extends TaskListGuiTest {
     @Test
     public void unmarkTask_nonEmptyList_successResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
-        commandBox.runCommand("list");
-        commandBox.runCommand("mark " + 1);
-        commandBox.runCommand("mark " + 1);
         
-        assertUnmarkSuccess(currentList.length, currentList[0]);
-        assertUnmarkSuccess(currentList.length, currentList[1]);
+        commandBox.runCommand("list");
+        commandBox.runCommand("mark 1");
+        assertUnmarkSuccess(1, currentList[0]);
+        
+        commandBox.runCommand("list");
+        commandBox.runCommand("mark 7");
+        assertUnmarkSuccess(1, currentList[6]);
     }
 
     @Test
@@ -62,12 +64,14 @@ public class UnmarkCommandTest extends TaskListGuiTest {
     }
     
     private void assertUnmarkSuccess(int index, TestTask taskToUnmark) {
+        commandBox.runCommand("list completed");
         commandBox.runCommand("unmark " + index);
         taskToUnmark.setCompleted(false);
         
         //confirm the new card contains the right data
+        assertResultMessage("Task unmarked: " + taskToUnmark.getAsText());
+        commandBox.runCommand("list");
         TaskCardHandle markedCard = taskListPanel.navigateToTask(taskToUnmark.getTitle().fullTitle);
         assertUnmarked(taskToUnmark, markedCard);
-        assertResultMessage("Task unmarked: " + taskToUnmark.getAsText());
     }
 }

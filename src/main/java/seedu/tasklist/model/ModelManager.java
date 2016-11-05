@@ -160,7 +160,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFilteredTaskListToShowAll() {
-        filteredTask.setPredicate(null);
+        updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier("all")));
     }
 
     @Override
@@ -259,6 +259,8 @@ public class ModelManager extends ComponentManager implements Model {
                 return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.contains("week")) {
                 return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
+            } else if (status.contains("all")) {
+                return !task.isCompleted();
             } else {
                 return false;
             }

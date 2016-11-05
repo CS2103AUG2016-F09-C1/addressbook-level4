@@ -71,7 +71,8 @@ public class UndoCommandTest extends TaskListGuiTest {
 		commandBox.runCommand("mark " + currentList.length);
 		beforeMarkTitle.setCompleted(true);
 		TestTask beforeUnMarkTitle = currentList[currentList.length-1];
-		commandBox.runCommand("unmark " + currentList.length);
+		commandBox.runCommand("list completed");
+		commandBox.runCommand("unmark 1");
 		beforeUnMarkTitle.setCompleted(false);
 		commandBox.runCommand("undo");
 		currentList[currentList.length-1].setCompleted(true);
