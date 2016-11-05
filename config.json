@@ -1,7 +1,7 @@
 {
-  "appTitle" : "Test App",
+  "appTitle" : "Over-Do-It",
   "logLevel" : "INFO",
-  "userPrefsFilePath" : ".\\src\\test\\data\\sandbox\\pref_testing.json",
-  "taskListFilePath" : "src/test/data/StorageCommandTestFolder/testTaskList.xml",
-  "taskListName" : "Test"
+  "userPrefsFilePath" : "preferences.json",
+  "taskListFilePath" : "data/tasklist.xml",
+  "taskListName" : "TaskList"
 }

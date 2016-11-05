@@ -57,7 +57,7 @@ public class SelectCommand extends Command {
     @Override
     public Command prepare(String args) {
         Optional<Integer> index = parseIndex(args);
-        if(!index.isPresent()){
+        if(!index.isPresent()) {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
         }

@@ -40,7 +40,7 @@ public class TaskCard extends UiPart{
 
     }
 
-    public static TaskCard load(ReadOnlyTask task, int displayedIndex){
+    public static TaskCard load(ReadOnlyTask task, int displayedIndex) {
         TaskCard card = new TaskCard();
         card.task = task;
         card.displayedIndex = displayedIndex;
@@ -113,7 +113,7 @@ public class TaskCard extends UiPart{
             cardPane.setStyle(FX_BACKGROUND_PALE_GREEN);
         } else if (task.isFloating()) {
             cardPane.setStyle(FX_BACKGROUND_PALE_YELLOW);
-        } else if (task.isOverdue()){
+        } else if (task.isOverdue()) {
             cardPane.setStyle(FX_BACKGROUND_PALE_RED);
         } else {
             cardPane.setStyle(FX_BACKGROUND_WHITE);

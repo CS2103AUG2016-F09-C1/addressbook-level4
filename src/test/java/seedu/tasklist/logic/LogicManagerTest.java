@@ -425,7 +425,7 @@ public class LogicManagerTest {
             cmd.append(" e/").append(p.getEndDateTime().toString().replaceAll(":", "").replaceAll("-", ""));
 
             UniqueTagList tags = p.getTags();
-            for(Tag t: tags){
+            for(Tag t: tags) {
                 cmd.append(" t/").append(t.tagName);
             }
 
@@ -462,7 +462,7 @@ public class LogicManagerTest {
          * Adds the given list of Tasks to the given TaskList
          */
         private void addToTaskList(TaskList taskList, List<Task> tasksToAdd) throws Exception{
-            for(Task p: tasksToAdd){
+            for(Task p: tasksToAdd) {
                 taskList.addTask(p);
             }
         }
@@ -479,7 +479,7 @@ public class LogicManagerTest {
          * Adds the given list of Tasks to the given model
          */
         private void addToModel(Model model, List<Task> tasksToAdd) throws Exception{
-            for(Task p: tasksToAdd){
+            for(Task p: tasksToAdd) {
                 model.addTask(p);
             }
         }
@@ -489,7 +489,7 @@ public class LogicManagerTest {
          */
         private List<Task> generateTaskLists(int numGenerated) throws Exception{
             List<Task> tasks = new ArrayList<>();
-            for(int i = 1; i <= numGenerated; i++){
+            for(int i = 1; i <= numGenerated; i++) {
                 tasks.add(generateTask(i));
             }
             return tasks;

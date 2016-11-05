@@ -64,13 +64,13 @@ public class TaskListPanelHandle extends GuiHandle {
         List<ReadOnlyTask> tasksInList = getListView().getItems();
 
         // Return false if the list in panel is too short to contain the given list
-        if (startPosition + tasks.length > tasksInList.size()){
+        if (startPosition + tasks.length > tasksInList.size()) {
             return false;
         }
 
         // Return false if any of the tasks doesn't match
         for (int i = 0; i < tasks.length; i++) {
-            if (!tasksInList.get(startPosition + i).getTitle().fullTitle.equals(tasks[i].getTitle().fullTitle)){
+            if (!tasksInList.get(startPosition + i).getTitle().fullTitle.equals(tasks[i].getTitle().fullTitle)) {
                 return false;
             }
         }
@@ -133,7 +133,7 @@ public class TaskListPanelHandle extends GuiHandle {
     public int getTaskIndex(ReadOnlyTask targetTask) {
         List<ReadOnlyTask> tasksInList = getListView().getItems();
         for (int i = 0; i < tasksInList.size(); i++) {
-            if(tasksInList.get(i).getTitle().equals(targetTask.getTitle())){
+            if(tasksInList.get(i).getTitle().equals(targetTask.getTitle())) {
                 return i;
             }
         }
