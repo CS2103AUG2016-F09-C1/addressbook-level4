@@ -81,7 +81,7 @@ We are a team based in the School of Computing, National University of Singapore
 * Components in charge of: [Model](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/DeveloperGuide.md#model-component)
 * Aspects/tools in charge of: Git, Code Quality
 * Features implemented:
-   * [Time Command] (https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837X.md)
+      * [Time Command] (https://github.com/CS2103AUG2016-F09-C1/main/blob/master/docs/UserGuide.md#check-the-time-remaining--time)
    * [Today Command (unused)](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837Xunused.md)
 * Code written: [[functional code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/main/A0153837X.md)][[test code](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/test/A0153837X.md)][[docs](https://github.com/CS2103AUG2016-F09-C1/main/blob/master/collated/docs/A0153837X.md)]
 
