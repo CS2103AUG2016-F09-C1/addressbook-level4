@@ -11,7 +11,7 @@ public class Config {
     public static final String DEFAULT_CONFIG_FILE = "config.json";
 
     // Config values customizable through config file
-    private String appTitle = "TaskList";
+    private String appTitle = "Over-Do-It";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.json";
     private String taskListFilePath = "data/tasklist.xml";
@@ -64,10 +64,10 @@ public class Config {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this){
+        if (other == this) {
             return true;
         }
-        if (!(other instanceof Config)){ //this handles null as well.
+        if (!(other instanceof Config)) { //this handles null as well.
             return false;
         }
 
@@ -86,7 +86,7 @@ public class Config {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("App title : " + appTitle);
         sb.append("\nCurrent log level : " + logLevel);

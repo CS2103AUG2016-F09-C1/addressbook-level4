@@ -5,6 +5,7 @@ import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.LogsCenter;
 import seedu.tasklist.commons.core.UnmodifiableObservableList;
 import seedu.tasklist.commons.events.model.TaskListChangedEvent;
+import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.util.StringUtil;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.model.task.Task;
@@ -26,6 +27,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Task> filteredTask;
     private final FilteredList<Task> mainFilteredTaskList;
 
+    //@@author A0146840E
     /**
      * Initializes a ModelManager with the given TaskList
      * TaskList and its variables should not be null
@@ -39,23 +41,26 @@ public class ModelManager extends ComponentManager implements Model {
 
         taskList = new TaskList(src);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
     }
 
+    //@@author
     public ModelManager() {
         this(new TaskList(), new UserPrefs());
     }
 
+    //@@author A0146840E
     public ModelManager(ReadOnlyTaskList initialData, UserPrefs userPrefs) {
         taskList = new TaskList(initialData);
         filteredTask = new FilteredList<>(taskList.getTask());
-        mainFilteredTaskList = new FilteredList<>(taskList.getTask());
+        mainFilteredTaskList = new FilteredList<>(taskList.getTask().filtered(t -> t.isOverdueAndFloating()));
         
         updateFilteredTaskList("week");
     }
 
+    //@@author
     @Override
     public void resetData(ReadOnlyTaskList newData) {
         taskList.resetData(newData);
@@ -79,6 +84,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     //@@author A0146840E
+    /** Raises an event to focus on model */
+    private void indicateJumpToList(int index) {
+        raise(new JumpToListRequestEvent(index));
+    }
+    
     @Override
     public void markTask(ReadOnlyTask target) throws TaskNotFoundException, TaskCompletionException {
         taskList.markTask(target);
@@ -94,17 +104,20 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        taskList.addTask(task);
+        int index = taskList.addTask(task);
         updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
+        
     }
     
     //@@author A0146840E
     @Override
     public void editTask(Task taskToEdit, ReadOnlyTask target) throws TaskNotFoundException {
-        taskList.editTask(taskToEdit, target);
+        int index = taskList.editTask(taskToEdit, target);
         updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
   //@@author A0138516A
@@ -116,17 +129,19 @@ public class ModelManager extends ComponentManager implements Model {
   //@@author A0138516A
     @Override
 	public void unDoDelete(int targetIndex, Task undoTask) throws TaskNotFoundException{
-    	taskList.insertTask(targetIndex, undoTask);
+    	int index = taskList.insertTask(targetIndex, undoTask);
     	updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
     //@@author A0138516A
     @Override
   	public void unDoEdit(Task beforeEdit, Task afterEdit) throws TaskNotFoundException{
-    	taskList.replace(beforeEdit, afterEdit);
+    	int index = taskList.replace(beforeEdit, afterEdit);
     	updateFilteredTaskListToShowAll();
         indicateTaskListChanged();
+        indicateJumpToList(index);
     }
     
     //@@author A0153837X
@@ -145,17 +160,17 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFilteredTaskListToShowAll() {
-        filteredTask.setPredicate(null);
+        updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier("all")));
     }
 
     @Override
-    public void updateFilteredTaskList(Set<String> keywords){
+    public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TaskContentQualifier(keywords)));
     }
     
     //@@author A0146840E
     @Override
-    public int updateFilteredTaskList(String status){
+    public int updateFilteredTaskList(String status) {
         updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier(status)));
         return filteredTask.size();
     }
@@ -241,9 +256,11 @@ public class ModelManager extends ComponentManager implements Model {
             } else if (status.contains("isFloating")) {
                 return task.isFloating() && !task.isCompleted();
             } else if (status.contains("today")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate() || task.isFloating();
+                return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDate();
             } else if (status.contains("week")) {
-                return task.isOverdue() && !task.isCompleted() || !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek() || task.isFloating();
+                return !task.isCompleted() && task.getEndDateTime().isDateEqualCurrentDateTillUpcomingWeek();
+            } else if (status.contains("all")) {
+                return !task.isCompleted();
             } else {
                 return false;
             }

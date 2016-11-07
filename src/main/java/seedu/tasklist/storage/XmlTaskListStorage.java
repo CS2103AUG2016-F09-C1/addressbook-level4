@@ -20,11 +20,11 @@ public class XmlTaskListStorage implements TaskListStorage {
 
     private String filePath;
 
-    public XmlTaskListStorage(String filePath){
+    public XmlTaskListStorage(String filePath) {
         this.filePath = filePath;
     }
 
-    public String getTaskListFilePath(){
+    public String getTaskListFilePath() {
         return filePath;
     }
 

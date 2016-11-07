@@ -15,7 +15,7 @@ public class TaskListBuilder {
 
     private TaskList taskList;
 
-    public TaskListBuilder(TaskList taskList){
+    public TaskListBuilder(TaskList taskList) {
         this.taskList = taskList;
     }
 
@@ -29,7 +29,7 @@ public class TaskListBuilder {
         return this;
     }
 
-    public TaskList build(){
+    public TaskList build() {
         return taskList;
     }
 }

@@ -21,7 +21,7 @@ public class FindCommandTest extends TaskListGuiTest {
     }
 
     @Test
-    public void find_emptyList(){
+    public void find_emptyList() {
         commandBox.runCommand("clear");
         assertFindResult("find CS2103"); //no results
     }

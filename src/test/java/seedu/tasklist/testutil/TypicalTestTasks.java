@@ -14,30 +14,30 @@ public class TypicalTestTasks {
 
     public TypicalTestTasks() {
         try {
-            task1 = new TaskBuilder().withTitle("Exam Revision").withEndDateTime("02022002")
+            task1 = new TaskBuilder().withTitle("Exam Revision").withEndDateTime("02022202")
                     .withDescription("studying in NUS").withStartDateTime("01012001").withTags("urgent").build();
-            task2 = new TaskBuilder().withTitle("Upcoming Quiz").withEndDateTime("04042004 1700")
+            task2 = new TaskBuilder().withTitle("Upcoming Quiz").withEndDateTime("04042204 1700")
                     .withDescription("have a hard time in comsci").withStartDateTime("30032003 1300")
                     .withTags("notime", "toughlife").build();
             task3 = new TaskBuilder().withTitle("Competition 2006").withDescription("train harder")
-                    .withStartDateTime("05052005").withEndDateTime("06062006").build();
-            task4 = new TaskBuilder().withTitle("Test Failure").withStartDateTime("")
-                    .withDescription("study harder").withEndDateTime("").build();
+                    .withStartDateTime("05052005").withEndDateTime("06062206").build();
+            task4 = new TaskBuilder().withTitle("Test Failure").withStartDateTime("05052007")
+                    .withDescription("study harder").withEndDateTime("06062207").build();
             task5 = new TaskBuilder().withTitle("Tutorial 1").withStartDateTime("01012001")
-                    .withDescription("refer to lecture notes").withEndDateTime("10042012").build();
+                    .withDescription("refer to lecture notes").withEndDateTime("10042212").build();
             task6 = new TaskBuilder().withTitle("Quiz Failure").withStartDateTime("03032003")
-                    .withDescription("keep trying").withEndDateTime("05012013").build();
+                    .withDescription("keep trying").withEndDateTime("05012213").build();
             task7 = new TaskBuilder().withTitle("Task Name").withStartDateTime("04042004")
-                    .withDescription("Description Name").withEndDateTime("05062014").build();
+                    .withDescription("Description Name").withEndDateTime("05062214").build();
 
             // Manually added
             task8 = new TaskBuilder().withTitle("Revision").withStartDateTime("05062001").withDescription("dont stop studying")
-                    .withEndDateTime("01102014").build();
+                    .withEndDateTime("01102214").build();
             task9 = new TaskBuilder().withTitle("Hard Labor").withStartDateTime("07062001 2359")
-                    .withDescription("need to get strong").withEndDateTime("03072015 0000").build();
+                    .withDescription("need to get strong").withEndDateTime("03072215 0000").build();
             
-            task10 = new TaskBuilder().withTitle("Order pizza").withStartDateTime("05112016 1030")
-                    .withDescription("need order two large pizza").withEndDateTime("05112016 1100").build();
+            task10 = new TaskBuilder().withTitle("Order pizza").withStartDateTime("05112216 1030")
+                    .withDescription("need order two large pizza").withEndDateTime("05112216 1100").build();
             
         } catch (IllegalValueException e) {
             e.printStackTrace();

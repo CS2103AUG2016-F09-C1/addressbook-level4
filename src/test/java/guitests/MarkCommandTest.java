@@ -13,9 +13,11 @@ public class MarkCommandTest extends TaskListGuiTest {
     @Test
     public void markTask_nonEmptyList_successResultMessage() {
         TestTask[] currentList = td.getTypicalTasks();
-        commandBox.runCommand("list");
         
+        commandBox.runCommand("list");
         assertMarkSuccess(1, currentList[0]);
+        
+        commandBox.runCommand("list");
         assertMarkSuccess(1, currentList[1]);     
     }
 
@@ -32,11 +34,11 @@ public class MarkCommandTest extends TaskListGuiTest {
 
     @Test
     public void markTask_nonEmptyList_markedTaskResultMessage() {
-        TestTask[] currentList = td.getTypicalTasks();
         commandBox.runCommand("list");
+        commandBox.runCommand("mark 1");
         
-        commandBox.runCommand("mark " + (currentList.length - 1));
-        commandBox.runCommand("mark " + (currentList.length));
+        commandBox.runCommand("list completed");
+        commandBox.runCommand("mark 1");
         assertResultMessage(MarkCommand.MESSAGE_MARKED_TASK);
     }
 
@@ -63,8 +65,9 @@ public class MarkCommandTest extends TaskListGuiTest {
         taskToMark.setCompleted(true);
         
         //confirm the new card contains the right data
+        assertResultMessage("Task marked: " + taskToMark.getAsText());
+        commandBox.runCommand("list completed");
         TaskCardHandle markedCard = taskListPanel.navigateToTask(taskToMark.getTitle().fullTitle);
         assertMarked(taskToMark, markedCard);
-        assertResultMessage("Task marked: " + taskToMark.getAsText());
     }
 }

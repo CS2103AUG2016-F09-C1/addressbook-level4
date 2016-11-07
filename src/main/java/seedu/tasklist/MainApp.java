@@ -76,7 +76,7 @@ public class MainApp extends Application {
         ReadOnlyTaskList initialData;
         try {
             taskListOptional = storage.readTaskList();
-            if(!taskListOptional.isPresent()){
+            if(!taskListOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with an empty TaskList");
             }
             initialData = taskListOptional.orElse(new TaskList());
@@ -190,13 +190,13 @@ public class MainApp extends Application {
     
     //@@author A0138516A
     @Subscribe
-    public void changePathRequestEvent(ChangePathEvent event){
+    public void changePathRequestEvent(ChangePathEvent event) {
     	 logger.info(LogsCenter.getEventHandlingLogMessage(event));
     	 String previousFilePath = config.getTaskListFilePath();
     	 config.setTaskListFilePath(event.toString());
     	 try{
     		 ConfigUtil.saveConfig(config, Config.DEFAULT_CONFIG_FILE);
-    	 }catch (IOException e){
+    	 }catch (IOException e) {
     		 logger.warning("Error saving file to " + event.toString() + e);
 		}
     	 try {

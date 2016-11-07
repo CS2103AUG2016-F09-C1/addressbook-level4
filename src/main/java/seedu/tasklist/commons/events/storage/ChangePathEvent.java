@@ -10,7 +10,7 @@ public class ChangePathEvent extends BaseEvent{
 	private String filepath;
 	
 	
-	public ChangePathEvent(String filepath){
+	public ChangePathEvent(String filepath) {
 		this.filepath = filepath;
 	}
 	

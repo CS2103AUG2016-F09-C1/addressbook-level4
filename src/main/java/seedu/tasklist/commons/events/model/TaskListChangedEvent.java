@@ -8,7 +8,7 @@ public class TaskListChangedEvent extends BaseEvent {
 
     public final ReadOnlyTaskList data;
 
-    public TaskListChangedEvent(ReadOnlyTaskList data){
+    public TaskListChangedEvent(ReadOnlyTaskList data) {
         this.data = data;
     }
 

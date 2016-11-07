@@ -10,6 +10,7 @@ import seedu.tasklist.model.Model;
 import seedu.tasklist.model.task.ReadOnlyTask;
 import seedu.tasklist.storage.Storage;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -43,6 +44,11 @@ public class LogicManager extends ComponentManager implements Logic {
     @Override
     public ObservableList<ReadOnlyTask> getMainFilteredTaskList() {
         return model.getMainFilteredTaskList();
+    }
+
+    @Override
+    public List<ReadOnlyTask> getTaskList() {
+        return model.getTaskList().getTaskList();
     }
 
 }

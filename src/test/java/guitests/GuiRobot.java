@@ -11,7 +11,7 @@ import org.testfx.api.FxRobot;
  */
 public class GuiRobot extends FxRobot {
 
-    public GuiRobot push(KeyCodeCombination keyCodeCombination){
+    public GuiRobot push(KeyCodeCombination keyCodeCombination) {
         return (GuiRobot) super.push(TestUtil.scrub(keyCodeCombination));
     }
 
