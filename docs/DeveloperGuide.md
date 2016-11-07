@@ -218,9 +218,6 @@ The Sequence Diagram below shows how the components interact for the scenario wh
 
 
 
-The sections below give more details of each component.
-
-
 ####Help Command
 The Sequence Diagram below shows how the components interact for the scenario where the user issues the command  `help`.
 
