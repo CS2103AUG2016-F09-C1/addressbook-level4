@@ -89,7 +89,7 @@ public class TaskListPanel extends UiPart {
         });
     }
 
-  //@@author A0146840E
+    //@@author A0146840E
     public void scrollTo(int index) {
         taskListView.scrollTo(index);
     }
@@ -135,7 +135,11 @@ public class TaskListPanel extends UiPart {
             }
         }
     }
-
+    
+    public void setTaskListSize(int size) {
+        taskListSize = size;
+    }
+    
     //@@author
     public ListView<ReadOnlyTask> getTaskListView() {
         return taskListView;
