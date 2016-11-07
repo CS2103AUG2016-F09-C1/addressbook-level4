@@ -5,7 +5,7 @@
 
 
 
-# Survival Guide
+# User Guide
 <br>
 
 
