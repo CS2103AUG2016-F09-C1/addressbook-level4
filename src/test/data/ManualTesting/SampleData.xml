@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tasklist>
+    <tasks>
+        <title>Download Drama</title>
+        <description>recent drama</description>
+        <startDateTime></startDateTime>
+        <endDateTime>14102016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>needhelp</tagged>
+    </tasks>
+    <tasks>
+        <title>Update Drama list</title>
+        <description>recent drama</description>
+        <startDateTime></startDateTime>
+        <endDateTime>15102016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Find the number of bugs</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>17102016 1700</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>PC1222 Tutorial</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>27102016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>EE3204 Homework Set 2</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>28102016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Project Management</title>
+        <description>must do</description>
+        <startDateTime>17102016 1200</startDateTime>
+        <endDateTime>28102016 1200</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>CCA</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>28102016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Buy Birthday cake</title>
+        <description></description>
+        <startDateTime>24102016</startDateTime>
+        <endDateTime>01112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>PrePare for deparment meeting</title>
+        <description></description>
+        <startDateTime>25102016</startDateTime>
+        <endDateTime>02112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>update testing case</title>
+        <description></description>
+        <startDateTime>29102016</startDateTime>
+        <endDateTime>03112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Annual Metting</title>
+        <description></description>
+        <startDateTime>03112016 1400</startDateTime>
+        <endDateTime>03112016 1800</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>important</tagged>
+    </tasks>
+    <tasks>
+        <title>Send Printer to repare</title>
+        <description></description>
+        <startDateTime>30102016</startDateTime>
+        <endDateTime>04112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Party</title>
+        <description></description>
+        <startDateTime>28102016</startDateTime>
+        <endDateTime>05112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>buy notebook for courses</title>
+        <description></description>
+        <startDateTime>31102016</startDateTime>
+        <endDateTime>06112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>nice</tagged>
+    </tasks>
+    <tasks>
+        <title>Meet friends for dinner</title>
+        <description></description>
+        <startDateTime>08112016 1700</startDateTime>
+        <endDateTime>08112016 2300</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>fun</tagged>
+    </tasks>
+    <tasks>
+        <title>Finish GET1021 Paper</title>
+        <description>final version</description>
+        <startDateTime></startDateTime>
+        <endDateTime>08112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>GEH1027 CA2</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>08112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>PC1222 CA2</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>08112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>pay electric bill</title>
+        <description>must pay this time</description>
+        <startDateTime>01112016</startDateTime>
+        <endDateTime>09112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>important</tagged>
+    </tasks>
+    <tasks>
+        <title>Read GET1016 readings</title>
+        <description></description>
+        <startDateTime>23102016</startDateTime>
+        <endDateTime>10112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>important</tagged>
+    </tasks>
+    <tasks>
+        <title>buy winter clothing</title>
+        <description></description>
+        <startDateTime>28102016</startDateTime>
+        <endDateTime>10112016 1700</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Read GES1028 readings</title>
+        <description></description>
+        <startDateTime>22102016</startDateTime>
+        <endDateTime>11112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>important</tagged>
+    </tasks>
+    <tasks>
+        <title>buy air ticket</title>
+        <description>go Bali</description>
+        <startDateTime>28102016 1700</startDateTime>
+        <endDateTime>11112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>CS2103 Demo</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>11112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>CS2103 Project Retrospective</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>14112016 2359</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Assignment</title>
+        <description>indivial</description>
+        <startDateTime>15102016 2100</startDateTime>
+        <endDateTime>15112016 2300</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>notUrgent</tagged>
+    </tasks>
+    <tasks>
+        <title>CS2103 Individual Report</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>16112016 2359</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>shopping</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>18112016 1600</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Return things back to friends</title>
+        <description></description>
+        <startDateTime>20112016 1300</startDateTime>
+        <endDateTime>21112016 1200</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>buy printer paper</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>30112016</endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Reading books for bookreview</title>
+        <description></description>
+        <startDateTime>15102016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Prepare for video editing</title>
+        <description></description>
+        <startDateTime>16102016 1200</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>urgent</tagged>
+    </tasks>
+    <tasks>
+        <title>Buy USS ticket</title>
+        <description></description>
+        <startDateTime>16102016 1600</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>ProjectMeeting</title>
+        <description></description>
+        <startDateTime>17102016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Meet Firends for lunch</title>
+        <description></description>
+        <startDateTime>23102016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Update Amine list</title>
+        <description></description>
+        <startDateTime>24102016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Code Demo</title>
+        <description></description>
+        <startDateTime>28102016 0900</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>play dota with friends</title>
+        <description></description>
+        <startDateTime>01112016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>send car to repair</title>
+        <description></description>
+        <startDateTime>06112016</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>watch webcast</title>
+        <description></description>
+        <startDateTime>10112016 1600</startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>Prepare for Book review</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+        <tagged>urgent</tagged>
+    </tasks>
+    <tasks>
+        <title>Running</title>
+        <description>Run after GEH1027</description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+    </tasks>
+    <tasks>
+        <title>buy Movie ticket</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+    </tasks>
+    <tasks>
+        <title>Prepare for presentation</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+    </tasks>
+    <tasks>
+        <title>External Project</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+    </tasks>
+    <tasks>
+        <title>Return Library Book</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <isCompleted>false</isCompleted>
+        <isOverdue>false</isOverdue>
+        <isFloating>true</isFloating>
+    </tasks>
+    <tasks>
+        <title>Pay for phone Bill</title>
+        <description></description>
+        <startDateTime>23102016</startDateTime>
+        <endDateTime>25102016</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>GET1016 Individual Project</title>
+        <description></description>
+        <startDateTime></startDateTime>
+        <endDateTime>20102016</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>BuyTextBook</title>
+        <description>For GET1016</description>
+        <startDateTime>14102016 2100</startDateTime>
+        <endDateTime>14102016 2300</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>notUrgent</tagged>
+    </tasks>
+    <tasks>
+        <title>buy food for my friends</title>
+        <description></description>
+        <startDateTime>20102016 1300</startDateTime>
+        <endDateTime>21102016 1200</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tasks>
+        <title>CS1020 Tutorial</title>
+        <description>many questions</description>
+        <startDateTime></startDateTime>
+        <endDateTime>05102016</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>needhelp</tagged>
+    </tasks>
+    <tasks>
+        <title>Read a story book</title>
+        <description>for book club</description>
+        <startDateTime>18102016</startDateTime>
+        <endDateTime>20102016 1800</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>important</tagged>
+    </tasks>
+    <tasks>
+        <title>CS1021 Tutorial</title>
+        <description>many questions</description>
+        <startDateTime></startDateTime>
+        <endDateTime>05102016</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>needhelp</tagged>
+    </tasks>
+    <tasks>
+        <title>CS2103</title>
+        <description>Tutorial</description>
+        <startDateTime>15102016 2100</startDateTime>
+        <endDateTime>27102016 2300</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+        <tagged>urgent</tagged>
+    </tasks>
+    <tasks>
+        <title>House Cleaning</title>
+        <description></description>
+        <startDateTime>17102016 1700</startDateTime>
+        <endDateTime>21102016 1700</endDateTime>
+        <isCompleted>true</isCompleted>
+        <isOverdue>true</isOverdue>
+        <isFloating>false</isFloating>
+    </tasks>
+    <tags>
+        <tagName>urgent</tagName>
+    </tags>
+    <tags>
+        <tagName>needhelp</tagName>
+    </tags>
+    <tags>
+        <tagName>i1</tagName>
+    </tags>
+    <tags>
+        <tagName>notUrgent</tagName>
+    </tags>
+    <tags>
+        <tagName>important</tagName>
+    </tags>
+    <tags>
+        <tagName>nice</tagName>
+    </tags>
+    <tags>
+        <tagName>fun</tagName>
+    </tags>
+</tasklist>
