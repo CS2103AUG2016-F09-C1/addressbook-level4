@@ -207,7 +207,17 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
  API call.<br>
 <img src="images/DeleteTaskSdForLogic.png" width="800"><br>
 
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("add CS2103")`
+ API call.<br>
+<img src="images/addTaskSdForLogic.png" width="800"><br>
 
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("mark 1")`
+ API call.<br>
+<img src="images/markTaskSdForLogic.png" width="800"><br>
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("clear")`
+ API call.<br>
+<img src="images/clearTaskSdForLogic.png" width="800"><br>
 
 
 ### Model component
