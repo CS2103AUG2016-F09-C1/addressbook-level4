@@ -161,6 +161,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateFilteredTaskListToShowAll() {
         updateFilteredTaskList(new PredicateExpression(new TaskStatusQualifier("all")));
+        indicateTaskListChanged();
     }
 
     @Override

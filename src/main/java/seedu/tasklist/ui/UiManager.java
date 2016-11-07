@@ -10,6 +10,7 @@ import seedu.tasklist.MainApp;
 import seedu.tasklist.commons.core.ComponentManager;
 import seedu.tasklist.commons.core.Config;
 import seedu.tasklist.commons.core.LogsCenter;
+import seedu.tasklist.commons.events.model.TaskListChangedEvent;
 import seedu.tasklist.commons.events.storage.DataSavingExceptionEvent;
 import seedu.tasklist.commons.events.ui.JumpToListRequestEvent;
 import seedu.tasklist.commons.events.ui.ShowHelpRequestEvent;
@@ -115,4 +116,9 @@ public class UiManager extends ComponentManager implements Ui {
         mainWindow.getTaskListPanel().scrollTo(event.targetIndex);
     }
 
+    //@@author A0146840E
+    @Subscribe
+    public void handleTaskListChangedEvent(TaskListChangedEvent tlce) {
+        mainWindow.getTaskListPanel().setTaskListSize(tlce.data.getTaskList().size());
+    }
 }
