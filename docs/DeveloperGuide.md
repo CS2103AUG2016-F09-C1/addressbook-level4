@@ -116,9 +116,9 @@ interface and exposes its functionality using the `LogicManager.java` class.<br>
 <img src="images/LogicClassDiagram.png" width="900"/> <br><br><br>
 
 
-#### Events-Driven nature of the design 
+### Events-Driven nature of the design 
 
-###Delete Command
+####Delete Command
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
 command `delete 1`.
 
@@ -138,7 +138,7 @@ being saved to the hard disk and the status bar of the UI being updated to refle
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 
 
-###Add Command
+####Add Command
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
 command `add CS2103`.
 
@@ -158,7 +158,7 @@ being saved to the hard disk and the status bar of the UI being updated to refle
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 
 
-###Mark/Unmark Command
+####Mark/Unmark Command
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
 command `mark 1/unmark 1`.
 
@@ -179,7 +179,7 @@ being saved to the hard disk and the status bar of the UI being updated to refle
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 
 
-###Storage Command
+####Storage Command
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
 command `storage docs/tasklist.xml`.
 
@@ -200,7 +200,7 @@ being saved to the hard disk and the status bar of the UI being updated to refle
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
 
 
-###Select Command
+####Select Command
 
 
 The Sequence Diagram below shows how the components interact for the scenario where the user issues the command  `select 1`.
@@ -209,7 +209,7 @@ The Sequence Diagram below shows how the components interact for the scenario wh
 <img src="images\SelectEventSequence.png" width="800">
 
 
-###Exit Command
+####Exit Command
 
 The Sequence Diagram below shows how the components interact for the scenario where the user issues the command  `exit`.
 
@@ -221,14 +221,14 @@ The Sequence Diagram below shows how the components interact for the scenario wh
 The sections below give more details of each component.
 
 
-###Help Command
+####Help Command
 The Sequence Diagram below shows how the components interact for the scenario where the user issues the command  `help`.
 
 
 <img src="images\HelpSequence.png" width="800">
 
 
-###Invalid Command
+####Invalid Command
 The Sequence Diagram below shows how the components interact for the scenario where the user issues the command  `adds CS2103`.
 
 
