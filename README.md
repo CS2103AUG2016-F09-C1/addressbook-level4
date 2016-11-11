@@ -2,7 +2,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/CS2103AUG2016-F09-C1/main/badge.svg?branch=master)](https://coveralls.io/github/CS2103AUG2016-F09-C1/main?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/441f544edd764af8a752ad5af918d6fb)](https://www.codacy.com/app/bernardtankx/main?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CS2103AUG2016-F09-C1/main&amp;utm_campaign=Badge_Grade)
 
-# Task List
+# Over-Do-It
+
 
 <img src="docs/images/Ui.png" width="600"><br>
 
